@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+  <!-- 元数据 -->
+  <meta charset="utf-8">
+  <link rel="icon" href="images/favicon.PNG">
+  <title>离散结构 第四章 函数与代数 | Chen' Blog</title>
+  <meta name="author" content="" />
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="robots" content="index,follow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta name="format-detection" content="telphone=no, email=no" />
+  
+    <meta name="keywords" content="" />
+  
+  <meta name="description" content="函数函数与像定义4.1:     设 A和B是任何两个非空集合,F是从A到B的一个关系, 如果对于每一个x∈A,都存在唯一的y∈B,使得&lt;x,y&gt;∈F, 则称F为从A到B的函数(映射)，记作：F:A→B.  若&lt;x,y&gt;∈F, 称x是函数的自变元，称y为F在x处的值(或为F作用下x的像) 。   函数的判断  例： 1、A&#x3D;{a,b,c},B&#x3D;{1,2,3,4}， R1&#x3D;{">
+<meta property="og:type" content="article">
+<meta property="og:title" content="离散结构 第四章 函数与代数">
+<meta property="og:url" content="http://yoursite.com/4b8f3f54/index.html">
+<meta property="og:site_name" content="Chen&#39; Blog">
+<meta property="og:description" content="函数函数与像定义4.1:     设 A和B是任何两个非空集合,F是从A到B的一个关系, 如果对于每一个x∈A,都存在唯一的y∈B,使得&lt;x,y&gt;∈F, 则称F为从A到B的函数(映射)，记作：F:A→B.  若&lt;x,y&gt;∈F, 称x是函数的自变元，称y为F在x处的值(或为F作用下x的像) 。   函数的判断  例： 1、A&#x3D;{a,b,c},B&#x3D;{1,2,3,4}， R1&#x3D;{">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://yoursite.com/images/favicon.PNG">
+<meta property="article:published_time" content="2020-04-21T09:23:44.000Z">
+<meta property="article:modified_time" content="2020-04-26T09:56:37.638Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/images/favicon.PNG">
+<meta name="twitter:site" content="@null">
+  
+  <!-- 站点验证相关 -->
+  
+    
+    
+    
+  
+  <!-- 样式表文件 -->
+  <link rel="stylesheet" id="kratos-css" href="/css/kratosr.min.css" type="text/css" media="all">
+  
+    <link rel="stylesheet" id="highlight-css" href="/css/highlight.min.css" type="text/css" media="all">
+  
+  
+  <link rel="stylesheet" id="fontawe-css" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" type="text/css" media="all">
+  <link rel="stylesheet" id="nprogress-css" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" type="text/css" media="all">
+  
+  
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  
+  
+    <link rel="stylesheet" id="darkmode-css" href="/css/kr-dark.min.css" type="text/css" media="all">
+  
+  <!-- 不得不预先加载的一些JS文件 -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+  
+    <script src="https://cdn.jsdelivr.net/npm/qrcode_js@1.0.0/qrcode.min.js"></script>
+  
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+
+    <body class="custom-background">
+        <div id="kratos-wrapper">
+    <div id="kratos-page">
+        <div id="kratos-header">
+            <div class="nav-toggle"><a class="kratos-nav-toggle js-kratos-nav-toggle"><i></i></a></div>
+            <header id="kratos-header-section">
+                <div class="container">
+                    <div class="nav-header">
+                        <div class="color-logo"><a href="/">Chen&#39; Blog</a></div>
+                        <nav id="kratos-menu-wrap">
+                            <ul id="kratos-primary-menu" class="sf-menu">
+                                
+                                    
+                                        <li><a href="/"><i class="fa fa-home"></i>首页</a></li>
+                                    
+                                
+                                    
+                                        <li><a href="/archives/"><i class="fa fa-file"></i>档案馆</a></li>
+                                    
+                                
+                                    
+                                        <li>
+                                            <a><i class="fa fa-link"></i>链接</a>
+                                            <ul class="sub-menu">
+                                                
+                                                    
+                                                
+                                            </ul>
+                                        </li>
+                                    
+                                
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </header>
+        </div>
+        <div class="kratos-start kratos-hero-2">
+            <!-- <div class="kratos-overlay"></div> -->
+            <div class="kratos-cover kratos-cover-2 text-center">
+                <div class="desc desc2 animate-box">
+                    <a href="/">
+                        <h2>Chen&#39; Blog</h2> <br />
+                        <span></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div id="kratos-blog-post">
+            <div class="container">
+                <div class="row">
+                    
+        <div id="main">
+            <section class="col-md-8">
+    <article>
+        <div class="kratos-hentry kratos-post-inner clearfix">
+            <header class="kratos-entry-header">
+                <h1 class="kratos-entry-title text-center">离散结构 第四章 函数与代数</h1>
+                
+                <div class="kratos-post-meta text-center">
+                    <span>
+                        <i class="fa fa-calendar"></i> 2020-04-21
+                        <i class="fa fa-folder"></i> 分类 <a class="label-link" href="/categories/%E7%A6%BB%E6%95%A3%E7%BB%93%E6%9E%84/">离散结构</a>
+                        <i class="fa fa-user"></i> 作者 
+                        <i class="fa fa-edit"></i> 
+                        
+                        
+                            ~2.19K
+                        
+                        字
+                        
+                    </span>
+                </div>
+            </header>
+            <div class="kratos-post-content">
+                <div id="expire-alert" class="alert alert-warning hidden" role="alert">
+                    本文最后编辑于 <time datetime="1587894997638"></time> 前，其中的内容可能需要更新。
+                </div>
+                
+                <hr />
+                <h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><h3 id="函数与像"><a href="#函数与像" class="headerlink" title="函数与像"></a>函数与像</h3><p>定义4.1:     设 A和B是任何两个非空集合,F是从A到B的一个关系, 如果对于每一个x∈A,都存在唯一的y∈B,使得&lt;x,y&gt;∈F, 则称F为从A到B的函数(映射)，记作：F:A→B. </p>
+<p>若&lt;x,y&gt;∈F, 称x是函数的自变元，称y为F在x处的值(或为F作用下x的像) 。</p>
+<img src="%E7%A6%BB%E6%95%A3%E7%BB%93%E6%9E%84-%E7%AC%AC%E5%9B%9B%E7%AB%A0%E5%87%BD%E6%95%B0%E4%B8%8E%E4%BB%A3%E6%95%B0/image-20200421173428052.png" alt="image-20200421173428052" style="zoom:50%;" />
+
+<h3 id="函数的判断"><a href="#函数的判断" class="headerlink" title="函数的判断"></a>函数的判断</h3><img src="%E7%A6%BB%E6%95%A3%E7%BB%93%E6%9E%84-%E7%AC%AC%E5%9B%9B%E7%AB%A0%E5%87%BD%E6%95%B0%E4%B8%8E%E4%BB%A3%E6%95%B0/image-20200421173541410.png" alt="image-20200421173541410" style="zoom:50%;" />
+
+<p>例：</p>
+<p>1、A={a,b,c},B={1,2,3,4}， R1={&lt;a,1&gt;&lt;b,3&gt;} R2={&lt;a,1&gt;,&lt;b,1&gt;,&lt;a,3&gt;,&lt;c,3&gt;}；</p>
+<p> 2、实数R 上的关系f1={&lt;a,b&gt;|a2=b}, f2={&lt;a,b&gt;|a=b2} </p>
+<p>3、f={&lt;x1,x2&gt;|x1,x2∈N,且x1+x2&lt;10} </p>
+<p>解：</p>
+<p>​    1、R1中没有&lt;c,x&gt;,c没有像，不符合存在性，R2中a有”两个像”， 不符合唯一性，不是函数 。</p>
+<p>​    2、 f1是函数，任意a∈dom(f1)=R，存在唯一的b,使得&lt;a,b&gt;∈f1.    f2不是函数：反例：&lt;4,-2&gt;&lt;4,2&gt;∈f2,4有两个像不唯一，&lt;-9,b&gt;不存在 b,使得b2=-9，不符合存在性。 </p>
+<p>​    3、x1不能取定义域中所有的值，且x1对应于很多x2,所以f不是函数。 </p>
+<h3 id="函数相等"><a href="#函数相等" class="headerlink" title="函数相等"></a>函数相等</h3><p>定义：设函数 f:Ａ→Ｂ，g：Ｃ→Ｄ，若Ａ=C, Ｂ=D , 且对于所有x ∈A和x ∈C，有f(x)=g(x), 称函数f和g相等，记作f=g.</p>
+<p>两个函数f和g相等,一定满足下面两个条件： </p>
+<p>​    1．D(f)=D(g)  </p>
+<p>​    2.   任意x∈D(f)=D(g) , 都有 f(x)=g(x) .    </p>
+<h3 id="函数的计数"><a href="#函数的计数" class="headerlink" title="函数的计数"></a>函数的计数</h3><p> 定义:  所有从A到B的函数的集合记作BA，读作“B上A”. </p>
+<p>符号化表示为   BA={ f | f：A→B}</p>
+<img src="%E7%A6%BB%E6%95%A3%E7%BB%93%E6%9E%84-%E7%AC%AC%E5%9B%9B%E7%AB%A0%E5%87%BD%E6%95%B0%E4%B8%8E%E4%BB%A3%E6%95%B0/image-20200421174911442.png" alt="image-20200421174911442" style="zoom:50%;" />
+
+<h3 id="函数的性质-满射、单射、双射"><a href="#函数的性质-满射、单射、双射" class="headerlink" title="函数的性质:满射、单射、双射"></a>函数的性质:满射、单射、双射</h3><p>满射: 设  f: X→Y， 若 f(X)=Y, 即Y的每一个元素都是X中的 像点, 则称  f: X→Y是满射（到上映射）。 </p>
+<img src="%E7%A6%BB%E6%95%A3%E7%BB%93%E6%9E%84-%E7%AC%AC%E5%9B%9B%E7%AB%A0%E5%87%BD%E6%95%B0%E4%B8%8E%E4%BB%A3%E6%95%B0/image-20200421175032833.png" alt="image-20200421175032833" style="zoom:50%;" />
+
+<p>单射:若f: X →Y ,X中没有两个元素有 相同的像，则称这个映射为单射（入射 或一对一映射）</p>
+<p>​    形式化为：设f: X →Y是入射， 对于任意的x1,x2∈X,  1. f(x1) = f(x2) →x1=x2 2. x1 ≠x2 → f (x1) ≠ f (x2) </p>
+<p>​    例：函数g:{a,b} →{1,2,3},g(a)=2,g(b)=1,则g是单射</p>
+<p>双射 :若 f：A→B既是满射又是单射的， 则称f：A→B是双射的</p>
+<p>​    例：函数h:{a,b,c,d}→{1,2,3,4}, h={&lt;a,1&gt;&lt;b,4&gt;&lt;c,2&gt;&lt;d,3&gt;} ， 则h是双射。</p>
+<img src="%E7%A6%BB%E6%95%A3%E7%BB%93%E6%9E%84-%E7%AC%AC%E5%9B%9B%E7%AB%A0%E5%87%BD%E6%95%B0%E4%B8%8E%E4%BB%A3%E6%95%B0/image-20200421175426974.png" alt="image-20200421175426974" style="zoom:50%;" />
+
+<h3 id="逆-反-函数与函数的复合"><a href="#逆-反-函数与函数的复合" class="headerlink" title="逆(反)函数与函数的复合"></a>逆(反)函数与函数的复合</h3><img src="%E7%A6%BB%E6%95%A3%E7%BB%93%E6%9E%84-%E7%AC%AC%E5%9B%9B%E7%AB%A0%E5%87%BD%E6%95%B0%E4%B8%8E%E4%BB%A3%E6%95%B0/image-20200421202735900.png" alt="image-20200421202735900" style="zoom:50%;" />
+
+<img src="%E7%A6%BB%E6%95%A3%E7%BB%93%E6%9E%84-%E7%AC%AC%E5%9B%9B%E7%AB%A0%E5%87%BD%E6%95%B0%E4%B8%8E%E4%BB%A3%E6%95%B0/image-20200421202747089.png" alt="image-20200421202747089" style="zoom:50%;" />
+
+
+
+<h2 id="集合的基数"><a href="#集合的基数" class="headerlink" title="集合的基数"></a>集合的基数</h2><h3 id="集合的等势"><a href="#集合的等势" class="headerlink" title="集合的等势"></a>集合的等势</h3><p>定义  设A和B是集合，如果存在A到B的双射函数， 则称集合A和集合B等势。记作A~B。 </p>
+<p>​    设A和B是有限集合，A~B，则存在A到B的双射 函数，根据双射的性质，|A|=|B|。即A和B中元素的 个数相等。</p>
+<p> 定理 ：设A，B，C是任意三个集合。则集合的 等势有下列性质。(等价关系) </p>
+<p>​     ⑴ 自反性: 即A~A</p>
+<p>​    ⑵ 对称性: 即若A<del>B，则B</del>A</p>
+<p>​     ⑶ 传递性: 即若A<del>B，B</del>C，则A~C。 </p>
+<h3 id="有限集和无限集"><a href="#有限集和无限集" class="headerlink" title="有限集和无限集"></a>有限集和无限集</h3><p>定义 如果集合A与集合{0,1,2,„,n-1}(n是某个自然 数)等势，则称A为有限集，如果集合A不是有限集， 则称A为无限集</p>
+<p> 定理 自然数集N是无限集</p>
+<h3 id="集合的基数-1"><a href="#集合的基数-1" class="headerlink" title="集合的基数"></a>集合的基数</h3><p>定义 将相互等势的集合归于同一类，对这样的每 一类集合规定一个记号，称这个记号是这一类集 合中每一个集合的基数或者势。集合A的势记为 |A|。</p>
+<p>根据定义，任何等势的集合具有相同的基数； 而不等势的集合基数也不相同。规定有限集的势 是该集合中元素的个数，空集的势为0。</p>
+<h3 id="可数集的基数"><a href="#可数集的基数" class="headerlink" title="可数集的基数"></a>可数集的基数</h3><p>定义  设N是自然数集合，凡与N等势的集合称为 可数集或可列集，也叫无限可数集或无限可列集。 </p>
+<p>通常记可数集的基数为0  读作“阿列夫零”。 <img src="%E7%A6%BB%E6%95%A3%E7%BB%93%E6%9E%84-%E7%AC%AC%E5%9B%9B%E7%AB%A0%E5%87%BD%E6%95%B0%E4%B8%8E%E4%BB%A3%E6%95%B0/image-20200421205301651.png" alt="image-20200421205301651" style="zoom:50%;" /></p>
+<p>根据此定义，知自然数集合N和整数集I都是可数 集，|N|=|I|= 0。  </p>
+<p>定义  集合x|xR∧0≤x≤1的基数称为连续点 集的基数, 记为, 读作“阿列夫”.  <img src="%E7%A6%BB%E6%95%A3%E7%BB%93%E6%9E%84-%E7%AC%AC%E5%9B%9B%E7%AB%A0%E5%87%BD%E6%95%B0%E4%B8%8E%E4%BB%A3%E6%95%B0/image-20200421205535243.png" alt="image-20200421205535243" style="zoom:50%;" /></p>
+<h3 id="集合基数的比较"><a href="#集合基数的比较" class="headerlink" title="集合基数的比较"></a>集合基数的比较</h3><p>定义 若集合A到集合B存在一个单射，则称A的 基数不大于B的基数或称A的基数小于等于B的基 数，记为|A|≤|B|。若集合A到集合B存在一个单射， 但不存在双射，则称A的基数小于B的基数，记 为|A|＜|B|.</p>
+<p>定理 设A和B是集合，如果|A|≤|B|且|B|≤|A|，则 |A|=|B|   </p>
+<p>定理 实数集R的基数是<img src="%E7%A6%BB%E6%95%A3%E7%BB%93%E6%9E%84-%E7%AC%AC%E5%9B%9B%E7%AB%A0%E5%87%BD%E6%95%B0%E4%B8%8E%E4%BB%A3%E6%95%B0/image-20200421205535243.png" alt="image-20200421205535243" style="zoom:50%;" /></p>
+<p>定理 设A是有限集合，则|A|＜<img src="%E7%A6%BB%E6%95%A3%E7%BB%93%E6%9E%84-%E7%AC%AC%E5%9B%9B%E7%AB%A0%E5%87%BD%E6%95%B0%E4%B8%8E%E4%BB%A3%E6%95%B0/image-20200421205301651.png" alt="image-20200421205301651" style="zoom:50%;" />0＜<img src="%E7%A6%BB%E6%95%A3%E7%BB%93%E6%9E%84-%E7%AC%AC%E5%9B%9B%E7%AB%A0%E5%87%BD%E6%95%B0%E4%B8%8E%E4%BB%A3%E6%95%B0/image-20200421205535243.png" alt="image-20200421205535243" style="zoom:50%;" /></p>
+<p>定理 设A是无限集合，则<img src="%E7%A6%BB%E6%95%A3%E7%BB%93%E6%9E%84-%E7%AC%AC%E5%9B%9B%E7%AB%A0%E5%87%BD%E6%95%B0%E4%B8%8E%E4%BB%A3%E6%95%B0/image-20200421205301651.png" alt="image-20200421205301651" style="zoom:50%;" />≤|A| </p>
+<h2 id="代数系统"><a href="#代数系统" class="headerlink" title="代数系统"></a>代数系统</h2><h3 id="代数结构概述"><a href="#代数结构概述" class="headerlink" title="代数结构概述"></a>代数结构概述</h3><p>代数运算的定义:设A是个非空集合，A^n到B的一个映射f: A^n→B称为A上的一个 n元代数运算，简称n元运算。通常用。，*，·，+，×等符号来表示二元运算，称为运算符。 </p>
+<p>​    </p>
+
+            </div>
+            
+                <div class="kratos-copyright text-center clearfix">
+                    <h5>本作品采用 <a rel="license nofollow" target="_blank" href="http://creativecommons.org/licenses/by-sa/4.0/">知识共享署名-相同方式共享 4.0 国际许可协议</a> 进行许可</h5>
+                </div>
+            
+            <footer class="kratos-entry-footer clearfix">
+                
+                    <div class="post-like-donate text-center clearfix" id="post-like-donate">
+                    
+                    
+                        <a class="share" href="javascript:;"><i class="fa fa-share-alt"></i> 分享</a>
+                        <div class="share-wrap" style="display: none;">
+    <div class="share-group">
+        <a href="javascript:;" class="share-plain qq" onclick="share('qq');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-qq"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain qzone" onclick="share('qzone');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-star"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weixin pop style-plain" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weixin"></i>
+            </div>
+            <div class="share-int">
+                <div class="qrcode" id="wechat-qr"></div>
+                <p>打开微信“扫一扫”，打开网页后点击屏幕右上角分享按钮</p>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weibo" onclick="share('weibo');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weibo"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain facebook style-plain" onclick="share('facebook');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-facebook"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain twitter style-plain" onclick="share('twitter');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-twitter"></i>
+            </div>
+        </a>
+    </div>
+    <script type="text/javascript">
+        $(()=>{
+            new QRCode("wechat-qr", {
+                text: "http://yoursite.com/4b8f3f54/",
+                width: 150,
+                height: 150,
+                correctLevel : QRCode.CorrectLevel.H
+            });
+        });
+        function share(dest) {
+            const qqBase        = "https://connect.qq.com/widget/shareqq/index.html?";
+            const weiboBase     = "https://service.weibo.com/share/share.php?";
+            const qzoneBase     = "https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?";
+            const facebookBase  = "https://www.facebook.com/sharer/sharer.php?";
+            const twitterBase   = "https://twitter.com/intent/tweet?";
+            const hostUrl       = "http://yoursite.com/4b8f3f54/";
+            const title         = "「离散结构 第四章 函数与代数」";
+            const excerpt       = `函数函数与像定义4.1:     设 A和B是任何两个非空集合,F是从A到B的一个关系, 如果对于每一个x∈A,都存在唯一的y∈B,使得&lt;x,y&gt;∈F, 则称F为从A到B的函数(映射)，记作：F:A→B. 
+若&lt;x,...`;
+            let _URL;
+            switch (dest) {
+                case "qq"       : _URL = qqBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";     break;
+                case "weibo"    : _URL = weiboBase+"url="+hostUrl+"&title="+title+excerpt;                                 break;
+                case "qzone"    : _URL = qzoneBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";  break;
+                case "facebook" : _URL = facebookBase+"u="+hostUrl;                                                        break;
+                case "twitter"  : _URL = twitterBase+"text="+title+excerpt+"&url="+hostUrl;                                break;
+            }
+            window.open(_URL);
+        };
+    </script>
+</div>
+                    
+                    </div>
+                
+                <div class="footer-tag clearfix">
+                    <div class="pull-left">
+                    <i class="fa fa-tags"></i>
+                        
+                    </div>
+                    <div class="pull-date">
+                    <span>最后编辑：2020-04-26</span>
+                    </div>
+                </div>
+            </footer>
+        </div>
+        
+            <nav class="navigation post-navigation clearfix" role="navigation">
+                
+                <div class="nav-previous clearfix">
+                    <a title=" Mybatis（二）:动态SQL语句和单、多表查询" href="/20bad1d0/">&lt; 上一篇</a>
+                </div>
+                
+                
+                <div class="nav-next clearfix">
+                    <a title=" Web分页" href="/d1117203/">下一篇 &gt;</a>
+                </div>
+                
+            </nav>
+        
+        
+    </article>
+</section>
+        </div>
+                
+            <section id="kratos-widget-area" class="col-md-4 hidden-xs hidden-sm">
+                
+                    <aside id="krw-about" class="widget widget-kratos-about clearfix">
+    
+    <div class="photo-background"></div>
+    <div class="photo-wrapper clearfix">
+        <div class="photo-wrapper-tip text-center">
+            <img class="about-photo" src="/images/avatar.jpg" />
+        </div>
+    </div>
+    <div class="textwidget">
+        
+            <p class="text-center"></p>
+        
+    </div>
+</aside>
+                
+                    <!-- Moved to about.ejs -->
+                
+                    
+  <aside id="krw-categories" class="widget widget-categories clearfix">
+    <h4 class="widget-title"><i class="fa fa-folder"></i>分类目录</h4>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/JAVA/">JAVA</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MOVEN/">MOVEN</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/MOVEN/%E7%8E%AF%E5%A2%83/">环境</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySql/">MySql</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SSM/">SSM</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Typora/">Typora</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Typora/%E5%BA%94%E7%94%A8/">应用</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Vue/">Vue</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/coding/">coding</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/http/">http</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/http/%E5%8D%8F%E8%AE%AE/">协议</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring-boot/">spring_boot</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/springboot/">springboot</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ssm%E6%A1%86%E6%9E%B6/">ssm框架</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8F%92%E4%BB%B6/">插件</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8F%92%E4%BB%B6/idea/">idea</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%A5%E8%AF%AD/">日语</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A6%BB%E6%95%A3%E7%BB%93%E6%9E%84/">离散结构</a><span class="category-list-count">2</span></li></ul>
+  </aside>
+
+
+                
+                    
+  <aside id="krw-tags" class="widget widget-kratos-tags clearfix">
+    <h4 class="widget-title"><i class="fa fa-tags"></i>标签聚合</h4>
+      <div class="tag-clouds">
+        <a href="/tags/Hashmap/" style="font-size: 0.67em;">Hashmap</a> <a href="/tags/MAVEN%E9%A1%B9%E7%9B%AE/" style="font-size: 0.6em;">MAVEN项目</a> <a href="/tags/Mybatis/" style="font-size: 0.8em;">Mybatis</a> <a href="/tags/SSM/" style="font-size: 0.6em;">SSM</a> <a href="/tags/SpringMVC/" style="font-size: 0.67em;">SpringMVC</a> <a href="/tags/Typora/" style="font-size: 0.6em;">Typora</a> <a href="/tags/Vue/" style="font-size: 0.6em;">Vue</a> <a href="/tags/http%E5%8D%8F%E8%AE%AE/" style="font-size: 0.6em;">http协议</a> <a href="/tags/idea/" style="font-size: 0.6em;">idea</a> <a href="/tags/include/" style="font-size: 0.6em;">include</a> <a href="/tags/n2/" style="font-size: 0.6em;">n2</a> <a href="/tags/spring/" style="font-size: 0.73em;">spring</a> <a href="/tags/springMVC/" style="font-size: 0.6em;">springMVC</a> <a href="/tags/spring-boot/" style="font-size: 0.6em;">spring_boot</a> <a href="/tags/springboot/" style="font-size: 0.6em;">springboot</a> <a href="/tags/%E5%88%86%E9%A1%B5/" style="font-size: 0.67em;">分页</a> <a href="/tags/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/" style="font-size: 0.6em;">反射机制</a> <a href="/tags/%E5%8F%98%E5%BD%A2/" style="font-size: 0.6em;">变形</a>
+      </div>
+  </aside>
+
+                
+                    
+  <aside id="krw-posts" class="widget widget-kratos-poststab">
+  <h4 class="widget-title"><i class="fa fa-file"></i>最新文章</h4>
+  <div class="tab-content">
+      <ul class="list-group">
+        
+        
+          
+          
+            <a class="list-group-item" href="/acfd81df/"><i class="fa  fa-book"></i> spring cloud</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/c0add594/"><i class="fa  fa-book"></i> vue</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/f462425/"><i class="fa  fa-book"></i> spring boot整合相关资源</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/bb66162f/"><i class="fa  fa-book"></i> springboot创建</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/5640449e/"><i class="fa  fa-book"></i> 基于maven构建SSM工程案例</a>
+            
+          
+        
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+      </ul>
+  </div>
+  </aside>
+
+                
+            </section>
+        
+        </div>
+    </div>
+</div>
+<footer>
+    <div id="footer">
+        <div class="kr-tool text-center">
+            <div class="tool">
+                
+                    <div class="box search-box">
+                        <a href="/search/">
+                            <span class="fa fa-search"></span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="box theme-box" id="darkmode-switch">
+                        <span class="fa fa-adjust"></span>
+                    </div>
+                
+                
+            </div>
+            <div class="box gotop-box">
+                <span class="fa fa-chevron-up"></span>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 footer-list text-center">
+                    <ul class="kratos-social-icons">
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                    </ul>
+                    <ul class="kratos-copyright">
+                        <div>
+                            <li>&copy; 2021 Chen' Blog 版权所有.</li>
+                            <li>本站已运行<span id="span_dt">Loading...</span></li>
+                        </div>
+                        <div>
+                            <li>Theme <a href="https://github.com/Candinya/Kratos-Rebirth" target="_blank">Kratos:Rebirth</a></li>
+                            <li>Made with&nbsp;<i class="fa fa-heart throb" style="color:#d43f57"></i>&nbsp;by <a href="https://candinya.com" target="_blank" rel="nofollow">Candinya</a>.</li>
+                        </div>
+                        <div>
+                            <li>Powered by <a href="https://hexo.io" target="_blank" rel="nofollow">Hexo</a></li>
+                            <li>Hosted on <a href="https://github.io" target="_blank">Github Pages</a></li>
+                        </div>
+                        <div>
+                            
+                            
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+</div>
+</div>
+
+        <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.4/dist/js/bootstrap.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js"></script>
+<script>const notMobile = (!(navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)));</script>
+
+<script async src="/js/candy.min.js"></script>
+
+
+    <script defer src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+<script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script>
+<script defer src="/js/kratosr.min.js"></script>
+<script defer src="/js/pjax.min.js"></script>
+
+
+    <script defer src="/js/kr-dark.min.js"></script>
+
+
+    </body>
+</html>

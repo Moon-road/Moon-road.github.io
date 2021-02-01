@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+  <!-- 元数据 -->
+  <meta charset="utf-8">
+  <link rel="icon" href="images/favicon.PNG">
+  <title>JAVA-HashMap | Chen' Blog</title>
+  <meta name="author" content="" />
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="robots" content="index,follow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta name="format-detection" content="telphone=no, email=no" />
+  
+    <meta name="keywords" content="Hashmap" />
+  
+  <meta name="description" content="HashMap相关内容简介首先介绍一下什么是Map。在数组中我们是通过数组下标来对其内容索引的，而在Map中我们通过对象来对对象进行索引，用来索引的对象叫做key，其对应的对象叫做value。 HashMap是基于哈希表实现的,每一个元素是一个key-value对,其内部通过单链表解决冲突问题,容量不足(超过了阀值)时,同样会自动增长. HashMap是一个用于存储Key-Value键值对的集合，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JAVA-HashMap">
+<meta property="og:url" content="http://yoursite.com/9da5e46/index.html">
+<meta property="og:site_name" content="Chen&#39; Blog">
+<meta property="og:description" content="HashMap相关内容简介首先介绍一下什么是Map。在数组中我们是通过数组下标来对其内容索引的，而在Map中我们通过对象来对对象进行索引，用来索引的对象叫做key，其对应的对象叫做value。 HashMap是基于哈希表实现的,每一个元素是一个key-value对,其内部通过单链表解决冲突问题,容量不足(超过了阀值)时,同样会自动增长. HashMap是一个用于存储Key-Value键值对的集合，">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://yoursite.com/images/favicon.PNG">
+<meta property="article:published_time" content="2020-04-04T13:02:41.000Z">
+<meta property="article:modified_time" content="2020-04-18T12:54:01.461Z">
+<meta property="article:tag" content="Hashmap">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/images/favicon.PNG">
+<meta name="twitter:site" content="@null">
+  
+  <!-- 站点验证相关 -->
+  
+    
+    
+    
+  
+  <!-- 样式表文件 -->
+  <link rel="stylesheet" id="kratos-css" href="/css/kratosr.min.css" type="text/css" media="all">
+  
+    <link rel="stylesheet" id="highlight-css" href="/css/highlight.min.css" type="text/css" media="all">
+  
+  
+  <link rel="stylesheet" id="fontawe-css" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" type="text/css" media="all">
+  <link rel="stylesheet" id="nprogress-css" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" type="text/css" media="all">
+  
+  
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  
+  
+    <link rel="stylesheet" id="darkmode-css" href="/css/kr-dark.min.css" type="text/css" media="all">
+  
+  <!-- 不得不预先加载的一些JS文件 -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+  
+    <script src="https://cdn.jsdelivr.net/npm/qrcode_js@1.0.0/qrcode.min.js"></script>
+  
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+
+    <body class="custom-background">
+        <div id="kratos-wrapper">
+    <div id="kratos-page">
+        <div id="kratos-header">
+            <div class="nav-toggle"><a class="kratos-nav-toggle js-kratos-nav-toggle"><i></i></a></div>
+            <header id="kratos-header-section">
+                <div class="container">
+                    <div class="nav-header">
+                        <div class="color-logo"><a href="/">Chen&#39; Blog</a></div>
+                        <nav id="kratos-menu-wrap">
+                            <ul id="kratos-primary-menu" class="sf-menu">
+                                
+                                    
+                                        <li><a href="/"><i class="fa fa-home"></i>首页</a></li>
+                                    
+                                
+                                    
+                                        <li><a href="/archives/"><i class="fa fa-file"></i>档案馆</a></li>
+                                    
+                                
+                                    
+                                        <li>
+                                            <a><i class="fa fa-link"></i>链接</a>
+                                            <ul class="sub-menu">
+                                                
+                                                    
+                                                
+                                            </ul>
+                                        </li>
+                                    
+                                
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </header>
+        </div>
+        <div class="kratos-start kratos-hero-2">
+            <!-- <div class="kratos-overlay"></div> -->
+            <div class="kratos-cover kratos-cover-2 text-center">
+                <div class="desc desc2 animate-box">
+                    <a href="/">
+                        <h2>Chen&#39; Blog</h2> <br />
+                        <span></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div id="kratos-blog-post">
+            <div class="container">
+                <div class="row">
+                    
+        <div id="main">
+            <section class="col-md-8">
+    <article>
+        <div class="kratos-hentry kratos-post-inner clearfix">
+            <header class="kratos-entry-header">
+                <h1 class="kratos-entry-title text-center">JAVA-HashMap</h1>
+                
+                <div class="kratos-post-meta text-center">
+                    <span>
+                        <i class="fa fa-calendar"></i> 2020-04-04
+                        <i class="fa fa-folder"></i> 分类 <a class="label-link" href="/categories/JAVA/">JAVA</a>
+                        <i class="fa fa-user"></i> 作者 
+                        <i class="fa fa-edit"></i> 
+                        
+                        
+                            ~6.71K
+                        
+                        字
+                        
+                    </span>
+                </div>
+            </header>
+            <div class="kratos-post-content">
+                <div id="expire-alert" class="alert alert-warning hidden" role="alert">
+                    本文最后编辑于 <time datetime="1587214441461"></time> 前，其中的内容可能需要更新。
+                </div>
+                
+                <hr />
+                <h2 id="HashMap相关内容"><a href="#HashMap相关内容" class="headerlink" title="HashMap相关内容"></a>HashMap相关内容</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>首先介绍一下什么是Map。在数组中我们是通过数组下标来对其内容索引的，而在Map中我们通过对象来对对象进行索引，用来索引的对象叫做key，其对应的对象叫做value。</p>
+<p>HashMap是基于哈希表实现的,每一个元素是一个key-value对,其内部通过单链表解决冲突问题,容量不足(超过了阀值)时,同样会自动增长.</p>
+<p>HashMap是一个用于存储Key-Value键值对的集合，每一个键值对也叫做<strong>Entry</strong>。这些个键值对（Entry）分散存储在一个数组当中，这个数组就是HashMap的主干。</p>
+<h3 id="1-HashMap-的数据结构"><a href="#1-HashMap-的数据结构" class="headerlink" title="1.HashMap 的数据结构"></a>1.HashMap 的数据结构</h3><p>在 Java 编程语言中，最基本的结构就是两种，一个是数组，另外一个是指针（引用），HashMap 就是通过这两个数据结构进行实现。HashMap实际上是一个“链表散列”的数据结构，即数组+链表。</p>
+<p><img src="%E5%85%B3%E4%BA%8EHashMap/2018110221063296.png" alt="哈希表数据插入过程"></p>
+<p>HashMap数组每一个元素的初始值都是Null。</p>
+<p><img src="%E5%85%B3%E4%BA%8EHashMap/v2-9ca7e8eb5ecf7a7c2e45f90177d785f0_720w.jpg" alt="img"></p>
+<p>对于HashMap，我们最常使用的是两个方法：<strong>Get</strong> 和 <strong>Put</strong>。</p>
+<p><strong>1.Put方法的原理</strong></p>
+<p>调用Put方法的时候发生了什么呢？</p>
+<p>比如调用 hashMap.put(“apple”, 0) ，插入一个Key为“apple”的元素。这时候我们需要利用一个哈希函数来确定Entry的插入位置（index）：</p>
+<p><strong>index =  Hash（“apple”）</strong></p>
+<p>假定最后计算出的index是2，那么结果如下：</p>
+<p><img src="%E5%85%B3%E4%BA%8EHashMap/v2-3dde167de3deaa02ea6d002d47fdfea7_720w.jpg" alt="img"></p>
+<p>HashMap数组的每一个元素不止是一个Entry对象，也是一个链表的头节点。每一个Entry对象通过Next指针指向它的下一个Entry节点。当新来的Entry映射到冲突的数组位置时，只需要插入到对应的链表即可：</p>
+<p><img src="%E5%85%B3%E4%BA%8EHashMap/v2-89b55c75205cfb87f8bbd21f27d846dc_720w.jpg" alt="img"></p>
+<p>需要注意的是，新来的Entry节点插入链表时，使用的是“头插法”。</p>
+<p><strong>2.Get方法的原理</strong></p>
+<p>使用Get方法根据Key来查找Value的时候，发生了什么呢？</p>
+<p>首先会把输入的Key做一次Hash映射，得到对应的index：</p>
+<p><strong>index =  Hash（“apple”）</strong></p>
+<p>由于刚才所说的Hash冲突，同一个位置有可能匹配到多个Entry，这时候就需要顺着对应链表的头节点，一个一个向下来查找。假设我们要查找的Key是“apple”：</p>
+<p><img src="%E5%85%B3%E4%BA%8EHashMap/v2-6ff928d2047b013e869056ad3bf6ad66_720w.jpg" alt="img"></p>
+<p>第一步，我们查看的是头节点Entry6，Entry6的Key是banana，显然不是我们要找的结果。</p>
+<p>第二步，我们查看的是Next节点Entry1，Entry1的Key是apple，正是我们要找的结果。</p>
+<p>之所以把Entry6放在头节点，是因为HashMap的发明者认为，<strong>后插入的Entry被查找的可能性更大</strong>。</p>
+<p>简单来说，<strong>HashMap由数组+链表组成的</strong>，数组是HashMap的主体，链表则是主要为了解决哈希冲突而存在的，如果定位到的数组位置不含链表（当前entry的next指向null）,那么查找，添加等操作很快，仅需一次寻址即可；如果定位到的数组包含链表，对于添加操作，其时间复杂度为O(n)，首先遍历链表，存在即覆盖，否则新增；对于查找操作来讲，仍需遍历链表，然后通过key对象的equals方法逐一比对查找。所以，性能考虑，<strong>HashMap中的链表出现越少，性能才会越好。</strong></p>
+<h3 id="2-HashMap实现存储和读取"><a href="#2-HashMap实现存储和读取" class="headerlink" title="2.HashMap实现存储和读取"></a><strong>2.HashMap实现存储和读取</strong></h3><p>1）存储</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"> 1 public V put(K key, V value) &#123;</span><br><span class="line"> 2     &#x2F;&#x2F; HashMap允许存放null键和null值。</span><br><span class="line"> 3     &#x2F;&#x2F; 当key为null时，调用putForNullKey方法，将value放置在数组第一个位置。</span><br><span class="line"> 4     if (key &#x3D;&#x3D; null)</span><br><span class="line"> 5         return putForNullKey(value);</span><br><span class="line"> 6     &#x2F;&#x2F; 根据key的keyCode重新计算hash值。</span><br><span class="line"> 7     int hash &#x3D; hash(key.hashCode());</span><br><span class="line"> 8     &#x2F;&#x2F; 搜索指定hash值在对应table中的索引。</span><br><span class="line"> 9     int i &#x3D; indexFor(hash, table.length);</span><br><span class="line">10     &#x2F;&#x2F; 如果 i 索引处的 Entry 不为 null，通过循环不断遍历 e 元素的下一个元素。</span><br><span class="line">11     for (Entry&lt;K,V&gt; e &#x3D; table[i]; e !&#x3D; null; e &#x3D; e.next) &#123;</span><br><span class="line">12         Object k;</span><br><span class="line">13         if (e.hash &#x3D;&#x3D; hash &amp;&amp; ((k &#x3D; e.key) &#x3D;&#x3D; key || key.equals(k))) &#123;</span><br><span class="line">14             &#x2F;&#x2F; 如果发现已有该键值，则存储新的值，并返回原始值</span><br><span class="line">15             V oldValue &#x3D; e.value;</span><br><span class="line">16             e.value &#x3D; value;</span><br><span class="line">17             e.recordAccess(this);</span><br><span class="line">18             return oldValue;</span><br><span class="line">19         &#125;</span><br><span class="line">20     &#125;</span><br><span class="line">21     &#x2F;&#x2F; 如果i索引处的Entry为null，表明此处还没有Entry。</span><br><span class="line">22     modCount++;</span><br><span class="line">23     &#x2F;&#x2F; 将key、value添加到i索引处。</span><br><span class="line">24     addEntry(hash, key, value, i);</span><br><span class="line">25     return null;</span><br><span class="line">26 &#125;</span><br></pre></td></tr></table></figure>
+<p>根据hash值得到这个元素在数组中的位置（即下标），如果数组该位置上已经存放有其他元素了，那么在这个位置上的元素将以链表的形式存放，新加入的放在链头，最先加入的放在链尾。如果数组该位置上没有元素，就直接将该元素放到此数组中的该位置上。</p>
+<p>hash(int h)方法根据key的hashCode重新计算一次散列。此算法加入了高位计算，防止低位不变，高位变化时，造成的hash冲突。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1 static int hash(int h) &#123;</span><br><span class="line">2     h ^&#x3D; (h &gt;&gt;&gt; 20) ^ (h &gt;&gt;&gt; 12);</span><br><span class="line">3     return h ^ (h &gt;&gt;&gt; 7) ^ (h &gt;&gt;&gt; 4);</span><br><span class="line">4 &#125;</span><br></pre></td></tr></table></figure>
+<p>我们可以看到在HashMap中要找到某个元素，需要根据key的hash值来求得对应数组中的位置。如何计算这个位置就是hash算法。前面说过HashMap的数据结构是数组和链表的结合，所以我们当然希望这个HashMap里面的元素位置尽量的分布均匀些，尽量使得每个位置上的元素数量只有一个，那么当我们用hash算法求得这个位置的时候，马上就可以知道对应位置的元素就是我们要的，而不用再去遍历链表，这样就大大优化了查询的效率。</p>
+<p>根据上面 put 方法的源代码可以看出，当程序试图将一个key-value对放入HashMap中时，程序首先根据该 key的  hashCode() 返回值决定该 Entry 的存储位置：如果两个 Entry 的 key 的 hashCode()  返回值相同，那它们的存储位置相同。如果这两个 Entry 的 key 通过 equals 比较返回 true，新添加 Entry 的 value 将覆盖集合中原有 Entry的 value，但key不会覆盖。如果这两个 Entry 的 key 通过 equals 比较返回  false，新添加的 Entry 将与集合中原有 Entry 形成 Entry 链，而且新添加的 Entry 位于 Entry  链的头部——具体说明继续看 addEntry() 方法的说明。</p>
+<p><strong>通过这种方式就可以高效的解决HashMap的冲突问题。</strong></p>
+<p>2）读取</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"> 1 public V get(Object key) &#123;</span><br><span class="line"> 2     if (key &#x3D;&#x3D; null)</span><br><span class="line"> 3         return getForNullKey();</span><br><span class="line"> 4     int hash &#x3D; hash(key.hashCode());</span><br><span class="line"> 5     for (Entry&lt;K,V&gt; e &#x3D; table[indexFor(hash, table.length)];</span><br><span class="line"> 6         e !&#x3D; null;</span><br><span class="line"> 7         e &#x3D; e.next) &#123;</span><br><span class="line"> 8         Object k;</span><br><span class="line"> 9         if (e.hash &#x3D;&#x3D; hash &amp;&amp; ((k &#x3D; e.key) &#x3D;&#x3D; key || key.equals(k)))</span><br><span class="line">10             return e.value;</span><br><span class="line">11     &#125;</span><br><span class="line">12     return null;</span><br><span class="line">13 &#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>从HashMap中get元素时，首先计算key的hashCode，找到数组中对应位置的某一元素，然后通过key的equals方法在对应位置的链表中找到需要的元素。</p>
+<p>3）归纳起来简单地说，HashMap 在底层将 key-value 当成一个整体进行处理，这个整体就是一个 Entry  对象。HashMap 底层采用一个 Entry[] 数组来保存所有的 key-value 对，当需要存储一个 Entry  对象时，会根据hash算法来决定其在数组中的存储位置，在根据equals方法决定其在该数组位置上的链表中的存储位置；当需要取出一个Entry时，也会根据hash算法找到其在数组中的存储位置，再根据equals方法从该位置上的链表中取出该Entry。</p>
+<h3 id="3-HashMap的resize"><a href="#3-HashMap的resize" class="headerlink" title="*3.HashMap的resize"></a>*<em>3.HashMap的resize</em></h3><p>​     当hashmap中的元素越来越多的时候，碰撞的几率也就越来越高（因为数组的长度是固定的），所以为了提高查询的效率，就要对hashmap的数组进行扩容，数组扩容这个操作也会出现在ArrayList中，所以这是一个通用的操作, 而在hashmap数组扩容之后，最消耗性能的点就出现了：原数组中的数据必须重新计算其在新数组中的位置，并放进去，这就是resize。</p>
+<p>​     那么hashmap什么时候进行扩容呢？当hashmap中的元素个数超过数组大小<em>loadFactor时，就会进行数组扩容，loadFactor的默认值为0.75，也就是说，默认情况下，数组大小为16，那么当hashmap中元素个数超过16X0.75=12的时候，就把数组的大小扩展为2X16=32，即扩大一倍，然后重新计算每个元素在数组中的位置，而这是一个非常消耗性能的操作，所以如果我们已经预知hashmap中元素的个数，那么预设元素的个数能够有效的提高hashmap的性能。比如说，我们有1000个元素new HashMap(1000), 但是理论上来讲new  HashMap(1024)更合适，不过上面annegu已经说过，即使是1000，hashmap也自动会将其设置为1024。 但是new  HashMap(1024)还不是更合适的，因为0.75</em>1000 &lt; 1000, 也就是说为了让0.75 * size &gt;  1000, 我们必须这样new HashMap(2048)才最合适，既考虑了&amp;的问题，也避免了resize的问题。</p>
+<p><strong>总结：HashMap的实现原理：</strong></p>
+<ol>
+<li><strong>利用key的hashCode重新hash计算出当前对象的元素在数组中的下标</strong></li>
+<li><strong>存储时，如果出现hash值相同的key，此时有两种情况。(1)如果key相同，则覆盖原始值；(2)如果key不同（出现冲突），则将当前的key-value放入链表中</strong></li>
+<li><strong>获取时，直接找到hash值对应的下标，在进一步判断key是否相同，从而找到对应值。</strong></li>
+<li><strong>理解了以上过程就不难明白HashMap是如何解决hash冲突的问题，核心就是使用了数组的存储方式，然后将冲突的key的对象放入链表中，一旦发现冲突就在链表中做进一步的对比。</strong></li>
+</ol>
+<h3 id="4-为何HashMap的数组长度一定是2的次幂？"><a href="#4-为何HashMap的数组长度一定是2的次幂？" class="headerlink" title="4.为何HashMap的数组长度一定是2的次幂？"></a>4.<strong>为何HashMap的数组长度一定是2的次幂？</strong></h3><p>如果数组进行扩容，数组长度发生变化，而存储位置 index = h&amp;(length-1),index也可能会发生变化，需要重新计算index，我们先来看看transfer这个方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">transfer</span><span class="params">(Entry[] newTable, <span class="keyword">boolean</span> rehash)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> newCapacity = newTable.length;</span><br><span class="line">　　　　　<span class="comment">//for循环中的代码，逐个遍历链表，重新计算索引位置，将老数组数据复制到新数组中去（数组不存储实际数据，所以仅仅是拷贝引用而已）</span></span><br><span class="line">        <span class="keyword">for</span> (Entry&lt;K,V&gt; e : table) &#123;</span><br><span class="line">            <span class="keyword">while</span>(<span class="keyword">null</span> != e) &#123;</span><br><span class="line">                Entry&lt;K,V&gt; next = e.next;</span><br><span class="line">                <span class="keyword">if</span> (rehash) &#123;</span><br><span class="line">                    e.hash = <span class="keyword">null</span> == e.key ? <span class="number">0</span> : hash(e.key);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">int</span> i = indexFor(e.hash, newCapacity);</span><br><span class="line">                <span class="comment">//将当前entry的next链指向新的索引位置,newTable[i]有可能为空，有可能也是个entry链，如果是entry链，直接在链表头部插入。</span></span><br><span class="line">                e.next = newTable[i];</span><br><span class="line">                newTable[i] = e;</span><br><span class="line">                e = next;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>这个方法将老数组中的数据逐个链表地遍历，扔到新的扩容后的数组中，我们的数组索引位置的计算是通过 对key值的hashcode进行hash扰乱运算后，再通过和 length-1进行位运算得到最终数组索引位置。</p>
+<p>HashMap的数组长度一定保持2的次幂，比如16的二进制表示为  10000，那么length-1就是15，二进制为01111，同理扩容后的数组长度为32，二进制表示为100000，length-1为31，二进制表示为011111。从下图可以我们也能看到这样会保证低位全为1，而扩容后只有一位差异，也就是多出了最左位的1，这样在通过 h&amp;(length-1)的时候，只要h对应的最左边的那一个差异位为0，就能保证得到的新的数组索引和老数组索引一致</p>
+<p><img src="%E5%85%B3%E4%BA%8EHashMap/20181102223343298.png" alt="在这里插入图片描述"></p>
+<p>数组长度保持2的次幂，length-1的低位都为1，会使得获得的数组索引index更加均匀</p>
+<p><img src="%E5%85%B3%E4%BA%8EHashMap/20181102223421180.png" alt="在这里插入图片描述"></p>
+<p>我们看到，上面的&amp;运算，高位是不会对结果产生影响的（hash函数采用各种位运算可能也是为了使得低位更加散列），我们只关注低位bit，如果低位全部为1，那么对于h低位部分来说，任何一位的变化都会对结果产生影响，也就是说，要得到index=21这个存储位置，h的低位只有这一种组合。这也是数组长度设计为必须为2的次幂的原因。</p>
+<p>如果不是2的次幂，也就是低位不是全为1此时，要使得index=21，h的低位部分不再具有唯一性了，哈希冲突的几率会变的更大</p>
+<p><strong>附：HashMap put方法逻辑图（JDK1.8）</strong></p>
+<p><img src="%E5%85%B3%E4%BA%8EHashMap/20181105181728652.png" alt="在这里插入图片描述"></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/yuanblog/p/4441017.html">参考链接：https://www.cnblogs.com/yuanblog/p/4441017.html</a></p>
+
+            </div>
+            
+                <div class="kratos-copyright text-center clearfix">
+                    <h5>本作品采用 <a rel="license nofollow" target="_blank" href="http://creativecommons.org/licenses/by-sa/4.0/">知识共享署名-相同方式共享 4.0 国际许可协议</a> 进行许可</h5>
+                </div>
+            
+            <footer class="kratos-entry-footer clearfix">
+                
+                    <div class="post-like-donate text-center clearfix" id="post-like-donate">
+                    
+                    
+                        <a class="share" href="javascript:;"><i class="fa fa-share-alt"></i> 分享</a>
+                        <div class="share-wrap" style="display: none;">
+    <div class="share-group">
+        <a href="javascript:;" class="share-plain qq" onclick="share('qq');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-qq"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain qzone" onclick="share('qzone');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-star"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weixin pop style-plain" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weixin"></i>
+            </div>
+            <div class="share-int">
+                <div class="qrcode" id="wechat-qr"></div>
+                <p>打开微信“扫一扫”，打开网页后点击屏幕右上角分享按钮</p>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weibo" onclick="share('weibo');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weibo"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain facebook style-plain" onclick="share('facebook');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-facebook"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain twitter style-plain" onclick="share('twitter');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-twitter"></i>
+            </div>
+        </a>
+    </div>
+    <script type="text/javascript">
+        $(()=>{
+            new QRCode("wechat-qr", {
+                text: "http://yoursite.com/9da5e46/",
+                width: 150,
+                height: 150,
+                correctLevel : QRCode.CorrectLevel.H
+            });
+        });
+        function share(dest) {
+            const qqBase        = "https://connect.qq.com/widget/shareqq/index.html?";
+            const weiboBase     = "https://service.weibo.com/share/share.php?";
+            const qzoneBase     = "https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?";
+            const facebookBase  = "https://www.facebook.com/sharer/sharer.php?";
+            const twitterBase   = "https://twitter.com/intent/tweet?";
+            const hostUrl       = "http://yoursite.com/9da5e46/";
+            const title         = "「JAVA-HashMap」";
+            const excerpt       = `HashMap相关内容简介首先介绍一下什么是Map。在数组中我们是通过数组下标来对其内容索引的，而在Map中我们通过对象来对对象进行索引，用来索引的对象叫做key，其对应的对象叫做value。
+HashMap是基于哈希表实现的,每一个...`;
+            let _URL;
+            switch (dest) {
+                case "qq"       : _URL = qqBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";     break;
+                case "weibo"    : _URL = weiboBase+"url="+hostUrl+"&title="+title+excerpt;                                 break;
+                case "qzone"    : _URL = qzoneBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";  break;
+                case "facebook" : _URL = facebookBase+"u="+hostUrl;                                                        break;
+                case "twitter"  : _URL = twitterBase+"text="+title+excerpt+"&url="+hostUrl;                                break;
+            }
+            window.open(_URL);
+        };
+    </script>
+</div>
+                    
+                    </div>
+                
+                <div class="footer-tag clearfix">
+                    <div class="pull-left">
+                    <i class="fa fa-tags"></i>
+                        <a class="tag-none-link" href="/tags/Hashmap/" rel="tag">Hashmap</a>
+                    </div>
+                    <div class="pull-date">
+                    <span>最后编辑：2020-04-18</span>
+                    </div>
+                </div>
+            </footer>
+        </div>
+        
+            <nav class="navigation post-navigation clearfix" role="navigation">
+                
+                <div class="nav-previous clearfix">
+                    <a title=" Hashmap方法" href="/bf3b5f35/">&lt; 上一篇</a>
+                </div>
+                
+                
+                <div class="nav-next clearfix">
+                    <a title=" JAVA 反射" href="/ceef6754/">下一篇 &gt;</a>
+                </div>
+                
+            </nav>
+        
+        
+    </article>
+</section>
+        </div>
+                
+            <section id="kratos-widget-area" class="col-md-4 hidden-xs hidden-sm">
+                
+                    <aside id="krw-about" class="widget widget-kratos-about clearfix">
+    
+    <div class="photo-background"></div>
+    <div class="photo-wrapper clearfix">
+        <div class="photo-wrapper-tip text-center">
+            <img class="about-photo" src="/images/avatar.jpg" />
+        </div>
+    </div>
+    <div class="textwidget">
+        
+            <p class="text-center"></p>
+        
+    </div>
+</aside>
+                
+                    <!-- Moved to about.ejs -->
+                
+                    
+  <aside id="krw-categories" class="widget widget-categories clearfix">
+    <h4 class="widget-title"><i class="fa fa-folder"></i>分类目录</h4>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/JAVA/">JAVA</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MOVEN/">MOVEN</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/MOVEN/%E7%8E%AF%E5%A2%83/">环境</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySql/">MySql</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SSM/">SSM</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Typora/">Typora</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Typora/%E5%BA%94%E7%94%A8/">应用</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Vue/">Vue</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/coding/">coding</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/http/">http</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/http/%E5%8D%8F%E8%AE%AE/">协议</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring-boot/">spring_boot</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/springboot/">springboot</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ssm%E6%A1%86%E6%9E%B6/">ssm框架</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8F%92%E4%BB%B6/">插件</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8F%92%E4%BB%B6/idea/">idea</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%A5%E8%AF%AD/">日语</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A6%BB%E6%95%A3%E7%BB%93%E6%9E%84/">离散结构</a><span class="category-list-count">2</span></li></ul>
+  </aside>
+
+
+                
+                    
+  <aside id="krw-tags" class="widget widget-kratos-tags clearfix">
+    <h4 class="widget-title"><i class="fa fa-tags"></i>标签聚合</h4>
+      <div class="tag-clouds">
+        <a href="/tags/Hashmap/" style="font-size: 0.67em;">Hashmap</a> <a href="/tags/MAVEN%E9%A1%B9%E7%9B%AE/" style="font-size: 0.6em;">MAVEN项目</a> <a href="/tags/Mybatis/" style="font-size: 0.8em;">Mybatis</a> <a href="/tags/SSM/" style="font-size: 0.6em;">SSM</a> <a href="/tags/SpringMVC/" style="font-size: 0.67em;">SpringMVC</a> <a href="/tags/Typora/" style="font-size: 0.6em;">Typora</a> <a href="/tags/Vue/" style="font-size: 0.6em;">Vue</a> <a href="/tags/http%E5%8D%8F%E8%AE%AE/" style="font-size: 0.6em;">http协议</a> <a href="/tags/idea/" style="font-size: 0.6em;">idea</a> <a href="/tags/include/" style="font-size: 0.6em;">include</a> <a href="/tags/n2/" style="font-size: 0.6em;">n2</a> <a href="/tags/spring/" style="font-size: 0.73em;">spring</a> <a href="/tags/springMVC/" style="font-size: 0.6em;">springMVC</a> <a href="/tags/spring-boot/" style="font-size: 0.6em;">spring_boot</a> <a href="/tags/springboot/" style="font-size: 0.6em;">springboot</a> <a href="/tags/%E5%88%86%E9%A1%B5/" style="font-size: 0.67em;">分页</a> <a href="/tags/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/" style="font-size: 0.6em;">反射机制</a> <a href="/tags/%E5%8F%98%E5%BD%A2/" style="font-size: 0.6em;">变形</a>
+      </div>
+  </aside>
+
+                
+                    
+  <aside id="krw-posts" class="widget widget-kratos-poststab">
+  <h4 class="widget-title"><i class="fa fa-file"></i>最新文章</h4>
+  <div class="tab-content">
+      <ul class="list-group">
+        
+        
+          
+          
+            <a class="list-group-item" href="/acfd81df/"><i class="fa  fa-book"></i> spring cloud</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/c0add594/"><i class="fa  fa-book"></i> vue</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/f462425/"><i class="fa  fa-book"></i> spring boot整合相关资源</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/bb66162f/"><i class="fa  fa-book"></i> springboot创建</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/5640449e/"><i class="fa  fa-book"></i> 基于maven构建SSM工程案例</a>
+            
+          
+        
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+      </ul>
+  </div>
+  </aside>
+
+                
+            </section>
+        
+        </div>
+    </div>
+</div>
+<footer>
+    <div id="footer">
+        <div class="kr-tool text-center">
+            <div class="tool">
+                
+                    <div class="box search-box">
+                        <a href="/search/">
+                            <span class="fa fa-search"></span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="box theme-box" id="darkmode-switch">
+                        <span class="fa fa-adjust"></span>
+                    </div>
+                
+                
+            </div>
+            <div class="box gotop-box">
+                <span class="fa fa-chevron-up"></span>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 footer-list text-center">
+                    <ul class="kratos-social-icons">
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                    </ul>
+                    <ul class="kratos-copyright">
+                        <div>
+                            <li>&copy; 2021 Chen' Blog 版权所有.</li>
+                            <li>本站已运行<span id="span_dt">Loading...</span></li>
+                        </div>
+                        <div>
+                            <li>Theme <a href="https://github.com/Candinya/Kratos-Rebirth" target="_blank">Kratos:Rebirth</a></li>
+                            <li>Made with&nbsp;<i class="fa fa-heart throb" style="color:#d43f57"></i>&nbsp;by <a href="https://candinya.com" target="_blank" rel="nofollow">Candinya</a>.</li>
+                        </div>
+                        <div>
+                            <li>Powered by <a href="https://hexo.io" target="_blank" rel="nofollow">Hexo</a></li>
+                            <li>Hosted on <a href="https://github.io" target="_blank">Github Pages</a></li>
+                        </div>
+                        <div>
+                            
+                            
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+</div>
+</div>
+
+        <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.4/dist/js/bootstrap.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js"></script>
+<script>const notMobile = (!(navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)));</script>
+
+<script async src="/js/candy.min.js"></script>
+
+
+    <script defer src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+<script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script>
+<script defer src="/js/kratosr.min.js"></script>
+<script defer src="/js/pjax.min.js"></script>
+
+
+    <script defer src="/js/kr-dark.min.js"></script>
+
+
+    </body>
+</html>

@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+  <!-- 元数据 -->
+  <meta charset="utf-8">
+  <link rel="icon" href="images/favicon.PNG">
+  <title>spring_day02（注解） | Chen' Blog</title>
+  <meta name="author" content="" />
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="robots" content="index,follow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta name="format-detection" content="telphone=no, email=no" />
+  
+    <meta name="keywords" content="spring" />
+  
+  <meta name="description" content="关于注解的相关操作用于创建对象的相当于：&lt;bean id&#x3D;&quot;&quot; class&#x3D;&quot;&quot;&gt; 12345678910111213141.  @Component:（用于创建对象）		作用：用把当前类对象存入spring中		属性：value（用于指定bean的id。当不写时，默认值为当前类名，首字母改小写）2.  @Controller（一般用于表现层），">
+<meta property="og:type" content="article">
+<meta property="og:title" content="spring_day02（注解）">
+<meta property="og:url" content="http://yoursite.com/fea568e8/index.html">
+<meta property="og:site_name" content="Chen&#39; Blog">
+<meta property="og:description" content="关于注解的相关操作用于创建对象的相当于：&lt;bean id&#x3D;&quot;&quot; class&#x3D;&quot;&quot;&gt; 12345678910111213141.  @Component:（用于创建对象）		作用：用把当前类对象存入spring中		属性：value（用于指定bean的id。当不写时，默认值为当前类名，首字母改小写）2.  @Controller（一般用于表现层），">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://yoursite.com/images/favicon.PNG">
+<meta property="article:published_time" content="2020-06-12T01:38:09.000Z">
+<meta property="article:modified_time" content="2020-07-31T08:26:16.119Z">
+<meta property="article:tag" content="spring">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/images/favicon.PNG">
+<meta name="twitter:site" content="@null">
+  
+  <!-- 站点验证相关 -->
+  
+    
+    
+    
+  
+  <!-- 样式表文件 -->
+  <link rel="stylesheet" id="kratos-css" href="/css/kratosr.min.css" type="text/css" media="all">
+  
+    <link rel="stylesheet" id="highlight-css" href="/css/highlight.min.css" type="text/css" media="all">
+  
+  
+  <link rel="stylesheet" id="fontawe-css" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" type="text/css" media="all">
+  <link rel="stylesheet" id="nprogress-css" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" type="text/css" media="all">
+  
+  
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  
+  
+    <link rel="stylesheet" id="darkmode-css" href="/css/kr-dark.min.css" type="text/css" media="all">
+  
+  <!-- 不得不预先加载的一些JS文件 -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+  
+    <script src="https://cdn.jsdelivr.net/npm/qrcode_js@1.0.0/qrcode.min.js"></script>
+  
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+
+    <body class="custom-background">
+        <div id="kratos-wrapper">
+    <div id="kratos-page">
+        <div id="kratos-header">
+            <div class="nav-toggle"><a class="kratos-nav-toggle js-kratos-nav-toggle"><i></i></a></div>
+            <header id="kratos-header-section">
+                <div class="container">
+                    <div class="nav-header">
+                        <div class="color-logo"><a href="/">Chen&#39; Blog</a></div>
+                        <nav id="kratos-menu-wrap">
+                            <ul id="kratos-primary-menu" class="sf-menu">
+                                
+                                    
+                                        <li><a href="/"><i class="fa fa-home"></i>首页</a></li>
+                                    
+                                
+                                    
+                                        <li><a href="/archives/"><i class="fa fa-file"></i>档案馆</a></li>
+                                    
+                                
+                                    
+                                        <li>
+                                            <a><i class="fa fa-link"></i>链接</a>
+                                            <ul class="sub-menu">
+                                                
+                                                    
+                                                
+                                            </ul>
+                                        </li>
+                                    
+                                
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </header>
+        </div>
+        <div class="kratos-start kratos-hero-2">
+            <!-- <div class="kratos-overlay"></div> -->
+            <div class="kratos-cover kratos-cover-2 text-center">
+                <div class="desc desc2 animate-box">
+                    <a href="/">
+                        <h2>Chen&#39; Blog</h2> <br />
+                        <span></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div id="kratos-blog-post">
+            <div class="container">
+                <div class="row">
+                    
+        <div id="main">
+            <section class="col-md-8">
+    <article>
+        <div class="kratos-hentry kratos-post-inner clearfix">
+            <header class="kratos-entry-header">
+                <h1 class="kratos-entry-title text-center">spring_day02（注解）</h1>
+                
+                <div class="kratos-post-meta text-center">
+                    <span>
+                        <i class="fa fa-calendar"></i> 2020-06-12
+                        <i class="fa fa-folder"></i> 分类 <a class="label-link" href="/categories/ssm%E6%A1%86%E6%9E%B6/">ssm框架</a>
+                        <i class="fa fa-user"></i> 作者 
+                        <i class="fa fa-edit"></i> 
+                        
+                        
+                            ~2.64K
+                        
+                        字
+                        
+                    </span>
+                </div>
+            </header>
+            <div class="kratos-post-content">
+                <div id="expire-alert" class="alert alert-warning hidden" role="alert">
+                    本文最后编辑于 <time datetime="1596183976119"></time> 前，其中的内容可能需要更新。
+                </div>
+                
+                <hr />
+                <h2 id="关于注解的相关操作"><a href="#关于注解的相关操作" class="headerlink" title="关于注解的相关操作"></a>关于注解的相关操作</h2><h3 id="用于创建对象的"><a href="#用于创建对象的" class="headerlink" title="用于创建对象的"></a>用于创建对象的</h3><p>相当于：<code>&lt;bean id=&quot;&quot; class=&quot;&quot;&gt;</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span>  <span class="meta">@Component</span>:（用于创建对象）</span><br><span class="line"></span><br><span class="line">		作用：用把当前类对象存入spring中</span><br><span class="line"></span><br><span class="line">		属性：value（用于指定bean的id。当不写时，默认值为当前类名，首字母改小写）</span><br><span class="line"></span><br><span class="line"><span class="number">2.</span>  <span class="meta">@Controller</span>（一般用于表现层）， <span class="meta">@Service</span>（一般用于业务层），<span class="meta">@Repository</span>（一般用于持久层）</span><br><span class="line"></span><br><span class="line">		作用：<span class="meta">@Component</span>的衍生注解，作用与<span class="meta">@Component</span>一样</span><br><span class="line">		详解：</span><br><span class="line">            ①. <span class="meta">@Controller</span>：用在表现层的注解</span><br><span class="line">            ②. <span class="meta">@Service</span>：用在业务层的注解</span><br><span class="line">            ③. <span class="meta">@Repository</span>：用在持久层的注解</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="用于注入数据的"><a href="#用于注入数据的" class="headerlink" title="用于注入数据的"></a>用于注入数据的</h3><p>相当于：<code>&lt;property name=&quot;&quot; ref=&quot;&quot;&gt;</code>       <code> &lt;property name=&quot;&quot; value=&quot;&quot;&gt;</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> <span class="meta">@Autowired</span></span><br><span class="line">	作用：自动按照类型注入，它只能注入其它bean类型，当有多个类型匹配时，使用要注入对象变量名称作为bean的id在Spring容器中查找        </span><br><span class="line">	细节：当使用注解注入属性值，set方法可以省略 </span><br><span class="line">	</span><br><span class="line"><span class="number">2.</span> <span class="meta">@Qualifier</span>：</span><br><span class="line">	作用：在自动按照类型注入的基础上，再按照bean的id注入，它在给字段注入时不能独立使用，必须和<span class="meta">@Autowired</span>一起使用，但是给方法参数注入时，可以独立使用 </span><br><span class="line">	属性：value：指定bean的id </span><br><span class="line">	</span><br><span class="line"><span class="number">3.</span> <span class="meta">@Value</span>：       </span><br><span class="line">	作用：注入基本数据类型和String类型的数据        </span><br><span class="line">	属性: value：用于指定数据的值 </span><br></pre></td></tr></table></figure>
+<h3 id="用于改变作用范围的"><a href="#用于改变作用范围的" class="headerlink" title="用于改变作用范围的"></a>用于改变作用范围的</h3><p>相当于：<code>&lt;bean id=&quot;&quot; class=&quot;&quot; scope=&quot;&quot;&gt;</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> <span class="meta">@Scope</span>：       </span><br><span class="line">	作用：指定bean的作用范围        </span><br><span class="line">	属性：value：指定取值范围的值                </span><br><span class="line">	取值： singleton(单例)、prototype(多例)、request、session、globalsession</span><br></pre></td></tr></table></figure>
+<h3 id="新注解说明"><a href="#新注解说明" class="headerlink" title="新注解说明"></a>新注解说明</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> <span class="meta">@Configuration</span>：</span><br><span class="line">        作用：用于指定当前类是一个Spring的配置类，当创建容器时会从该类上加载注解(此时在获取容器时需要使用 <span class="keyword">new</span> AnnotationApplicationContext(有<span class="meta">@Configuration</span>注解的类.class))</span><br><span class="line">        </span><br><span class="line"><span class="number">2.</span> <span class="meta">@ComponentScan</span>：</span><br><span class="line">        作用：在Spring初始化容器的时候，需要扫描的包</span><br><span class="line">        </span><br><span class="line"><span class="number">3.</span> <span class="meta">@Bean</span>：</span><br><span class="line">        作用： 此注解只能写在方法上，表明使用此方法创建一个对象，并且放入Spring容器中</span><br><span class="line">        属性： name：给当前注解创建出来的对象指定一个名称(即bean的id)</span><br><span class="line">        </span><br><span class="line"><span class="number">4.</span> <span class="meta">@PropertySource</span>：</span><br><span class="line">        作用：用于加载.properties文件中的配置(如：数据库的配置文件)</span><br><span class="line">        属性：value[]：用于指定properties文件的位置，如果是在类路径下，需要写上classpath:</span><br><span class="line">        </span><br><span class="line"><span class="number">5.</span> <span class="meta">@Import</span>：</span><br><span class="line">        作用：用于导入其它配置类</span><br><span class="line">        属性: value[]：用于指定其它配置类的字节码</span><br></pre></td></tr></table></figure>
+<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><ol>
+<li>用注解方式可以取代xml注解，但有些时候纯注解会比较麻烦</li>
+<li>在使用自己编写的方法时建议使用注解，在用jar包的方法时使用xml配置的方法</li>
+</ol>
+<h3 id="使用Spring整合junit"><a href="#使用Spring整合junit" class="headerlink" title="使用Spring整合junit"></a>使用Spring整合junit</h3><blockquote>
+<p>问题：在测试类中，每个测试方法都有以下两行代码： </p>
+<p>ApplicationContext ac = new ClassPathXmlApplicationContext(“bean.xml”); </p>
+<p>IAccountService as = ac.getBean(“accountService”,IAccountService.class); </p>
+<p>这两行代码的作用是获取容器，如果不写的话，直接会提示空指针异常。所以又不能轻易删掉。</p>
+</blockquote>
+<p>步骤：</p>
+<ol>
+<li><p>拷贝整合 junit 的必备的必备 jar 包到包到 lib 目录</p>
+</li>
+<li><p>使用@RunWith 注解替换原有运行器</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RunWith(SpringJUnit4ClassRunner.class)</span> </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AccountServiceTest</span> </span>&#123; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>使用@ContextConfiguration 指定指定 spring 配置文件的位置</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ContextConfiguration</span> 注解：注解： </span><br><span class="line"> locations 属性：属性：用于指定配置文件的位置。如果是类路径下，需要用 classpath:表明 </span><br><span class="line"> classes 属性：属性：用于指定注解的类。当不使用 xml 配置时，需要用此属性指定注解类的位置。</span><br><span class="line"></span><br><span class="line"><span class="meta">@RunWith(SpringJUnit4ClassRunner.class)</span> </span><br><span class="line"><span class="meta">@ContextConfiguration(locations= &#123;&quot;classpath:bean.xml&quot;&#125;)</span> </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AccountServiceTest</span> </span>&#123; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>使用@Autowired 给测试类中的变量注入数据</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RunWith(SpringJUnit4ClassRunner.class)</span> </span><br><span class="line"><span class="meta">@ContextConfiguration(locations= &#123;&quot;classpath:bean.xml&quot;&#125;)</span> </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AccountServiceTest</span> </span>&#123; </span><br><span class="line">  </span><br><span class="line"> <span class="meta">@Autowired</span> </span><br><span class="line"> <span class="keyword">private</span> IAccountService as ; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+
+            </div>
+            
+                <div class="kratos-copyright text-center clearfix">
+                    <h5>本作品采用 <a rel="license nofollow" target="_blank" href="http://creativecommons.org/licenses/by-sa/4.0/">知识共享署名-相同方式共享 4.0 国际许可协议</a> 进行许可</h5>
+                </div>
+            
+            <footer class="kratos-entry-footer clearfix">
+                
+                    <div class="post-like-donate text-center clearfix" id="post-like-donate">
+                    
+                    
+                        <a class="share" href="javascript:;"><i class="fa fa-share-alt"></i> 分享</a>
+                        <div class="share-wrap" style="display: none;">
+    <div class="share-group">
+        <a href="javascript:;" class="share-plain qq" onclick="share('qq');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-qq"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain qzone" onclick="share('qzone');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-star"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weixin pop style-plain" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weixin"></i>
+            </div>
+            <div class="share-int">
+                <div class="qrcode" id="wechat-qr"></div>
+                <p>打开微信“扫一扫”，打开网页后点击屏幕右上角分享按钮</p>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weibo" onclick="share('weibo');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weibo"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain facebook style-plain" onclick="share('facebook');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-facebook"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain twitter style-plain" onclick="share('twitter');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-twitter"></i>
+            </div>
+        </a>
+    </div>
+    <script type="text/javascript">
+        $(()=>{
+            new QRCode("wechat-qr", {
+                text: "http://yoursite.com/fea568e8/",
+                width: 150,
+                height: 150,
+                correctLevel : QRCode.CorrectLevel.H
+            });
+        });
+        function share(dest) {
+            const qqBase        = "https://connect.qq.com/widget/shareqq/index.html?";
+            const weiboBase     = "https://service.weibo.com/share/share.php?";
+            const qzoneBase     = "https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?";
+            const facebookBase  = "https://www.facebook.com/sharer/sharer.php?";
+            const twitterBase   = "https://twitter.com/intent/tweet?";
+            const hostUrl       = "http://yoursite.com/fea568e8/";
+            const title         = "「spring_day02（注解）」";
+            const excerpt       = `关于注解的相关操作用于创建对象的相当于：&lt;bean id=&quot;&quot; class=&quot;&quot;&gt;
+12345678910111213141.  @Component:（用于创建对象）		作用：用把...`;
+            let _URL;
+            switch (dest) {
+                case "qq"       : _URL = qqBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";     break;
+                case "weibo"    : _URL = weiboBase+"url="+hostUrl+"&title="+title+excerpt;                                 break;
+                case "qzone"    : _URL = qzoneBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";  break;
+                case "facebook" : _URL = facebookBase+"u="+hostUrl;                                                        break;
+                case "twitter"  : _URL = twitterBase+"text="+title+excerpt+"&url="+hostUrl;                                break;
+            }
+            window.open(_URL);
+        };
+    </script>
+</div>
+                    
+                    </div>
+                
+                <div class="footer-tag clearfix">
+                    <div class="pull-left">
+                    <i class="fa fa-tags"></i>
+                        <a class="tag-none-link" href="/tags/spring/" rel="tag">spring</a>
+                    </div>
+                    <div class="pull-date">
+                    <span>最后编辑：2020-07-31</span>
+                    </div>
+                </div>
+            </footer>
+        </div>
+        
+            <nav class="navigation post-navigation clearfix" role="navigation">
+                
+                <div class="nav-previous clearfix">
+                    <a title=" spring-day01" href="/de8d5735/">&lt; 上一篇</a>
+                </div>
+                
+                
+                <div class="nav-next clearfix">
+                    <a title=" spring AOP" href="/de8sdgf1/">下一篇 &gt;</a>
+                </div>
+                
+            </nav>
+        
+        
+    </article>
+</section>
+        </div>
+                
+            <section id="kratos-widget-area" class="col-md-4 hidden-xs hidden-sm">
+                
+                    <aside id="krw-about" class="widget widget-kratos-about clearfix">
+    
+    <div class="photo-background"></div>
+    <div class="photo-wrapper clearfix">
+        <div class="photo-wrapper-tip text-center">
+            <img class="about-photo" src="/images/avatar.jpg" />
+        </div>
+    </div>
+    <div class="textwidget">
+        
+            <p class="text-center"></p>
+        
+    </div>
+</aside>
+                
+                    <!-- Moved to about.ejs -->
+                
+                    
+  <aside id="krw-categories" class="widget widget-categories clearfix">
+    <h4 class="widget-title"><i class="fa fa-folder"></i>分类目录</h4>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/JAVA/">JAVA</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MOVEN/">MOVEN</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/MOVEN/%E7%8E%AF%E5%A2%83/">环境</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySql/">MySql</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SSM/">SSM</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Typora/">Typora</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Typora/%E5%BA%94%E7%94%A8/">应用</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Vue/">Vue</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/coding/">coding</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/http/">http</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/http/%E5%8D%8F%E8%AE%AE/">协议</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring-boot/">spring_boot</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/springboot/">springboot</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ssm%E6%A1%86%E6%9E%B6/">ssm框架</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8F%92%E4%BB%B6/">插件</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8F%92%E4%BB%B6/idea/">idea</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%A5%E8%AF%AD/">日语</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A6%BB%E6%95%A3%E7%BB%93%E6%9E%84/">离散结构</a><span class="category-list-count">2</span></li></ul>
+  </aside>
+
+
+                
+                    
+  <aside id="krw-tags" class="widget widget-kratos-tags clearfix">
+    <h4 class="widget-title"><i class="fa fa-tags"></i>标签聚合</h4>
+      <div class="tag-clouds">
+        <a href="/tags/Hashmap/" style="font-size: 0.67em;">Hashmap</a> <a href="/tags/MAVEN%E9%A1%B9%E7%9B%AE/" style="font-size: 0.6em;">MAVEN项目</a> <a href="/tags/Mybatis/" style="font-size: 0.8em;">Mybatis</a> <a href="/tags/SSM/" style="font-size: 0.6em;">SSM</a> <a href="/tags/SpringMVC/" style="font-size: 0.67em;">SpringMVC</a> <a href="/tags/Typora/" style="font-size: 0.6em;">Typora</a> <a href="/tags/Vue/" style="font-size: 0.6em;">Vue</a> <a href="/tags/http%E5%8D%8F%E8%AE%AE/" style="font-size: 0.6em;">http协议</a> <a href="/tags/idea/" style="font-size: 0.6em;">idea</a> <a href="/tags/include/" style="font-size: 0.6em;">include</a> <a href="/tags/n2/" style="font-size: 0.6em;">n2</a> <a href="/tags/spring/" style="font-size: 0.73em;">spring</a> <a href="/tags/springMVC/" style="font-size: 0.6em;">springMVC</a> <a href="/tags/spring-boot/" style="font-size: 0.6em;">spring_boot</a> <a href="/tags/springboot/" style="font-size: 0.6em;">springboot</a> <a href="/tags/%E5%88%86%E9%A1%B5/" style="font-size: 0.67em;">分页</a> <a href="/tags/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/" style="font-size: 0.6em;">反射机制</a> <a href="/tags/%E5%8F%98%E5%BD%A2/" style="font-size: 0.6em;">变形</a>
+      </div>
+  </aside>
+
+                
+                    
+  <aside id="krw-posts" class="widget widget-kratos-poststab">
+  <h4 class="widget-title"><i class="fa fa-file"></i>最新文章</h4>
+  <div class="tab-content">
+      <ul class="list-group">
+        
+        
+          
+          
+            <a class="list-group-item" href="/acfd81df/"><i class="fa  fa-book"></i> spring cloud</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/c0add594/"><i class="fa  fa-book"></i> vue</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/f462425/"><i class="fa  fa-book"></i> spring boot整合相关资源</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/bb66162f/"><i class="fa  fa-book"></i> springboot创建</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/5640449e/"><i class="fa  fa-book"></i> 基于maven构建SSM工程案例</a>
+            
+          
+        
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+      </ul>
+  </div>
+  </aside>
+
+                
+            </section>
+        
+        </div>
+    </div>
+</div>
+<footer>
+    <div id="footer">
+        <div class="kr-tool text-center">
+            <div class="tool">
+                
+                    <div class="box search-box">
+                        <a href="/search/">
+                            <span class="fa fa-search"></span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="box theme-box" id="darkmode-switch">
+                        <span class="fa fa-adjust"></span>
+                    </div>
+                
+                
+            </div>
+            <div class="box gotop-box">
+                <span class="fa fa-chevron-up"></span>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 footer-list text-center">
+                    <ul class="kratos-social-icons">
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                    </ul>
+                    <ul class="kratos-copyright">
+                        <div>
+                            <li>&copy; 2021 Chen' Blog 版权所有.</li>
+                            <li>本站已运行<span id="span_dt">Loading...</span></li>
+                        </div>
+                        <div>
+                            <li>Theme <a href="https://github.com/Candinya/Kratos-Rebirth" target="_blank">Kratos:Rebirth</a></li>
+                            <li>Made with&nbsp;<i class="fa fa-heart throb" style="color:#d43f57"></i>&nbsp;by <a href="https://candinya.com" target="_blank" rel="nofollow">Candinya</a>.</li>
+                        </div>
+                        <div>
+                            <li>Powered by <a href="https://hexo.io" target="_blank" rel="nofollow">Hexo</a></li>
+                            <li>Hosted on <a href="https://github.io" target="_blank">Github Pages</a></li>
+                        </div>
+                        <div>
+                            
+                            
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+</div>
+</div>
+
+        <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.4/dist/js/bootstrap.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js"></script>
+<script>const notMobile = (!(navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)));</script>
+
+<script async src="/js/candy.min.js"></script>
+
+
+    <script defer src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+<script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script>
+<script defer src="/js/kratosr.min.js"></script>
+<script defer src="/js/pjax.min.js"></script>
+
+
+    <script defer src="/js/kr-dark.min.js"></script>
+
+
+    </body>
+</html>

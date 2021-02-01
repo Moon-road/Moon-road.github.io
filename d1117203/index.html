@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+  <!-- 元数据 -->
+  <meta charset="utf-8">
+  <link rel="icon" href="images/favicon.PNG">
+  <title>Web分页 | Chen' Blog</title>
+  <meta name="author" content="" />
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="robots" content="index,follow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta name="format-detection" content="telphone=no, email=no" />
+  
+    <meta name="keywords" content="分页" />
+  
+  <meta name="description" content="之前学习web分页时没有采用MVC的模式进行开发，有时候所有的操作都是写在Servlet中，现在用MVC方式进行编写可以说条理更加清晰。 总览  实现逻辑 Bean文件 PageBean.java 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Web分页">
+<meta property="og:url" content="http://yoursite.com/d1117203/index.html">
+<meta property="og:site_name" content="Chen&#39; Blog">
+<meta property="og:description" content="之前学习web分页时没有采用MVC的模式进行开发，有时候所有的操作都是写在Servlet中，现在用MVC方式进行编写可以说条理更加清晰。 总览  实现逻辑 Bean文件 PageBean.java 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://yoursite.com/images/favicon.PNG">
+<meta property="article:published_time" content="2020-04-26T09:08:43.000Z">
+<meta property="article:modified_time" content="2020-04-26T09:56:04.197Z">
+<meta property="article:tag" content="分页">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/images/favicon.PNG">
+<meta name="twitter:site" content="@null">
+  
+  <!-- 站点验证相关 -->
+  
+    
+    
+    
+  
+  <!-- 样式表文件 -->
+  <link rel="stylesheet" id="kratos-css" href="/css/kratosr.min.css" type="text/css" media="all">
+  
+    <link rel="stylesheet" id="highlight-css" href="/css/highlight.min.css" type="text/css" media="all">
+  
+  
+  <link rel="stylesheet" id="fontawe-css" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" type="text/css" media="all">
+  <link rel="stylesheet" id="nprogress-css" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" type="text/css" media="all">
+  
+  
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  
+  
+    <link rel="stylesheet" id="darkmode-css" href="/css/kr-dark.min.css" type="text/css" media="all">
+  
+  <!-- 不得不预先加载的一些JS文件 -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+  
+    <script src="https://cdn.jsdelivr.net/npm/qrcode_js@1.0.0/qrcode.min.js"></script>
+  
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+
+    <body class="custom-background">
+        <div id="kratos-wrapper">
+    <div id="kratos-page">
+        <div id="kratos-header">
+            <div class="nav-toggle"><a class="kratos-nav-toggle js-kratos-nav-toggle"><i></i></a></div>
+            <header id="kratos-header-section">
+                <div class="container">
+                    <div class="nav-header">
+                        <div class="color-logo"><a href="/">Chen&#39; Blog</a></div>
+                        <nav id="kratos-menu-wrap">
+                            <ul id="kratos-primary-menu" class="sf-menu">
+                                
+                                    
+                                        <li><a href="/"><i class="fa fa-home"></i>首页</a></li>
+                                    
+                                
+                                    
+                                        <li><a href="/archives/"><i class="fa fa-file"></i>档案馆</a></li>
+                                    
+                                
+                                    
+                                        <li>
+                                            <a><i class="fa fa-link"></i>链接</a>
+                                            <ul class="sub-menu">
+                                                
+                                                    
+                                                
+                                            </ul>
+                                        </li>
+                                    
+                                
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </header>
+        </div>
+        <div class="kratos-start kratos-hero-2">
+            <!-- <div class="kratos-overlay"></div> -->
+            <div class="kratos-cover kratos-cover-2 text-center">
+                <div class="desc desc2 animate-box">
+                    <a href="/">
+                        <h2>Chen&#39; Blog</h2> <br />
+                        <span></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div id="kratos-blog-post">
+            <div class="container">
+                <div class="row">
+                    
+        <div id="main">
+            <section class="col-md-8">
+    <article>
+        <div class="kratos-hentry kratos-post-inner clearfix">
+            <header class="kratos-entry-header">
+                <h1 class="kratos-entry-title text-center">Web分页</h1>
+                
+                <div class="kratos-post-meta text-center">
+                    <span>
+                        <i class="fa fa-calendar"></i> 2020-04-26
+                        <i class="fa fa-folder"></i> 分类 <a class="label-link" href="/categories/Web/">Web</a>
+                        <i class="fa fa-user"></i> 作者 
+                        <i class="fa fa-edit"></i> 
+                        
+                        
+                            ~19.36K
+                        
+                        字
+                        
+                    </span>
+                </div>
+            </header>
+            <div class="kratos-post-content">
+                <div id="expire-alert" class="alert alert-warning hidden" role="alert">
+                    本文最后编辑于 <time datetime="1587894964197"></time> 前，其中的内容可能需要更新。
+                </div>
+                
+                <hr />
+                <p>之前学习web分页时没有采用MVC的模式进行开发，有时候所有的操作都是写在Servlet中，现在用MVC方式进行编写可以说条理更加清晰。</p>
+<h2 id="总览"><a href="#总览" class="headerlink" title="总览"></a>总览</h2><img src="Web%E5%88%86%E9%A1%B5/image-20200426171347009.png" alt="image-20200426171347009" style="zoom:50%;" />
+
+<h2 id="实现逻辑"><a href="#实现逻辑" class="headerlink" title="实现逻辑"></a>实现逻辑</h2><p><img src="Web%E5%88%86%E9%A1%B5/7_2.%E5%88%86%E9%A1%B5%E6%9F%A5%E8%AF%A2%E5%8A%9F%E8%83%BD2.bmp" alt="1"></p>
+<h2 id="Bean文件"><a href="#Bean文件" class="headerlink" title="Bean文件"></a>Bean文件</h2><ol>
+<li><p>PageBean.java</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br></pre></td><td class="code"><pre><span class="line">package Bean;</span><br><span class="line"></span><br><span class="line">import java.util.List;</span><br><span class="line"></span><br><span class="line">public class PageBean&lt;T&gt; &#123;</span><br><span class="line">    &#x2F;&#x2F;需要的数据</span><br><span class="line">    private int currentPage;&#x2F;&#x2F;当前页</span><br><span class="line">    private int pageSize;&#x2F;&#x2F;每页显示的数据条数</span><br><span class="line">    private int totalRecord;&#x2F;&#x2F;总记录条数</span><br><span class="line"></span><br><span class="line">​    &#x2F;&#x2F;需要计算得出的数据</span><br><span class="line">​    private int totalPage;&#x2F;&#x2F;总页数</span><br><span class="line">​    private int startIndex;</span><br><span class="line"></span><br><span class="line">​    &#x2F;&#x2F;每页需要显示的数据</span><br><span class="line">​    private List&lt;T&gt; list;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">​    public PageBean() &#123;</span><br><span class="line">​    &#125;</span><br><span class="line"></span><br><span class="line">​    &#x2F;&#x2F;通过currentPage，pageSize，totalRecord计算totalPage和startIndex</span><br><span class="line">​    public PageBean(int pageSize,int currentPage,int totalRecord)&#123;</span><br><span class="line">​        this.currentPage &#x3D; currentPage;</span><br><span class="line">​        this.pageSize &#x3D; pageSize;</span><br><span class="line">​        this.totalRecord &#x3D; totalRecord;</span><br><span class="line"></span><br><span class="line">​    &#125;</span><br><span class="line"></span><br><span class="line">​    public int getcurrentPage() &#123;</span><br><span class="line">​        return currentPage;</span><br><span class="line">​    &#125;</span><br><span class="line"></span><br><span class="line">​    public void setcurrentPage(int currentPage) &#123;</span><br><span class="line">​        this.currentPage &#x3D; currentPage;</span><br><span class="line">​    &#125;</span><br><span class="line"></span><br><span class="line">​    public int getPageSize() &#123;</span><br><span class="line">​        return pageSize;</span><br><span class="line">​    &#125;</span><br><span class="line"></span><br><span class="line">​    public void setPageSize(int pageSize) &#123;</span><br><span class="line">​        this.pageSize &#x3D; pageSize;</span><br><span class="line">​    &#125;</span><br><span class="line"></span><br><span class="line">​    public int getTotalRecord() &#123;</span><br><span class="line">​        return totalRecord;</span><br><span class="line">​    &#125;</span><br><span class="line"></span><br><span class="line">​    public void setTotalRecord(int totalRecord) &#123;</span><br><span class="line">​        this.totalRecord &#x3D; totalRecord;</span><br><span class="line">​    &#125;</span><br><span class="line"></span><br><span class="line">​    public int getTotalPage() &#123;</span><br><span class="line">​        return totalPage;</span><br><span class="line">​    &#125;</span><br><span class="line"></span><br><span class="line">​    public void setTotalPage(int totalPage) &#123;</span><br><span class="line">​        this.totalPage &#x3D; totalPage;</span><br><span class="line">​    &#125;</span><br><span class="line"></span><br><span class="line">​    public int getStartIndex() &#123;</span><br><span class="line">​        return startIndex;</span><br><span class="line">​    &#125;</span><br><span class="line"></span><br><span class="line">​    public void setStartIndex(int startIndex) &#123;</span><br><span class="line">​        this.startIndex &#x3D; startIndex;</span><br><span class="line">​    &#125;</span><br><span class="line"></span><br><span class="line">​    public List&lt;T&gt; getList() &#123;</span><br><span class="line">​        return list;</span><br><span class="line">​    &#125;</span><br><span class="line"></span><br><span class="line">​    public void setList(List&lt;T&gt; list) &#123;</span><br><span class="line">​        this.list &#x3D; list;</span><br><span class="line">​    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">​    @Override</span><br><span class="line">​    public String toString() &#123;</span><br><span class="line">​        return &quot;PageBean&#123;&quot; +</span><br><span class="line">​                &quot;currentPage&#x3D;&quot; + currentPage +</span><br><span class="line">​                &quot;, pageSize&#x3D;&quot; + pageSize +</span><br><span class="line">​                &quot;, totalRecord&#x3D;&quot; + totalRecord +</span><br><span class="line">​                &quot;, totalPage&#x3D;&quot; + totalPage +</span><br><span class="line">​                &quot;, startIndex&#x3D;&quot; + startIndex +</span><br><span class="line">​                &quot;, list&#x3D;&quot; + list +</span><br><span class="line">​                &#39;&#125;&#39;;</span><br><span class="line">​    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+<li><p>package Bean;</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line">public class User &#123;</span><br><span class="line">    private int id;</span><br><span class="line">    private String name;</span><br><span class="line">    private int age;</span><br><span class="line">    private int gender;</span><br><span class="line">    private String address;</span><br><span class="line"></span><br><span class="line">​    public User(int id, String name, int age, int gender, String address) &#123;</span><br><span class="line">​        this.id &#x3D; id;</span><br><span class="line">​        this.name &#x3D; name;</span><br><span class="line">​        this.age &#x3D; age;</span><br><span class="line">​        this.gender &#x3D; gender;</span><br><span class="line">​        this.address &#x3D; address;</span><br><span class="line">​    &#125;</span><br><span class="line"></span><br><span class="line">​    public User() &#123;</span><br><span class="line">​    &#125;</span><br><span class="line"></span><br><span class="line">​    public int getId() &#123;</span><br><span class="line">​        return id;</span><br><span class="line">​    &#125;</span><br><span class="line"></span><br><span class="line">​    public void setId(int id) &#123;</span><br><span class="line">​        this.id &#x3D; id;</span><br><span class="line">​    &#125;</span><br><span class="line"></span><br><span class="line">​    public String getName() &#123;</span><br><span class="line">​        return name;</span><br><span class="line">​    &#125;</span><br><span class="line"></span><br><span class="line">​    public void setName(String name) &#123;</span><br><span class="line">​        this.name &#x3D; name;</span><br><span class="line">​    &#125;</span><br><span class="line"></span><br><span class="line">​    public int getAge() &#123;</span><br><span class="line">​        return age;</span><br><span class="line">​    &#125;</span><br><span class="line"></span><br><span class="line">​    public void setAge(int age) &#123;</span><br><span class="line">​        this.age &#x3D; age;</span><br><span class="line">​    &#125;</span><br><span class="line"></span><br><span class="line">​    public int getGender() &#123;</span><br><span class="line">​        return gender;</span><br><span class="line">​    &#125;</span><br><span class="line"></span><br><span class="line">​    public void setGender(int gender) &#123;</span><br><span class="line">​        this.gender &#x3D; gender;</span><br><span class="line">​    &#125;</span><br><span class="line"></span><br><span class="line">​    public String getAddress() &#123;</span><br><span class="line">​        return address;</span><br><span class="line">​    &#125;</span><br><span class="line"></span><br><span class="line">​    public void setAddress(String address) &#123;</span><br><span class="line">​        this.address &#x3D; address;</span><br><span class="line">​    &#125;</span><br><span class="line"></span><br><span class="line">​    @Override</span><br><span class="line">​    public String toString() &#123;</span><br><span class="line">​        return &quot;user&#123;&quot; +</span><br><span class="line">​                &quot;id&#x3D;&quot; + id +</span><br><span class="line">​                &quot;, name&#x3D;&#39;&quot; + name + &#39;\&#39;&#39; +</span><br><span class="line">​                &quot;, age&#x3D;&quot; + age +</span><br><span class="line">​                &quot;, gender&#x3D;&quot; + gender +</span><br><span class="line">​                &quot;, address&#x3D;&#39;&quot; + address + &#39;\&#39;&#39; +</span><br><span class="line">​                &#39;&#125;&#39;;</span><br><span class="line">​    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="Dao类"><a href="#Dao类" class="headerlink" title="Dao类"></a>Dao类</h2><ol>
+<li><p>UserDao接口</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">package dao;</span><br><span class="line"></span><br><span class="line">import Bean.PageBean;</span><br><span class="line">import Bean.User;</span><br><span class="line"></span><br><span class="line">import java.util.ArrayList;</span><br><span class="line"></span><br><span class="line">public interface UserDao &#123;</span><br><span class="line">    &#x2F;&#x2F;获得总记录条数</span><br><span class="line">    int Count();</span><br><span class="line"></span><br><span class="line">​    &#x2F;&#x2F;分页查询</span><br><span class="line">​    ArrayList&lt;User&gt; findUserByPage(int startIndex, int  pageSize);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+<li><p>Dao实现类</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br></pre></td><td class="code"><pre><span class="line">package dao;</span><br><span class="line"></span><br><span class="line">import Bean.PageBean;</span><br><span class="line">import Bean.User;</span><br><span class="line">import util.JdbcUtil;</span><br><span class="line"></span><br><span class="line">import java.sql.Connection;</span><br><span class="line">import java.sql.PreparedStatement;</span><br><span class="line">import java.sql.ResultSet;</span><br><span class="line">import java.sql.SQLException;</span><br><span class="line">import java.util.ArrayList;</span><br><span class="line">import java.util.List;</span><br><span class="line"></span><br><span class="line">public class UserDaoImpl implements UserDao &#123;</span><br><span class="line">    private String sql &#x3D; null;</span><br><span class="line">    private int startIndex;</span><br><span class="line">    private int pageSize;</span><br><span class="line">    private PreparedStatement ps &#x3D; null;</span><br><span class="line">    private Connection conn &#x3D; null;</span><br><span class="line">    private ResultSet rs &#x3D; null;</span><br><span class="line"></span><br><span class="line">​    &#x2F;&#x2F;查询所有信息</span><br><span class="line">​    public List&lt;User&gt; findAll()&#123;</span><br><span class="line">​        sql &#x3D; &quot;select * from t_student&quot;;</span><br><span class="line">​        JdbcUtil jdbcUtil &#x3D; new JdbcUtil();</span><br><span class="line">​        conn &#x3D; jdbcUtil.getConnection();</span><br><span class="line">​        ArrayList&lt;User&gt; users &#x3D; new ArrayList&lt;User&gt;();</span><br><span class="line">​        if(jdbcUtil !&#x3D; null)</span><br><span class="line">​        &#123;</span><br><span class="line">​            System.out.println(&quot;连接正常&quot;);</span><br><span class="line">​        &#125;</span><br><span class="line">​        else&#123;</span><br><span class="line">​            System.out.println(&quot;连接异常&quot;);</span><br><span class="line">​        &#125;</span><br><span class="line">​        try&#123;</span><br><span class="line">​            PreparedStatement ps &#x3D; conn.prepareStatement(sql);</span><br><span class="line">​            users &#x3D; (ArrayList&lt;User&gt;) jdbcUtil.findResult(ps);</span><br><span class="line"></span><br><span class="line">​        &#125; catch (SQLException e) &#123;</span><br><span class="line">​            e.printStackTrace();</span><br><span class="line">​        &#125;</span><br><span class="line">​        finally &#123;</span><br><span class="line">​            jdbcUtil.releaseConn();</span><br><span class="line">​        &#125;</span><br><span class="line">​        return users;</span><br><span class="line">​    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;查询总记录条数</span><br><span class="line">    @Override</span><br><span class="line">    public int Count()&#123;</span><br><span class="line">        PreparedStatement ps &#x3D; null;</span><br><span class="line">        Connection conn &#x3D; null;</span><br><span class="line">        ResultSet rs &#x3D; null;</span><br><span class="line">        int count &#x3D; 0;</span><br><span class="line">        JdbcUtil jdbcUtil &#x3D; new JdbcUtil();</span><br><span class="line">        try&#123;</span><br><span class="line">            conn &#x3D; jdbcUtil.getConnection();</span><br><span class="line">            ps &#x3D; conn.prepareStatement(&quot;select count(*) from t_student&quot;);</span><br><span class="line">            rs &#x3D; ps.executeQuery();</span><br><span class="line">            while (rs.next())</span><br><span class="line">            &#123;</span><br><span class="line">                count &#x3D; rs.getInt(1);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; catch (SQLException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;finally &#123;</span><br><span class="line">            jdbcUtil.releaseConn();</span><br><span class="line">        &#125;</span><br><span class="line">        return count;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">​    &#x2F;**</span><br><span class="line"></span><br><span class="line">   * 翻页查询</span><br><span class="line"></span><br><span class="line">   * @param startIndex</span><br><span class="line"></span><br><span class="line">   * @param pageSize</span><br><span class="line"></span><br><span class="line">   * @return</span><br><span class="line">	&#x2F;</span><br><span class="line">	    @Override</span><br><span class="line">	    public ArrayList&lt;User&gt; findUserByPage(int startIndex, int pageSize) &#123;</span><br><span class="line"></span><br><span class="line">	sql &#x3D; &quot;select * from t_student limit ?, ?&quot;;</span><br><span class="line">	JdbcUtil jdbcUtil &#x3D; new JdbcUtil();</span><br><span class="line">	ArrayList&lt;User&gt; users &#x3D; new ArrayList&lt;User&gt;();</span><br><span class="line">	try&#123;</span><br><span class="line">	    conn &#x3D; jdbcUtil.getConnection();</span><br><span class="line">	    ps &#x3D; conn.prepareStatement(sql);</span><br><span class="line">	    ps.setInt(1,startIndex);</span><br><span class="line">	    ps.setInt(2,pageSize);</span><br><span class="line">	    users &#x3D; (ArrayList&lt;User&gt;) jdbcUtil.findResult(ps);</span><br><span class="line"></span><br><span class="line">	&#125; catch (SQLException e) &#123;</span><br><span class="line">	    e.printStackTrace();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">​    return users;</span><br><span class="line">​    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">​    &#x2F;&#x2F;测试类</span><br><span class="line">​    public static void main(String[] args) throws SQLException &#123;</span><br><span class="line">​        JdbcUtil jdbcUtil &#x3D; new JdbcUtil();</span><br><span class="line">​        UserDaoImpl userDaoImpl &#x3D; new UserDaoImpl();</span><br><span class="line">​        jdbcUtil.getConnection();</span><br><span class="line">​        ArrayList&lt;User&gt; list &#x3D; (ArrayList&lt;User&gt;) userDaoImpl.findAll();</span><br><span class="line">​        System.out.println(list);</span><br><span class="line">​        System.out.println(userDaoImpl.Count());</span><br><span class="line">​        ArrayList&lt;User&gt; liset &#x3D; userDaoImpl.findUserByPage(1,4);</span><br><span class="line">​        System.out.println(liset);</span><br><span class="line">​    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="Service类"><a href="#Service类" class="headerlink" title="Service类"></a>Service类</h2><ol>
+<li><p>Service接口</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">package service;</span><br><span class="line"></span><br><span class="line">import Bean.PageBean;</span><br><span class="line">import Bean.User;</span><br><span class="line"></span><br><span class="line">public interface UserService &#123;</span><br><span class="line">    &#x2F;**</span><br><span class="line"></span><br><span class="line">   * 分页查询</span><br><span class="line">	&#x2F;</span><br><span class="line">	    PageBean&lt;User&gt; findUserByPage(String currentPage, String pageSize);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+<li><p>Service实现类</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">package service;</span><br><span class="line"></span><br><span class="line">import Bean.PageBean;</span><br><span class="line">import Bean.User;</span><br><span class="line">import dao.UserDaoImpl;</span><br><span class="line"></span><br><span class="line">import java.util.ArrayList;</span><br><span class="line"></span><br><span class="line">public class AllService implements UserService&#123;</span><br><span class="line">    UserDaoImpl userDaoImpl &#x3D; new UserDaoImpl();</span><br><span class="line">    public ArrayList&lt;User&gt; getAllUsers()&#123;</span><br><span class="line">        ArrayList&lt;User&gt; users &#x3D; (ArrayList&lt;User&gt;) userDaoImpl.findAll();</span><br><span class="line">        return users;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">​    @Override</span><br><span class="line">​    public PageBean&lt;User&gt; findUserByPage(String _currentPage, String _pageSize) &#123;</span><br><span class="line">​        UserDaoImpl userDao &#x3D; new UserDaoImpl();</span><br><span class="line">​        int currentPage &#x3D; Integer.parseInt(_currentPage);</span><br><span class="line">​        int pageSize &#x3D; Integer.parseInt(_pageSize);</span><br><span class="line">​        PageBean&lt;User&gt; pb &#x3D; new PageBean&lt;User&gt;();</span><br><span class="line">​        int totalRecord &#x3D; userDao.Count();</span><br><span class="line">​        int totalPage&#x3D; totalRecord % pageSize &#x3D;&#x3D; 0 ? totalRecord&#x2F;pageSize : totalRecord&#x2F;pageSize + 1;</span><br><span class="line"></span><br><span class="line">​        if (currentPage &lt;&#x3D; 1)</span><br><span class="line">​        &#123;</span><br><span class="line">​            currentPage &#x3D; 1;</span><br><span class="line">​        &#125;</span><br><span class="line">​        if(currentPage &gt;&#x3D; totalPage)</span><br><span class="line">​        &#123;</span><br><span class="line">​            currentPage &#x3D; totalPage;</span><br><span class="line">​        &#125;</span><br><span class="line">​        &#x2F;&#x2F;1.创建空的PageBean对象</span><br><span class="line"></span><br><span class="line">​        pb.setcurrentPage(currentPage);</span><br><span class="line">​        pb.setPageSize(pageSize);</span><br><span class="line"></span><br><span class="line">​        &#x2F;&#x2F;调用dao查询总记录</span><br><span class="line"></span><br><span class="line">​        pb.setTotalRecord(totalRecord);</span><br><span class="line"></span><br><span class="line">​        &#x2F;&#x2F;调用dao查询List集合</span><br><span class="line">​        int startIndex &#x3D; (currentPage-1)*pageSize;</span><br><span class="line">​        pb.setStartIndex(startIndex);</span><br><span class="line">​        ArrayList&lt;User&gt; users &#x3D; userDao.findUserByPage(startIndex,pageSize);</span><br><span class="line">​        pb.setList(users);</span><br><span class="line"></span><br><span class="line">​        pb.setTotalPage(totalPage);</span><br><span class="line"></span><br><span class="line">​        return pb;</span><br><span class="line">​    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">​    public static void main(String[] args) &#123;</span><br><span class="line"></span><br><span class="line">​        AllService allService &#x3D; new AllService();</span><br><span class="line">​        ArrayList&lt;User&gt; list &#x3D; allService.getAllUsers();</span><br><span class="line">​        System.out.println(list);</span><br><span class="line">​    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="Servlet"><a href="#Servlet" class="headerlink" title="Servlet"></a>Servlet</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">package servlet;</span><br><span class="line"></span><br><span class="line">import Bean.PageBean;</span><br><span class="line">import Bean.User;</span><br><span class="line">import com.sun.media.jfxmediaimpl.HostUtils;</span><br><span class="line">import service.AllService;</span><br><span class="line">import util.JdbcUtil;</span><br><span class="line"></span><br><span class="line">import javax.servlet.ServletException;</span><br><span class="line">import javax.servlet.annotation.WebServlet;</span><br><span class="line">import javax.servlet.http.HttpServlet;</span><br><span class="line">import javax.servlet.http.HttpServletRequest;</span><br><span class="line">import javax.servlet.http.HttpServletResponse;</span><br><span class="line">import java.io.IOException;</span><br><span class="line">import java.security.UnrecoverableEntryException;</span><br><span class="line">import java.sql.Connection;</span><br><span class="line">import java.sql.SQLException;</span><br><span class="line">import java.util.ArrayList;</span><br><span class="line"></span><br><span class="line">@WebServlet(name &#x3D; &quot;SelectByPageServlet&quot;,urlPatterns &#x3D; &#123;&quot;&#x2F;SelectByPageServlet&quot;&#125;)</span><br><span class="line">public class SelectByPageServlet extends HttpServlet &#123;</span><br><span class="line">    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;</span><br><span class="line">        String currentPage &#x3D; request.getParameter(&quot;currentPage&quot;);</span><br><span class="line">        if (currentPage &#x3D;&#x3D; null || currentPage.equals(&quot;&quot;))</span><br><span class="line">        &#123;</span><br><span class="line">            currentPage &#x3D; &quot;1&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">        String pageSize &#x3D; request.getParameter(&quot;pageSize&quot;);</span><br><span class="line">        if (pageSize &#x3D;&#x3D; null || pageSize.equals(&quot;&quot;))&#123;</span><br><span class="line">            pageSize &#x3D; &quot;3&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">        AllService allService &#x3D; new AllService();</span><br><span class="line">        PageBean&lt;User&gt; userByPage &#x3D; allService.findUserByPage(currentPage, pageSize);</span><br><span class="line">        System.out.println(userByPage);</span><br><span class="line">        request.setAttribute(&quot;userByPage&quot;,userByPage);</span><br><span class="line">        request.getRequestDispatcher(&quot;index.jsp&quot;).forward(request,response);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">​    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;</span><br><span class="line">​        doPost(request,response);</span><br><span class="line">​    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Util类-半成品"><a href="#Util类-半成品" class="headerlink" title="Util类(半成品)"></a>Util类(半成品)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br></pre></td><td class="code"><pre><span class="line">package util;</span><br><span class="line"></span><br><span class="line">import Bean.User;</span><br><span class="line"></span><br><span class="line">import java.sql.*;</span><br><span class="line">import java.util.ArrayList;</span><br><span class="line">import java.util.List;</span><br><span class="line"></span><br><span class="line">public class JdbcUtil &#123;</span><br><span class="line"></span><br><span class="line">​    &#x2F;&#x2F; 表示定义数据库的用户名</span><br><span class="line">​    private static String USERNAME &#x3D; &quot;root&quot;;</span><br><span class="line"></span><br><span class="line">​    &#x2F;&#x2F; 定义数据库的密码</span><br><span class="line">​    private static String PASSWORD &#x3D; &quot;200029zldts&quot;;</span><br><span class="line"></span><br><span class="line">​    &#x2F;&#x2F; 定义数据库的驱动信息</span><br><span class="line">​    private static String DRIVER &#x3D; &quot;com.mysql.jdbc.Driver&quot;;</span><br><span class="line"></span><br><span class="line">​    &#x2F;&#x2F; 定义访问数据库的地址</span><br><span class="line">​    private static String URL &#x3D;&quot;jdbc:mysql:&#x2F;&#x2F;123.57.210.22:3306&#x2F;pager&quot;;</span><br><span class="line"></span><br><span class="line">​    &#x2F;&#x2F; 定义数据库的链接</span><br><span class="line">​    private Connection connection;</span><br><span class="line"></span><br><span class="line">​    &#x2F;&#x2F; 定义sql语句的执行对象</span><br><span class="line">​    private PreparedStatement pstmt;</span><br><span class="line"></span><br><span class="line">​    &#x2F;&#x2F; 定义查询返回的结果集合</span><br><span class="line">​    private ResultSet resultSet;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">​    &#x2F;**</span><br><span class="line"></span><br><span class="line">   * 加载数据库配置信息，并给相关的属性赋值</span><br><span class="line">	&#x2F;</span><br><span class="line"></span><br><span class="line">​    &#x2F;**</span><br><span class="line"></span><br><span class="line">   * 获取数据库连接</span><br><span class="line"></span><br><span class="line">   * @return 数据库连接</span><br><span class="line">	&#x2F;</span><br><span class="line">	    public Connection getConnection() &#123;</span><br><span class="line">	try &#123;</span><br><span class="line">	    Class.forName(DRIVER); &#x2F;&#x2F; 注册驱动</span><br><span class="line">	    connection &#x3D; DriverManager.getConnection(URL, USERNAME, PASSWORD); &#x2F;&#x2F; 获取连接</span><br><span class="line">	&#125; catch (Exception e) &#123;</span><br><span class="line">	    throw new RuntimeException(&quot;get connection error!&quot;, e);</span><br><span class="line">	&#125;</span><br><span class="line">	return connection;</span><br><span class="line">	    &#125;</span><br><span class="line">	    &#x2F;&#x2F;根据sql执行并返回查询结果</span><br><span class="line">	    public List&lt;User&gt; findResult(PreparedStatement ps) throws SQLException &#123;</span><br><span class="line">	ArrayList&lt;User&gt; users &#x3D; new ArrayList&lt;User&gt;();</span><br><span class="line">	resultSet &#x3D; ps.executeQuery();</span><br><span class="line">	while (resultSet.next())&#123;</span><br><span class="line">	    User user &#x3D; new User();</span><br><span class="line">	    user.setId(resultSet.getInt(&quot;id&quot;));</span><br><span class="line">	    user.setAddress(resultSet.getString(&quot;address&quot;));</span><br><span class="line">	    user.setAge(resultSet.getInt(&quot;age&quot;));</span><br><span class="line">	    user.setGender(resultSet.getInt(&quot;gender&quot;));</span><br><span class="line">	    user.setName(resultSet.getString(&quot;stu_name&quot;));</span><br><span class="line">	    users.add(user);</span><br><span class="line">	&#125;</span><br><span class="line">	return users ;</span><br><span class="line">	    &#125;</span><br><span class="line">	    &#x2F;**</span><br><span class="line">   * 释放资源</span><br><span class="line">	&#x2F;</span><br><span class="line">	    public void releaseConn() &#123;</span><br><span class="line">	if (resultSet !&#x3D; null) &#123;</span><br><span class="line">	    try &#123;</span><br><span class="line">	        resultSet.close();</span><br><span class="line">	    &#125; catch (SQLException e) &#123;</span><br><span class="line">	        e.printStackTrace();</span><br><span class="line">	    &#125;</span><br><span class="line">	&#125;</span><br><span class="line">	if (pstmt !&#x3D; null) &#123;</span><br><span class="line">	    try &#123;</span><br><span class="line">	        pstmt.close();</span><br><span class="line">	    &#125; catch (SQLException e) &#123;</span><br><span class="line">	        e.printStackTrace();</span><br><span class="line">	    &#125;</span><br><span class="line">	&#125;</span><br><span class="line">	if (connection !&#x3D; null) &#123;</span><br><span class="line">	    try &#123;</span><br><span class="line">	        connection.close();</span><br><span class="line">	    &#125; catch (SQLException e) &#123;</span><br><span class="line">	        e.printStackTrace();</span><br><span class="line">	    &#125;</span><br><span class="line">	&#125;</span><br><span class="line">	    &#125;</span><br><span class="line"></span><br><span class="line">​    public static void main(String[] args) &#123;</span><br><span class="line">​        JdbcUtil jdbcUtil &#x3D; new JdbcUtil();</span><br><span class="line">​        try &#123;</span><br><span class="line">​            jdbcUtil.getConnection();</span><br><span class="line">​            if (jdbcUtil !&#x3D; null)</span><br><span class="line">​            &#123;</span><br><span class="line">​                System.out.println(&quot;数据链接成功&quot;);</span><br><span class="line">​            &#125;</span><br><span class="line">​            else &#123;</span><br><span class="line">​                System.out.println(&quot;数据连接诶失败&quot;);</span><br><span class="line">​            &#125;</span><br><span class="line">​            &#125;</span><br><span class="line">​        catch (Exception ex) &#123;</span><br><span class="line">​            ex.printStackTrace();</span><br><span class="line">​        &#125;</span><br><span class="line">​    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Index"><a href="#Index" class="headerlink" title="Index"></a>Index</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ taglib prefix&#x3D;&quot;c&quot; uri&#x3D;&quot;http:&#x2F;&#x2F;java.sun.com&#x2F;jsp&#x2F;jstl&#x2F;core&quot;%&gt;</span><br><span class="line"></span><br><span class="line">&lt;%--</span><br><span class="line">  Created by IntelliJ IDEA.</span><br><span class="line">  User: FX53V</span><br><span class="line">  Date: 2020&#x2F;4&#x2F;25</span><br><span class="line">  Time: 10:42</span><br><span class="line">  To change this template use File | Settings | File Templates.</span><br><span class="line">--%&gt;</span><br><span class="line">&lt;%@ page contentType&#x3D;&quot;text&#x2F;html;charset&#x3D;UTF-8&quot; language&#x3D;&quot;java&quot; %&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line"></span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;title&gt;分页查询&lt;&#x2F;title&gt;</span><br><span class="line">    &lt;link href&#x3D;&quot;bootstrap&#x2F;bootstrap-3.3.7-dist&#x2F;css&#x2F;bootstrap.css&quot; rel&#x3D;&quot;stylesheet&quot;&gt;</span><br><span class="line">    &lt;script src&#x3D;&quot;jquery&#x2F;jquery-3.4.1.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">    &lt;script src&#x3D;&quot;bootstrap&#x2F;bootstrap-3.3.7-dist&#x2F;js&#x2F;bootstrap.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">    &lt;style type&#x3D;&quot;text&#x2F;css&quot;&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">​    &lt;&#x2F;style&gt;</span><br><span class="line">  &lt;&#x2F;head&gt;</span><br><span class="line"></span><br><span class="line">  &lt;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;table class&#x3D;&quot;table&quot;&gt;</span><br><span class="line">  &lt;tr&gt;</span><br><span class="line">    &lt;th&gt;id&lt;&#x2F;th&gt;</span><br><span class="line">    &lt;th&gt;stu_name&lt;&#x2F;th&gt;</span><br><span class="line">    &lt;th&gt;gender&lt;&#x2F;th&gt;</span><br><span class="line">    &lt;th&gt;age&lt;&#x2F;th&gt;</span><br><span class="line">    &lt;th&gt;address&lt;&#x2F;th&gt;</span><br><span class="line">  &lt;&#x2F;tr&gt;</span><br><span class="line">  &lt;c:forEach var&#x3D;&quot;user&quot; items&#x3D;&quot;$&#123;userByPage.list&#125;&quot;&gt;</span><br><span class="line">    &lt;tr&gt;</span><br><span class="line">      &lt;td&gt;$&#123;user.id&#125;&lt;&#x2F;td&gt;</span><br><span class="line">      &lt;td&gt;$&#123;user.name&#125;&lt;&#x2F;td&gt;</span><br><span class="line">      &lt;td&gt;$&#123;user.gender&#125;&lt;&#x2F;td&gt;</span><br><span class="line">      &lt;td&gt;$&#123;user.age&#125;&lt;&#x2F;td&gt;</span><br><span class="line">      &lt;td&gt;$&#123;user.address&#125;&lt;&#x2F;td&gt;</span><br><span class="line">    &lt;&#x2F;tr&gt;</span><br><span class="line">  &lt;&#x2F;c:forEach&gt;</span><br><span class="line">&lt;&#x2F;table&gt;</span><br><span class="line">&lt;nav aria-label&#x3D;&quot;Page navigation&quot;&gt;</span><br><span class="line">  &lt;ul class&#x3D;&quot;pagination&quot;&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">​    &lt;c:if test&#x3D;&quot;$&#123;userByPage.currentPage &#x3D;&#x3D; 1&#125;&quot;&gt;</span><br><span class="line">​      &lt;li class&#x3D;&quot;disabled&quot;&gt;</span><br><span class="line">​    &lt;&#x2F;c:if&gt;</span><br><span class="line">​      &lt;c:if test&#x3D;&quot;$&#123;userByPage.currentPage !&#x3D; 1&#125;&quot;&gt;</span><br><span class="line">​        &lt;li&gt;</span><br><span class="line">​      &lt;&#x2F;c:if&gt;</span><br><span class="line">​      &lt;a href&#x3D;&quot;SelectByPageServlet?currentPage&#x3D;$&#123;userByPage.currentPage-1&#125;&quot; aria-label&#x3D;&quot;Previous&quot;&gt;</span><br><span class="line">​        &lt;span aria-hidden&#x3D;&quot;true&quot;&gt;&amp;laquo;&lt;&#x2F;span&gt;</span><br><span class="line">​      &lt;&#x2F;a&gt;</span><br><span class="line">​      &lt;&#x2F;li&gt;</span><br><span class="line"></span><br><span class="line">  &lt;c:forEach begin&#x3D;&quot;1&quot; end&#x3D;&quot;$&#123;userByPage.totalPage&#125;&quot; var&#x3D;&quot;i&quot;&gt;</span><br><span class="line">      &lt;c:if test&#x3D;&quot;$&#123;userByPage.currentPage &#x3D;&#x3D; i&#125;&quot;&gt;</span><br><span class="line">        &lt;li class&#x3D;&quot;active&quot;&gt;&lt;a href&#x3D;&quot;SelectByPageServlet?currentPage&#x3D;$&#123;i&#125;&quot;&gt;$&#123;i&#125;&lt;&#x2F;a&gt; &lt;&#x2F;li&gt;</span><br><span class="line">      &lt;&#x2F;c:if&gt;</span><br><span class="line">      &lt;c:if test&#x3D;&quot;$&#123;userByPage.currentPage !&#x3D; i&#125;&quot;&gt;</span><br><span class="line">        &lt;li&gt;&lt;a href&#x3D;&quot;SelectByPageServlet?currentPage&#x3D;$&#123;i&#125;&quot;&gt;$&#123;i&#125;&lt;&#x2F;a&gt; &lt;&#x2F;li&gt;</span><br><span class="line">      &lt;&#x2F;c:if&gt;</span><br><span class="line">  &lt;&#x2F;c:forEach&gt;</span><br><span class="line"></span><br><span class="line">​    &lt;c:if test&#x3D;&quot;$&#123;userByPage.currentPage &#x3D;&#x3D; userByPage.totalPage&#125;&quot;&gt;</span><br><span class="line">​      &lt;li class&#x3D;&quot;disabled&quot;&gt;</span><br><span class="line">​        &lt;&#x2F;c:if&gt;</span><br><span class="line">​      &lt;c:if test&#x3D;&quot;$&#123;userByPage.currentPage !&#x3D; userByPage.totalPage&#125;&quot;&gt;</span><br><span class="line">​      &lt;li&gt;</span><br><span class="line">​        &lt;&#x2F;c:if&gt;</span><br><span class="line">​      &lt;a href&#x3D;&quot;SelectByPageServlet?currentPage&#x3D;$&#123;userByPage.currentPage+1&#125;&quot; aria-label&#x3D;&quot;Next&quot;&gt;</span><br><span class="line">​        &lt;span aria-hidden&#x3D;&quot;true&quot;&gt;&amp;raquo;&lt;&#x2F;span&gt;</span><br><span class="line">​      &lt;&#x2F;a&gt;</span><br><span class="line">​    &lt;&#x2F;li&gt;</span><br><span class="line">  &lt;&#x2F;ul&gt;</span><br><span class="line">&lt;&#x2F;nav&gt;</span><br><span class="line">&lt;br&gt; 共$&#123;userByPage.totalRecord &#125;条记录共$&#123;userByPage.totalPage &#125;页&amp;nbsp;&amp;nbsp;当前第$&#123;userByPage.currentPage &#125;页&amp;nbsp;</span><br><span class="line">&lt;a href&#x3D;&quot;SelectByPageServlet&quot;&gt;查询&lt;&#x2F;a&gt;</span><br><span class="line">  &lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+            </div>
+            
+                <div class="kratos-copyright text-center clearfix">
+                    <h5>本作品采用 <a rel="license nofollow" target="_blank" href="http://creativecommons.org/licenses/by-sa/4.0/">知识共享署名-相同方式共享 4.0 国际许可协议</a> 进行许可</h5>
+                </div>
+            
+            <footer class="kratos-entry-footer clearfix">
+                
+                    <div class="post-like-donate text-center clearfix" id="post-like-donate">
+                    
+                    
+                        <a class="share" href="javascript:;"><i class="fa fa-share-alt"></i> 分享</a>
+                        <div class="share-wrap" style="display: none;">
+    <div class="share-group">
+        <a href="javascript:;" class="share-plain qq" onclick="share('qq');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-qq"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain qzone" onclick="share('qzone');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-star"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weixin pop style-plain" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weixin"></i>
+            </div>
+            <div class="share-int">
+                <div class="qrcode" id="wechat-qr"></div>
+                <p>打开微信“扫一扫”，打开网页后点击屏幕右上角分享按钮</p>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weibo" onclick="share('weibo');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weibo"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain facebook style-plain" onclick="share('facebook');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-facebook"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain twitter style-plain" onclick="share('twitter');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-twitter"></i>
+            </div>
+        </a>
+    </div>
+    <script type="text/javascript">
+        $(()=>{
+            new QRCode("wechat-qr", {
+                text: "http://yoursite.com/d1117203/",
+                width: 150,
+                height: 150,
+                correctLevel : QRCode.CorrectLevel.H
+            });
+        });
+        function share(dest) {
+            const qqBase        = "https://connect.qq.com/widget/shareqq/index.html?";
+            const weiboBase     = "https://service.weibo.com/share/share.php?";
+            const qzoneBase     = "https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?";
+            const facebookBase  = "https://www.facebook.com/sharer/sharer.php?";
+            const twitterBase   = "https://twitter.com/intent/tweet?";
+            const hostUrl       = "http://yoursite.com/d1117203/";
+            const title         = "「Web分页」";
+            const excerpt       = `之前学习web分页时没有采用MVC的模式进行开发，有时候所有的操作都是写在Servlet中，现在用MVC方式进行编写可以说条理更加清晰。
+总览
+
+实现逻辑
+Bean文件
+PageBean.java
+123456789101112131...`;
+            let _URL;
+            switch (dest) {
+                case "qq"       : _URL = qqBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";     break;
+                case "weibo"    : _URL = weiboBase+"url="+hostUrl+"&title="+title+excerpt;                                 break;
+                case "qzone"    : _URL = qzoneBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";  break;
+                case "facebook" : _URL = facebookBase+"u="+hostUrl;                                                        break;
+                case "twitter"  : _URL = twitterBase+"text="+title+excerpt+"&url="+hostUrl;                                break;
+            }
+            window.open(_URL);
+        };
+    </script>
+</div>
+                    
+                    </div>
+                
+                <div class="footer-tag clearfix">
+                    <div class="pull-left">
+                    <i class="fa fa-tags"></i>
+                        <a class="tag-none-link" href="/tags/%E5%88%86%E9%A1%B5/" rel="tag">分页</a>
+                    </div>
+                    <div class="pull-date">
+                    <span>最后编辑：2020-04-26</span>
+                    </div>
+                </div>
+            </footer>
+        </div>
+        
+            <nav class="navigation post-navigation clearfix" role="navigation">
+                
+                <div class="nav-previous clearfix">
+                    <a title=" 离散结构 第四章 函数与代数" href="/4b8f3f54/">&lt; 上一篇</a>
+                </div>
+                
+                
+                <div class="nav-next clearfix">
+                    <a title=" Mybatis别名" href="/d5d427d0/">下一篇 &gt;</a>
+                </div>
+                
+            </nav>
+        
+        
+    </article>
+</section>
+        </div>
+                
+            <section id="kratos-widget-area" class="col-md-4 hidden-xs hidden-sm">
+                
+                    <aside id="krw-about" class="widget widget-kratos-about clearfix">
+    
+    <div class="photo-background"></div>
+    <div class="photo-wrapper clearfix">
+        <div class="photo-wrapper-tip text-center">
+            <img class="about-photo" src="/images/avatar.jpg" />
+        </div>
+    </div>
+    <div class="textwidget">
+        
+            <p class="text-center"></p>
+        
+    </div>
+</aside>
+                
+                    <!-- Moved to about.ejs -->
+                
+                    
+  <aside id="krw-categories" class="widget widget-categories clearfix">
+    <h4 class="widget-title"><i class="fa fa-folder"></i>分类目录</h4>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/JAVA/">JAVA</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MOVEN/">MOVEN</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/MOVEN/%E7%8E%AF%E5%A2%83/">环境</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySql/">MySql</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SSM/">SSM</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Typora/">Typora</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Typora/%E5%BA%94%E7%94%A8/">应用</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Vue/">Vue</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/coding/">coding</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/http/">http</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/http/%E5%8D%8F%E8%AE%AE/">协议</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring-boot/">spring_boot</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/springboot/">springboot</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ssm%E6%A1%86%E6%9E%B6/">ssm框架</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8F%92%E4%BB%B6/">插件</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8F%92%E4%BB%B6/idea/">idea</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%A5%E8%AF%AD/">日语</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A6%BB%E6%95%A3%E7%BB%93%E6%9E%84/">离散结构</a><span class="category-list-count">2</span></li></ul>
+  </aside>
+
+
+                
+                    
+  <aside id="krw-tags" class="widget widget-kratos-tags clearfix">
+    <h4 class="widget-title"><i class="fa fa-tags"></i>标签聚合</h4>
+      <div class="tag-clouds">
+        <a href="/tags/Hashmap/" style="font-size: 0.67em;">Hashmap</a> <a href="/tags/MAVEN%E9%A1%B9%E7%9B%AE/" style="font-size: 0.6em;">MAVEN项目</a> <a href="/tags/Mybatis/" style="font-size: 0.8em;">Mybatis</a> <a href="/tags/SSM/" style="font-size: 0.6em;">SSM</a> <a href="/tags/SpringMVC/" style="font-size: 0.67em;">SpringMVC</a> <a href="/tags/Typora/" style="font-size: 0.6em;">Typora</a> <a href="/tags/Vue/" style="font-size: 0.6em;">Vue</a> <a href="/tags/http%E5%8D%8F%E8%AE%AE/" style="font-size: 0.6em;">http协议</a> <a href="/tags/idea/" style="font-size: 0.6em;">idea</a> <a href="/tags/include/" style="font-size: 0.6em;">include</a> <a href="/tags/n2/" style="font-size: 0.6em;">n2</a> <a href="/tags/spring/" style="font-size: 0.73em;">spring</a> <a href="/tags/springMVC/" style="font-size: 0.6em;">springMVC</a> <a href="/tags/spring-boot/" style="font-size: 0.6em;">spring_boot</a> <a href="/tags/springboot/" style="font-size: 0.6em;">springboot</a> <a href="/tags/%E5%88%86%E9%A1%B5/" style="font-size: 0.67em;">分页</a> <a href="/tags/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/" style="font-size: 0.6em;">反射机制</a> <a href="/tags/%E5%8F%98%E5%BD%A2/" style="font-size: 0.6em;">变形</a>
+      </div>
+  </aside>
+
+                
+                    
+  <aside id="krw-posts" class="widget widget-kratos-poststab">
+  <h4 class="widget-title"><i class="fa fa-file"></i>最新文章</h4>
+  <div class="tab-content">
+      <ul class="list-group">
+        
+        
+          
+          
+            <a class="list-group-item" href="/acfd81df/"><i class="fa  fa-book"></i> spring cloud</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/c0add594/"><i class="fa  fa-book"></i> vue</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/f462425/"><i class="fa  fa-book"></i> spring boot整合相关资源</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/bb66162f/"><i class="fa  fa-book"></i> springboot创建</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/5640449e/"><i class="fa  fa-book"></i> 基于maven构建SSM工程案例</a>
+            
+          
+        
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+      </ul>
+  </div>
+  </aside>
+
+                
+            </section>
+        
+        </div>
+    </div>
+</div>
+<footer>
+    <div id="footer">
+        <div class="kr-tool text-center">
+            <div class="tool">
+                
+                    <div class="box search-box">
+                        <a href="/search/">
+                            <span class="fa fa-search"></span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="box theme-box" id="darkmode-switch">
+                        <span class="fa fa-adjust"></span>
+                    </div>
+                
+                
+            </div>
+            <div class="box gotop-box">
+                <span class="fa fa-chevron-up"></span>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 footer-list text-center">
+                    <ul class="kratos-social-icons">
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                    </ul>
+                    <ul class="kratos-copyright">
+                        <div>
+                            <li>&copy; 2021 Chen' Blog 版权所有.</li>
+                            <li>本站已运行<span id="span_dt">Loading...</span></li>
+                        </div>
+                        <div>
+                            <li>Theme <a href="https://github.com/Candinya/Kratos-Rebirth" target="_blank">Kratos:Rebirth</a></li>
+                            <li>Made with&nbsp;<i class="fa fa-heart throb" style="color:#d43f57"></i>&nbsp;by <a href="https://candinya.com" target="_blank" rel="nofollow">Candinya</a>.</li>
+                        </div>
+                        <div>
+                            <li>Powered by <a href="https://hexo.io" target="_blank" rel="nofollow">Hexo</a></li>
+                            <li>Hosted on <a href="https://github.io" target="_blank">Github Pages</a></li>
+                        </div>
+                        <div>
+                            
+                            
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+</div>
+</div>
+
+        <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.4/dist/js/bootstrap.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js"></script>
+<script>const notMobile = (!(navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)));</script>
+
+<script async src="/js/candy.min.js"></script>
+
+
+    <script defer src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+<script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script>
+<script defer src="/js/kratosr.min.js"></script>
+<script defer src="/js/pjax.min.js"></script>
+
+
+    <script defer src="/js/kr-dark.min.js"></script>
+
+
+    </body>
+</html>
