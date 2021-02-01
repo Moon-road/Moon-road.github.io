@@ -154,15 +154,15 @@
 <ol>
 <li><p>在IDEA控制台输入<code>npm init -y</code>对项目进行初始化</p>
 <p> 此时，会在项目目录下出现一个package.json文件。<br> 这是对项目的基本描述信息。例如名称、版本等，有点类似java中的pom文件。</p>
-<p> <img src="vue/image-20200805211059500.png" alt="image-20200805211059500"></p>
+<p> <img src="/c0add594/image-20200805211059500.png" alt="image-20200805211059500"></p>
 </li>
 <li><p>安装vue</p>
  <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#在项目所在文件夹用cmd安装</span></span><br><span class="line"><span class="comment"># save 的意思是将模块安装到项目目录下，并在package文件的dependencies节点写入依赖</span></span><br><span class="line">npm install vue --save</span><br></pre></td></tr></table></figure>
-<p> <img src="vue/image-20200805211627455.png" alt="image-20200805211627455"></p>
+<p> <img src="/c0add594/image-20200805211627455.png" alt="image-20200805211627455"></p>
 </li>
 </ol>
 <h3 id="在页面引入vue-js"><a href="#在页面引入vue-js" class="headerlink" title="在页面引入vue.js"></a>在页面引入vue.js</h3><p>将vue.js拖入页面</p>
-<p><img src="vue/image-20200805211820897.png" alt="image-20200805211820897"></p>
+<p><img src="/c0add594/image-20200805211820897.png" alt="image-20200805211820897"></p>
 <h2 id="入门案例"><a href="#入门案例" class="headerlink" title="入门案例"></a>入门案例</h2><h3 id="HTML模板"><a href="#HTML模板" class="headerlink" title="HTML模板"></a>HTML模板</h3><p>新创建一个HTML文件</p>
 <h3 id="双向绑定"><a href="#双向绑定" class="headerlink" title="双向绑定"></a>双向绑定</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>vuejs测试<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;node_modules/vue/dist/vue.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;app&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">h2</span>&gt;</span>&#123;&#123;name&#125;&#125;<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> app = <span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="javascript">        el:<span class="string">&quot;#app&quot;</span>,<span class="comment">//el即element，要渲染的页面元素</span></span></span><br><span class="line">        data:&#123;</span><br><span class="line"><span class="javascript">            name:<span class="string">&quot;chen&quot;</span>,</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <ul>
@@ -280,7 +280,7 @@
 </li>
 </ul>
 <h2 id="组件通信"><a href="#组件通信" class="headerlink" title="组件通信"></a>组件通信</h2><p>通常一个单页应用会以一棵嵌套的组件树的形式来组织</p>
-<p><img src="vue/image-20200805220739233.png" alt="image-20200805220739233"></p>
+<p><img src="/c0add594/image-20200805220739233.png" alt="image-20200805220739233"></p>
 <ul>
 <li><p>页面首先分成了顶部导航、左侧内容区、右侧边栏三部分</p>
 </li>

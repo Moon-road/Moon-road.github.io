@@ -152,11 +152,11 @@
 </li>
 <li>POOLED与UNPOOLED的区别</li>
 </ul>
-<p><img src="Mybatis2/%E6%97%A0%E6%A0%87%E9%A2%982.png" alt="POOLED"></p>
+<p><img src="/20bad1d0/%E6%97%A0%E6%A0%87%E9%A2%982.png" alt="POOLED"></p>
 <h2 id="Mybatis自动提交设置"><a href="#Mybatis自动提交设置" class="headerlink" title="Mybatis自动提交设置"></a>Mybatis自动提交设置</h2><p>在Mybatis中SqlSessionFactory.openSession()默认设置</p>
-<p><img src="Mybatis2/image-20200419203846543.png" alt="image-20200419203846543"></p>
+<p><img src="/20bad1d0/image-20200419203846543.png" alt="image-20200419203846543"></p>
 <p>因此我们需要手动添加commit</p>
-<img src="Mybatis2/image-20200419203944270.png" alt="image-20200419203944270" style="zoom:50%;" />
+<img src="/20bad1d0/image-20200419203944270.png" alt="image-20200419203944270" style="zoom:50%;">
 
 <p>要想要自动提交只需要在SqlSessionFactory.openSession()传入true</p>
 <h2 id="Mybatis中的动态SQL语句"><a href="#Mybatis中的动态SQL语句" class="headerlink" title="Mybatis中的动态SQL语句"></a>Mybatis中的动态SQL语句</h2><h3 id="动态SQL（一）：where-amp-if"><a href="#动态SQL（一）：where-amp-if" class="headerlink" title="动态SQL（一）：where &amp; if"></a>动态SQL（一）：where &amp; if</h3><ol>
@@ -164,7 +164,7 @@
 <p> 我们根据实体类的不同取值，使用不同的sql语句进行查询。比如在 id 如果不为空时可以根据 id 查询， 如果 username 不同空时还要加入用户名作为条件。这种情况在我们的多条件组合查询中经常会碰到。</p>
  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--根据条件查询--&gt;</span><br><span class="line">&lt;select id&#x3D;&quot;findUserByCondition&quot; parameterType&#x3D;&quot;User&quot; resultMap&#x3D;&quot;userMap&quot;&gt;</span><br><span class="line">    select * from user where 1&#x3D;1</span><br><span class="line">    &lt;if test&#x3D;&quot;userName !&#x3D; null&quot;&gt;</span><br><span class="line">       and username&#x3D;#&#123;userName&#125;</span><br><span class="line">    &lt;&#x2F;if&gt;</span><br><span class="line">    &lt;if test&#x3D;&quot;userSex !&#x3D; null&quot;&gt;</span><br><span class="line">        and sex &#x3D; #&#123;userSex&#125;</span><br><span class="line">    &lt;&#x2F;if&gt;</span><br><span class="line">&lt;&#x2F;select&gt;</span><br><span class="line">注意：&lt;if&gt;标签的 test 属性中写的是对象的属性名，如果是包装类的对象要使用 OGNL 表达式的写法。 另外要注意 where 1&#x3D;1 的作用~！</span><br><span class="line"></span><br><span class="line">@Test</span><br><span class="line">    public void testFindByCondition()&#123;</span><br><span class="line">        User u &#x3D; new User();</span><br><span class="line">        u.setUserName(&quot;老王&quot;);</span><br><span class="line">        u.setUserSex(&quot;女&quot;);</span><br><span class="line">        List&lt;User&gt; users &#x3D; userDao.findUserByCondition(u);</span><br><span class="line">        for (User user : users)</span><br><span class="line">        &#123;</span><br><span class="line">            System.out.println(user);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></li>
 <li><p>where</p>
-<p> 为了简化上面 where 1=1 的条件拼装，我们可以采用<where>标签来简化开发</p>
+<p> 为了简化上面 where 1=1 的条件拼装，我们可以采用<where>标签来简化开发</where></p>
  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;select id&#x3D;&quot;findUserByCondition&quot; parameterType&#x3D;&quot;User&quot; resultMap&#x3D;&quot;userMap&quot;&gt;</span><br><span class="line">    select * from user</span><br><span class="line">    &lt;where&gt;</span><br><span class="line">        &lt;if test&#x3D;&quot;userName !&#x3D; null&quot;&gt;</span><br><span class="line">            and username&#x3D;#&#123;userName&#125;</span><br><span class="line">        &lt;&#x2F;if&gt;</span><br><span class="line">        &lt;if test&#x3D;&quot;userSex !&#x3D; null&quot;&gt;</span><br><span class="line">            and sex &#x3D; #&#123;userSex&#125;</span><br><span class="line">        &lt;&#x2F;if&gt;</span><br><span class="line">    &lt;&#x2F;where&gt;</span><br><span class="line">&lt;&#x2F;select&gt;</span><br></pre></td></tr></table></figure>
 <h3 id="动态SQL（二）：foreach"><a href="#动态SQL（二）：foreach" class="headerlink" title="动态SQL（二）：foreach"></a>动态SQL（二）：foreach</h3></li>
 </ol>
@@ -195,28 +195,28 @@
 <ol>
 <li><p>数据表：</p>
 <p> user表：</p>
- <img src="Mybatis2/image-20200420180746484.png" alt="image-20200420180746484" style="zoom:50%;" />
+ <img src="/20bad1d0/image-20200420180746484.png" alt="image-20200420180746484" style="zoom:50%;">
 
 <p> account表：</p>
-<p> <img src="Mybatis2/image-20200420180836144.png" alt="image-20200420180836144"></p>
+<p> <img src="/20bad1d0/image-20200420180836144.png" alt="image-20200420180836144"></p>
 </li>
 <li><p>sql语句及查询结果（这里的外键为account表中uid关联user表中的id主键）:</p>
 </li>
 </ol>
-<img src="Mybatis2/image-20200420180335945.png" alt="image-20200420180335945" style="zoom: 67%;" />
+<img src="/20bad1d0/image-20200420180335945.png" alt="image-20200420180335945" style="zoom: 67%;">
 
 <ol start="3">
 <li><p>User类及Account类：</p>
 <p> User.java：</p>
- <img src="Mybatis2/image-20200420181125110.png" alt="image-20200420181125110" style="zoom:50%;" />
+ <img src="/20bad1d0/image-20200420181125110.png" alt="image-20200420181125110" style="zoom:50%;">
 
 <p> Account.java：</p>
- <img src="Mybatis2/image-20200420181243255.png" alt="image-20200420181243255" style="zoom:50%;" />
+ <img src="/20bad1d0/image-20200420181243255.png" alt="image-20200420181243255" style="zoom:50%;">
 </li>
 <li><p>AccountDao.xml的编写</p>
  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version&#x3D;&quot;1.0&quot; encoding&#x3D;&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;!DOCTYPE mapper</span><br><span class="line">        PUBLIC &quot;-&#x2F;&#x2F;mybatis.org&#x2F;&#x2F;DTD Mapper 3.0&#x2F;&#x2F;EN&quot;</span><br><span class="line">        &quot;http:&#x2F;&#x2F;mybatis.org&#x2F;dtd&#x2F;mybatis-3-mapper.dtd&quot;&gt;</span><br><span class="line"> &lt;mapper namespace&#x3D;&quot;com.chen.dao.AccountDao&quot;&gt;</span><br><span class="line">    &lt;!--定义封装account和user的resultMap--&gt;</span><br><span class="line">    &lt;resultMap id&#x3D;&quot;accountUserMap&quot; type&#x3D;&quot;Account&quot;&gt;</span><br><span class="line">        &lt;id property&#x3D;&quot;id&quot; column&#x3D;&quot;aid&quot;&gt;&lt;&#x2F;id&gt; &lt;!--此处column为aid是因为在查询时起了别名--&gt;</span><br><span class="line">        &lt;result property&#x3D;&quot;uid&quot; column&#x3D;&quot;uid&quot;&gt;&lt;&#x2F;result&gt;</span><br><span class="line">        &lt;result property&#x3D;&quot;money&quot; column&#x3D;&quot;money&quot;&gt;&lt;&#x2F;result&gt;</span><br><span class="line">        &lt;!--一对一的关系映射用association，配置封装user--&gt;</span><br><span class="line">        &lt;!--property为Account中实体类参数user，column为使用外键列查询 javaType为user的全限定类--&gt;</span><br><span class="line">        &lt;association property&#x3D;&quot;user&quot; column&#x3D;&quot;uid&quot; javaType&#x3D;&quot;com.chen.domain.User&quot;&gt;</span><br><span class="line">            &lt;id property&#x3D;&quot;id&quot; column&#x3D;&quot;id&quot;&gt;&lt;&#x2F;id&gt;</span><br><span class="line">            &lt;result property&#x3D;&quot;username&quot; column&#x3D;&quot;username&quot;&gt;&lt;&#x2F;result&gt;</span><br><span class="line">            &lt;result property&#x3D;&quot;address&quot; column&#x3D;&quot;address&quot;&gt;&lt;&#x2F;result&gt;</span><br><span class="line">            &lt;result property&#x3D;&quot;sex&quot; column&#x3D;&quot;sex&quot;&gt;&lt;&#x2F;result&gt;</span><br><span class="line">            &lt;result property&#x3D;&quot;birthday&quot; column&#x3D;&quot;birthday&quot;&gt;&lt;&#x2F;result&gt;</span><br><span class="line">        &lt;&#x2F;association&gt;</span><br><span class="line"></span><br><span class="line">    &lt;&#x2F;resultMap&gt;</span><br><span class="line">    &lt;!--配置查询所有值--&gt;</span><br><span class="line">    &lt;select id&#x3D;&quot;findAll&quot; resultMap&#x3D;&quot;accountUserMap&quot;&gt;</span><br><span class="line">         select u.*,a.id as aid,a.uid,a.money from account a, user u where u.id&#x3D;a.uid;</span><br><span class="line">    &lt;&#x2F;select&gt;</span><br><span class="line">&lt;&#x2F;mapper&gt;</span><br></pre></td></tr></table></figure></li>
 <li><p>测试结果：</p>
- <img src="Mybatis2/image-20200420184855530.png" alt="image-20200420184855530" style="zoom:50%;" />
+ <img src="/20bad1d0/image-20200420184855530.png" alt="image-20200420184855530" style="zoom:50%;">
 
 </li>
 </ol>
@@ -226,19 +226,19 @@
 <li><p>数据表：同一对一查询</p>
 </li>
 <li><p>sql语句及查询结果：</p>
- <img src="Mybatis2/image-20200420184622995.png" alt="image-20200420184622995" style="zoom:50%;" />
+ <img src="/20bad1d0/image-20200420184622995.png" alt="image-20200420184622995" style="zoom:50%;">
 </li>
 <li><p>User类及Account类：</p>
 <p> User.java:</p>
- <img src="Mybatis2/image-20200420183242590.png" alt="image-20200420183242590" style="zoom:50%;" />
+ <img src="/20bad1d0/image-20200420183242590.png" alt="image-20200420183242590" style="zoom:50%;">
 
 <p> Account.java:</p>
- <img src="Mybatis2/image-20200420183317069.png" alt="image-20200420183317069" style="zoom:50%;" />
+ <img src="/20bad1d0/image-20200420183317069.png" alt="image-20200420183317069" style="zoom:50%;">
 </li>
 <li><p>UserDao.xml的编写:</p>
  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version&#x3D;&quot;1.0&quot; encoding&#x3D;&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;!DOCTYPE mapper</span><br><span class="line">        PUBLIC &quot;-&#x2F;&#x2F;mybatis.org&#x2F;&#x2F;DTD Mapper 3.0&#x2F;&#x2F;EN&quot;</span><br><span class="line">        &quot;http:&#x2F;&#x2F;mybatis.org&#x2F;dtd&#x2F;mybatis-3-mapper.dtd&quot;&gt;</span><br><span class="line"> &lt;mapper namespace&#x3D;&quot;com.chen.dao.UserDao&quot;&gt;</span><br><span class="line">    &lt;!--定义User的resultMap--&gt;</span><br><span class="line">    &lt;resultMap id&#x3D;&quot;userAccountMap&quot; type&#x3D;&quot;User&quot;&gt;</span><br><span class="line">        &lt;id property&#x3D;&quot;id&quot; column&#x3D;&quot;id&quot;&gt;&lt;&#x2F;id&gt;</span><br><span class="line">        &lt;result property&#x3D;&quot;username&quot; column&#x3D;&quot;username&quot;&gt;&lt;&#x2F;result&gt;</span><br><span class="line">        &lt;result property&#x3D;&quot;sex&quot; column&#x3D;&quot;sex&quot;&gt;&lt;&#x2F;result&gt;</span><br><span class="line">        &lt;result property&#x3D;&quot;birthday&quot; column&#x3D;&quot;birthday&quot;&gt;&lt;&#x2F;result&gt;</span><br><span class="line">        &lt;result property&#x3D;&quot;address&quot; column&#x3D;&quot;address&quot;&gt;&lt;&#x2F;result&gt;</span><br><span class="line">        &lt;!--配置user对象中accounts集合的映射,一对多查询使用collection标签，property为user中的accounts，ofType为集合中元素的实体类--&gt;</span><br><span class="line">        &lt;collection property&#x3D;&quot;accounts&quot; ofType&#x3D;&quot;Account&quot;&gt;</span><br><span class="line">            &lt;id property&#x3D;&quot;id&quot; column&#x3D;&quot;aid&quot;&gt;&lt;&#x2F;id&gt;</span><br><span class="line">            &lt;result property&#x3D;&quot;uid&quot; column&#x3D;&quot;uid&quot;&gt;&lt;&#x2F;result&gt;</span><br><span class="line">            &lt;result property&#x3D;&quot;money&quot; column&#x3D;&quot;money&quot;&gt;&lt;&#x2F;result&gt;</span><br><span class="line">        &lt;&#x2F;collection&gt;</span><br><span class="line">    &lt;&#x2F;resultMap&gt;</span><br><span class="line">    &lt;!--配置查询所有值--&gt;</span><br><span class="line">    &lt;select id&#x3D;&quot;findAll&quot; resultMap&#x3D;&quot;userAccountMap&quot;&gt;</span><br><span class="line">        select * from user u left outer join account a on u.id &#x3D; a.uid</span><br><span class="line">    &lt;&#x2F;select&gt;</span><br><span class="line">&lt;&#x2F;mapper&gt;</span><br></pre></td></tr></table></figure></li>
 <li><p>测试结果：</p>
- <img src="Mybatis2/image-20200420184717088.png" alt="image-20200420184717088" style="zoom:50%;" />
+ <img src="/20bad1d0/image-20200420184717088.png" alt="image-20200420184717088" style="zoom:50%;">
 
 </li>
 </ol>
@@ -247,15 +247,15 @@
 <ol>
 <li><p>数据表：</p>
 <p> user表：</p>
- <img src="Mybatis2/image-20200420180746484.png" alt="image-20200420180746484" style="zoom:50%;" />
+ <img src="/20bad1d0/image-20200420180746484.png" alt="image-20200420180746484" style="zoom:50%;">
 
 <p> 中间表：</p>
-<p> <img src="Mybatis2/image-20200420185608231.png" alt="image-20200420185608231"></p>
+<p> <img src="/20bad1d0/image-20200420185608231.png" alt="image-20200420185608231"></p>
 <p> role表：</p>
-<p> <img src="Mybatis2/image-20200420185645040.png" alt="image-20200420185645040"></p>
+<p> <img src="/20bad1d0/image-20200420185645040.png" alt="image-20200420185645040"></p>
 </li>
 <li><p>sql语句及查询结果</p>
-<p> <img src="Mybatis2/image-20200420192611884.png" alt="image-20200420192611884"></p>
+<p> <img src="/20bad1d0/image-20200420192611884.png" alt="image-20200420192611884"></p>
 </li>
 <li><p>User类与Role类</p>
  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">package com.chen.domain;</span><br><span class="line"></span><br><span class="line">import java.io.Serializable;</span><br><span class="line">import java.util.Date;</span><br><span class="line">import java.util.List;</span><br><span class="line"></span><br><span class="line">public class User implements Serializable &#123;</span><br><span class="line">    private Integer id;</span><br><span class="line">    private String username;</span><br><span class="line">    private Date birthday;</span><br><span class="line">    private String sex;</span><br><span class="line">    private String address;</span><br><span class="line">    &#x2F;&#x2F;多对多映射，一个用户可以具备多个角色</span><br><span class="line">    private List&lt;Role&gt; roles;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -263,13 +263,13 @@
 <li><p>RoleDao.xml编写</p>
  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version&#x3D;&quot;1.0&quot; encoding&#x3D;&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;!DOCTYPE mapper</span><br><span class="line">        PUBLIC &quot;-&#x2F;&#x2F;mybatis.org&#x2F;&#x2F;DTD Mapper 3.0&#x2F;&#x2F;EN&quot;</span><br><span class="line">        &quot;http:&#x2F;&#x2F;mybatis.org&#x2F;dtd&#x2F;mybatis-3-mapper.dtd&quot;&gt;</span><br><span class="line">&lt;mapper namespace&#x3D;&quot;com.chen.dao.RoleDao&quot;&gt;</span><br><span class="line"></span><br><span class="line">    &lt;resultMap id&#x3D;&quot;roleMap&quot; type&#x3D;&quot;Role&quot;&gt;</span><br><span class="line">        &lt;id property&#x3D;&quot;roleId&quot; column&#x3D;&quot;rid&quot;&gt;&lt;&#x2F;id&gt;</span><br><span class="line">        &lt;result property&#x3D;&quot;roleName&quot; column&#x3D;&quot;role_name&quot;&gt;&lt;&#x2F;result&gt;</span><br><span class="line">        &lt;result property&#x3D;&quot;roleDesc&quot; column&#x3D;&quot;role_desc&quot;&gt;&lt;&#x2F;result&gt;</span><br><span class="line">        &lt;collection property&#x3D;&quot;users&quot; ofType&#x3D;&quot;user&quot;&gt;</span><br><span class="line">            &lt;id property&#x3D;&quot;id&quot; column&#x3D;&quot;id&quot;&gt;&lt;&#x2F;id&gt;</span><br><span class="line">            &lt;result property&#x3D;&quot;username&quot; column&#x3D;&quot;username&quot;&gt;&lt;&#x2F;result&gt;</span><br><span class="line">            &lt;result property&#x3D;&quot;sex&quot; column&#x3D;&quot;sex&quot;&gt;&lt;&#x2F;result&gt;</span><br><span class="line">            &lt;result property&#x3D;&quot;birthday&quot; column&#x3D;&quot;birthday&quot;&gt;&lt;&#x2F;result&gt;</span><br><span class="line">            &lt;result property&#x3D;&quot;address&quot; column&#x3D;&quot;address&quot;&gt;&lt;&#x2F;result&gt;</span><br><span class="line">        &lt;&#x2F;collection&gt;</span><br><span class="line">    &lt;&#x2F;resultMap&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!--查询所有--&gt;</span><br><span class="line">    &lt;select id&#x3D;&quot;findAll&quot; resultMap&#x3D;&quot;roleMap&quot;&gt;</span><br><span class="line">        SELECT r.id as rid,r.ROLE_DESC,r.ROLE_NAME,u.*from role r</span><br><span class="line">        LEFT outer JOIN user_role ur on r.id&#x3D;ur.rid</span><br><span class="line">        LEFT OUTER JOIN user u on u.id &#x3D; ur.uID</span><br><span class="line">    &lt;&#x2F;select&gt;</span><br><span class="line">&lt;&#x2F;mapper&gt;</span><br></pre></td></tr></table></figure></li>
 <li><p>测试结果</p>
- <img src="Mybatis2/image-20200420192823040.png" alt="image-20200420192823040" style="zoom:50%;" />
+ <img src="/20bad1d0/image-20200420192823040.png" alt="image-20200420192823040" style="zoom:50%;">
 
 </li>
 </ol>
 <h2 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h2><ol>
 <li>在一对多，多对多的查询当中，我们需要在查询1的同时查询2，那么我们就需要在1的实体类中映射2的实体</li>
-<li>单表一对一查询我们需要在resultMap使用<code><association></code>标签,需要在同时查询列指明查询所依赖的外键列名，还需要通过<code><javaType></code>标签指明查询所依赖的实体类，而一对多或是多对多需要使用<code><collection></code>标签,<code><ofType></code>标签指明查询所依赖的实体类</li>
+<li>单表一对一查询我们需要在resultMap使用<code><association></association></code>标签,需要在同时查询列指明查询所依赖的外键列名，还需要通过<code><javaType></javaType></code>标签指明查询所依赖的实体类，而一对多或是多对多需要使用<code><collection></collection></code>标签,<code><ofType></ofType></code>标签指明查询所依赖的实体类</li>
 <li>当两张表中有相同字段时，我们可以在sql语句中起别名，同时在column中使用别名</li>
 <li>如果在主配置文件中对实体类起了别名，那么在xml配置文件中就可以不使用全限定类名，而是使用别名</li>
 </ol>

@@ -155,8 +155,8 @@
 </ol>
 <h2 id="注册coding并创建项目"><a href="#注册coding并创建项目" class="headerlink" title="注册coding并创建项目"></a>注册coding并创建项目</h2><p>这一部分很简单，不多说。需要注意的是创建项目的时候项目名称跟我们在github上创建时候类似，项目名一定要是：用户名 + coding.me<br> 这样写的原因是此类pages服务中大都可以通过 {user_name}.域名 的项目名来访问此主页，(有兴趣请看coding的文档<a target="_blank" rel="noopener" href="https://link.jianshu.com/?t=https://coding.net/help/doc/pages/index.html">用户 Pages 与项目 Pages</a> )</p>
 <h2 id="进入个人设置配置SSH"><a href="#进入个人设置配置SSH" class="headerlink" title="进入个人设置配置SSH"></a>进入个人设置配置SSH</h2><p>coding 的SSH可以github配置过的，也可以新创建一个</p>
-<p><img src="coding%E9%83%A8%E7%BD%B2%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/20200120203751753.jpg" alt="img"></p>
-<p><img src="coding%E9%83%A8%E7%BD%B2%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/20200120203914302.jpg" alt="img"></p>
+<p><img src="/e336f990/20200120203751753.jpg" alt="img"></p>
+<p><img src="/e336f990/20200120203914302.jpg" alt="img"></p>
 <h2 id="测试配置"><a href="#测试配置" class="headerlink" title="测试配置"></a>测试配置</h2><blockquote>
 <p>测试 SSH 公钥是否添加成功：本地打开 Git Bash 窗口，输入一下命令：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@e.coding.net</span><br></pre></td></tr></table></figure>
@@ -165,7 +165,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">    type: git</span><br><span class="line">    repository:</span><br><span class="line">      github: git@github.com:[username]&#x2F;[reoname].github.io.git</span><br><span class="line">      coding: git@e.coding.net:[username]&#x2F;[reoname].git</span><br><span class="line">    branch: master</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <h2 id="进入静态页面"><a href="#进入静态页面" class="headerlink" title="进入静态页面"></a>进入静态页面</h2><p>将域名绑定</p>
 <p><em>如果你没有构建与部署功能，请到左下角项目设置-&gt;项目与成员-&gt;功能开关 将构建与部署的功能打开。</em></p>
-<p><img src="coding%E9%83%A8%E7%BD%B2%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20200330230847981.png" alt="image-20200330230847981"></p>
+<p><img src="/e336f990/image-20200330230847981.png" alt="image-20200330230847981"></p>
 <p>假如要绑定私有域名，通过私有域名访问，那么要修改域名的解析协议,在域名解析的记录值中填入主页的IP地址。过几分钟就可以访问你的网站了。</p>
 <p>另外吐槽一下github是真的慢，对我而言作为图床不是好的选择，有需要的可以试一下coding和gitee，gitee需要在picgo中安装插件，之后就像github一样可以快速上传图片了。</p>
 
