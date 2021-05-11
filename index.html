@@ -113,320 +113,6 @@
         <section class="col-md-8">
             
                 
-                    <article class="kratos-hentry kratos-entry-border-new clearfix">
-                        <div class="kratos-status">
-                            
-                                <i class="fa fa-refresh"></i>
-                            
-                            <div class="kratos-status-inner">
-                                <div class="kratos-status-content">
-                                    
-                                        <h1 id="JVM探究"><a href="#JVM探究" class="headerlink" title="JVM探究"></a>JVM探究</h1><ul>
-<li><p>谈谈对JVM的理解？java8虚拟机和之前的变化更新</p>
-</li>
-<li><p>什么是OOM，什么是栈溢出StackOverFlowError？怎么分析</p>
-</li>
-<li><p>JVM的常调参数有哪些？</p>
-</li>
-<li><p>内存快照如何抓取，怎么分析Dump文件</p>
-</li>
-<li><p>谈谈JVM中，类加载器</p>
-</li>
-</ul>
-<h2 id="JVM的位置"><a href="#JVM的位置" class="headerlink" title="JVM的位置"></a>JVM的位置</h2><p><img src="/0/image-20210504133038014.png" alt="image-20210504133038014"></p>
-<h2 id="JVM的体系结构"><a href="#JVM的体系结构" class="headerlink" title="JVM的体系结构"></a>JVM的体系结构</h2><p><img src="/0/image-20210504134216833.png" alt="image-20210504134216833"></p>
-<p>栈和程序计数器不会有垃圾回收，JVM调优调到是方法去和堆</p>
-<p>JVM架构图（完整版）</p>
-<p><img src="/0/JVM-Architecture.png" alt="img"></p>
-<p><img src="/0/1550523-20190911172546749-1868939202.png" alt="img"></p>
-<h2 id="类加载器"><a href="#类加载器" class="headerlink" title="类加载器"></a>类加载器</h2><ol>
-<li><p>作用：加载Class文件</p>
-<ol>
-<li>new Student(); 引用在站里面，对象在堆里面（栈是目录，堆是内容）</li>
-</ol>
-<p><img src="/0/image-20210504141629035.png" alt="image-20210504141629035"></p>
-<ol>
-<li>虚拟机自带的加载器</li>
-<li>启动类（根）加载器</li>
-<li>扩展类加载器</li>
-<li>应用程序（系统）加载器</li>
-</ol>
-</li>
-</ol>
-<h2 id="双亲委派机制"><a href="#双亲委派机制" class="headerlink" title="双亲委派机制"></a><strong>双亲委派机制</strong></h2><p>作用：保证安全</p>
-<p>APP-&gt;EXC-&gt;BOOT( 最终执行)</p>
-<p>检查顺序从下往上，加载顺序从上往下</p>
-<p>步骤：</p>
-<ol>
-<li><p>类加载器收到类加载的请求</p>
-</li>
-<li><p>将这个请求向上委托个父类加载器完成，一直向上委托，直到启动类加载器</p>
-</li>
-<li><p>启动加载器检查是否能够加载当前的类，能加载就结束，使用当前加载器，否则，抛出异常，通知子加载器进行加载</p>
-</li>
-<li><p>重复3</p>
-<p><img src="/0/2505886_1564538979490_D5D109BB8EA439F60D4960AF194310AF" alt="img"></p>
-</li>
-</ol>
-<p>当一个Hello.class这样的文件要被加载时。不考虑我们自定义类加载器，首先会在AppClassLoader中检查是否加载过，如果有那就无需再加载了。如果没有，那么会拿到父加载器，然后调用父加载器的loadClass方法。父类中同理也会先检查自己是否已经加载过，如果没有再往上。注意这个类似递归的过程，直到到达Bootstrap classLoader之前，都是在检查是否加载过，并不会选择自己去加载。直到BootstrapClassLoader，已经没有父加载器了，这时候开始考虑自己是否能加载了，如果自己无法加载，会下沉到子加载器去加载，一直到最底层，如果没有任何加载器能加载，就会抛出ClassNotFoundException。</p>
-<p>为什么设计这种机制：</p>
-<pre><code>这种设计有个好处是，如果有人想替换系统级别的类：String.java。篡改它的实现，在这种机制下这些系统的类已经被Bootstrap classLoader加载过了（为什么？因为当一个类需要加载的时候，最先去尝试加载的就是BootstrapClassLoader），所以其他类加载器并没有机会再去加载，从一定程度上防止了危险代码的植入。
-</code></pre>
-<h2 id="沙盒安全机制"><a href="#沙盒安全机制" class="headerlink" title="沙盒安全机制"></a>沙盒安全机制</h2><h3 id="组成沙箱的基本组件"><a href="#组成沙箱的基本组件" class="headerlink" title="组成沙箱的基本组件"></a>组成沙箱的基本组件</h3><h2 id="Native"><a href="#Native" class="headerlink" title="Native"></a><strong>Native</strong></h2><p>凡是带了native 关键字的，表示java作用范围达不到，去调用底层C</p>
-<p>会进入本地方法栈  调用本地方法接口  JNI</p>
-<p>本地接口的作用是融合不同的编程语言为Java所用，它的初衷是融合C/C++程序, Java在诞生的时候是C/C++横行的时候，想要立足，必须有调用C、C++的程序，于是就在内存中专门开辟了块区域处理标记为native的代码，它的具体做法是在Native Method Stack 中登记native方法,在( Execution Engine )执行引擎执行的时候加载Native Libraies。  </p>
-<p>目前该方法使用的越来越少了，除非是与硬件有关的应用，比如通过Java程序驱动打印机或者Java系统管理生产设备，在企业级应用中已经比较少见。因为现在的异构领域间通信很发达，比如可以使用Socket通信,也可以使用Web Service等等，不多做介绍!</p>
-<h2 id="PC寄存器"><a href="#PC寄存器" class="headerlink" title="PC寄存器"></a>PC寄存器</h2><p>程序计数器：Program Counter Register</p>
-<p>每个线程都有一个程序计数器，是线程私有的，就是一个指针，指向方法区中的方法字节码，在执行引擎读取下一条指令，是个非常小的内存空间，几乎可以忽略不计</p>
-<h2 id="方法区"><a href="#方法区" class="headerlink" title="方法区"></a>方法区</h2><p>Method Area方法区</p>
-<p>​    方法区是被所有线程共享，所有字段和方法字节码，以及一些特殊方法，如构造函数，接口代码也在此定义，简单说，所有定义的方法的信息都保存在该区域，<strong>此区域属于共享区间：</strong></p>
-<p>​    ==静态变量、常量、类信息（构造方法、接口定义）、运行时的常量存在方法区中，但是实例变量存在堆内存中，和方法区无关==</p>
-<p>static final Class模板 常量池</p>
-<h2 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h2><p>是一种数据结构</p>
-<p>栈：先进后出、后进先出（弹夹）</p>
-<p>队列：先进先出、后进后出（排队）</p>
-<p>栈溢出：栈内无限积压，例如递归超过栈的内存</p>
-<p>栈：栈内存，主管程序的运行，生命周期和线程同步；线程结束，栈内存也就释放，对于栈来说，==不存在垃圾回收问题==，一旦线程结束，栈就没了。</p>
-<p>栈：8大基本类型+对象引用+实例的方法</p>
-<p>栈：栈帧：局部变量表+操作数栈 </p>
-<p>栈如果满了会抛出异常：StackOverflowError</p>
-<p>栈+堆+方法区：交互关系 </p>
-<h2 id="三种JVM"><a href="#三种JVM" class="headerlink" title="三种JVM"></a>三种JVM</h2><ul>
-<li>Sun公司HotSpot java Hotspot™64-Bit server vw (build 25.181-b13，mixed mode)</li>
-<li>BEA JRockit</li>
-<li>IBM 39 VM</li>
-</ul>
-<h2 id="堆"><a href="#堆" class="headerlink" title="堆"></a>堆</h2><p>Heap，一个JVM只有一个堆内存，堆内存的大小是可以调节的。<br>类加载器读取了类文件后，一般会把什么东西放到堆中？类，方法，常量，变量~，保存我们所有引用类型的真实对象；<br>堆内存中还要细分为三个区域：</p>
-<p>新生区（伊甸园区) Young/New<br>养老区 old<br>永久区 Perm<br>GC：Garbage recycling<br>轻GC：轻量级垃圾回收，主要是在新生区<br>重GC（Full GC）：重量级垃圾回收，主要是养老区，重GC就说明内存都要爆了</p>
-<p>GC垃圾回收，主要是在伊甸园区和养老区~<br>假设内存满了，OOM（Out Of memory），堆内存不够！java.lang.OutOfMemoryError: Java heap space<br>在JDK8以后，永久存储区改了个名字(元空间)；<br>真理：经过研究，99%的对象都是临时对象!</p>
-<h2 id="新生区"><a href="#新生区" class="headerlink" title="新生区"></a>新生区</h2><h2 id="老年区"><a href="#老年区" class="headerlink" title="老年区"></a>老年区</h2><h2 id="永久区"><a href="#永久区" class="headerlink" title="永久区"></a>永久区</h2><p>这个区域常驻内存的。用来存放JDK自身携带的Class对象。Interface元数据，存储的是Java运行时的一些环境或类信息~<br>这个区域不存在垃圾回收！关闭VM虚拟就会释放这个区域的内存~<br>一个启动类，加载了大量的第三方jar包。Tomcat部署了太多的应用，大量动态生成的反射类。不断的被加载。直到内存满，就会出现OOM;</p>
-<p>jdk1.6之前︰永久代，常量池是在方法区;<br>jdk1.7：永久代，但是慢慢的退化了，去永久代，常量池在堆中<br>jdk1.8之后∶无永久代，常量池在元空间</p>
-<h2 id="堆内存调优"><a href="#堆内存调优" class="headerlink" title="堆内存调优"></a>堆内存调优</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//-Xms8m -Xmx8m -XX:+PrintGCDetails</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Hello</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">( String[ ] args)</span> i</span></span><br><span class="line"><span class="function">	string str </span>= <span class="string">&quot;stardust.java&quot;</span>;</span><br><span class="line">	<span class="keyword">while</span> (<span class="keyword">true</span>)&#123;</span><br><span class="line">	str += str + <span class="keyword">new</span> Random( ) .nextInt( bound: <span class="number">888888888</span>)+<span class="keyword">new</span> Random( ) .nextInt( bound: <span class="number">99999999</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p><img src="/0/20210321163227898.png" alt="在这里插入图片描述"></p>
-<p>可以通过调整这个参数（Edit Configuration—&gt;VM options）控制Java虚拟机初始内存和分配的总内存的大小。</p>
-<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&quot;C:\Program Files\Java\jdk1.8.0_171\bin\java.exe&quot; -Xms8m -Xmx8m -XX:+PrintGCDetails &quot;-javaagent:G:\IntelliJ IDEA 2020.3.2\lib\idea_rt.jar=1506:G:\IntelliJ IDEA 2020.3.2\bin&quot; -Dfile.encoding=UTF-8 -classpath &quot;C:\Program Files\Java\jdk1.8.0_171\jre\lib\charsets.jar;C:\Program Files\Java\jdk1.8.0_171\jre\lib\deploy.jar;C:\Program Files\Java\jdk1.8.0_171\jre\lib\ext\access-bridge-64.jar;C:\Program Files\Java\jdk1.8.0_171\jre\lib\ext\cldrdata.jar;C:\Program Files\Java\jdk1.8.0_171\jre\lib\ext\dnsns.jar;C:\Program Files\Java\jdk1.8.0_171\jre\lib\ext\jaccess.jar;C:\Program Files\Java\jdk1.8.0_171\jre\lib\ext\jfxrt.jar;C:\Program Files\Java\jdk1.8.0_171\jre\lib\ext\localedata.jar;C:\Program Files\Java\jdk1.8.0_171\jre\lib\ext\nashorn.jar;C:\Program Files\Java\jdk1.8.0_171\jre\lib\ext\sunec.jar;C:\Program Files\Java\jdk1.8.0_171\jre\lib\ext\sunjce_provider.jar;C:\Program Files\Java\jdk1.8.0_171\jre\lib\ext\sunmscapi.jar;C:\Program Files\Java\jdk1.8.0_171\jre\lib\ext\sunpkcs11.jar;C:\Program Files\Java\jdk1.8.0_171\jre\lib\ext\zipfs.jar;C:\Program Files\Java\jdk1.8.0_171\jre\lib\javaws.jar;C:\Program Files\Java\jdk1.8.0_171\jre\lib\jce.jar;C:\Program Files\Java\jdk1.8.0_171\jre\lib\jfr.jar;C:\Program Files\Java\jdk1.8.0_171\jre\lib\jfxswt.jar;C:\Program Files\Java\jdk1.8.0_171\jre\lib\jsse.jar;C:\Program Files\Java\jdk1.8.0_171\jre\lib\management-agent.jar;C:\Program Files\Java\jdk1.8.0_171\jre\lib\plugin.jar;C:\Program Files\Java\jdk1.8.0_171\jre\lib\resources.jar;C:\Program Files\Java\jdk1.8.0_171\jre\lib\rt.jar;F:\学习相关\java\JVM\Jvm_test\out\production\Jvm_test&quot; Hello</span><br><span class="line">[GC (Allocation Failure) [PSYoungGen: 1536K-&gt;504K(2048K)] 1536K-&gt;632K(7680K), 0.0048128 secs] [Times: user=0.03 sys=0.00, real=0.01 secs] </span><br><span class="line">[GC (Allocation Failure) [PSYoungGen: 1995K-&gt;509K(2048K)] 2123K-&gt;829K(7680K), 0.0031731 secs] [Times: user=0.00 sys=0.00, real=0.00 secs] </span><br><span class="line">[GC (Allocation Failure) [PSYoungGen: 1828K-&gt;408K(2048K)] 2148K-&gt;1432K(7680K), 0.0051865 secs] [Times: user=0.02 sys=0.00, real=0.00 secs] </span><br><span class="line">[GC (Allocation Failure) [PSYoungGen: 1845K-&gt;408K(2048K)] 2870K-&gt;2371K(7680K), 0.0015670 secs] [Times: user=0.00 sys=0.00, real=0.00 secs] </span><br><span class="line">[Full GC (Ergonomics) [PSYoungGen: 1369K-&gt;0K(2048K)] [ParOldGen: 4781K-&gt;2998K(5632K)] 6150K-&gt;2998K(7680K), [Metaspace: 3453K-&gt;3453K(1056768K)], 0.0147302 secs] [Times: user=0.00 sys=0.00, real=0.01 secs] </span><br><span class="line">[GC (Allocation Failure) [PSYoungGen: 995K-&gt;32K(2048K)] 4932K-&gt;4908K(7680K), 0.0018357 secs] [Times: user=0.00 sys=0.00, real=0.00 secs] </span><br><span class="line">[Full GC (Ergonomics) [PSYoungGen: 32K-&gt;0K(2048K)] [ParOldGen: 4876K-&gt;2528K(5632K)] 4908K-&gt;2528K(7680K), [Metaspace: 3453K-&gt;3453K(1056768K)], 0.0067840 secs] [Times: user=0.00 sys=0.00, real=0.01 secs] </span><br><span class="line">[GC (Allocation Failure) [PSYoungGen: 0K-&gt;0K(2048K)] 4406K-&gt;4406K(7680K), 0.0060533 secs] [Times: user=0.00 sys=0.00, real=0.01 secs] </span><br><span class="line">[Full GC (Ergonomics) [PSYoungGen: 0K-&gt;0K(2048K)] [ParOldGen: 4406K-&gt;3467K(5632K)] 4406K-&gt;3467K(7680K), [Metaspace: 3453K-&gt;3453K(1056768K)], 0.0078271 secs] [Times: user=0.00 sys=0.00, real=0.01 secs] </span><br><span class="line">[GC (Allocation Failure) [PSYoungGen: 0K-&gt;0K(2048K)] 3467K-&gt;3467K(7680K), 0.0004437 secs] [Times: user=0.00 sys=0.00, real=0.00 secs] </span><br><span class="line">[Full GC (Allocation Failure) [PSYoungGen: 0K-&gt;0K(2048K)] [ParOldGen: 3467K-&gt;3447K(5632K)] 3467K-&gt;3447K(7680K), [Metaspace: 3453K-&gt;3453K(1056768K)], 0.0068733 secs] [Times: user=0.02 sys=0.00, real=0.01 secs] </span><br><span class="line">Heap</span><br><span class="line"> PSYoungGen      total 2048K, used 42K [0x00000000ffd80000, 0x0000000100000000, 0x0000000100000000)</span><br><span class="line">  eden space 1536K, 2% used [0x00000000ffd80000,0x00000000ffd8ab98,0x00000000fff00000)</span><br><span class="line">  from space 512K, 0% used [0x00000000fff00000,0x00000000fff00000,0x00000000fff80000)</span><br><span class="line">  to   space 512K, 0% used [0x00000000fff80000,0x00000000fff80000,0x0000000100000000)</span><br><span class="line"> ParOldGen       total 5632K, used 3447K [0x00000000ff800000, 0x00000000ffd80000, 0x00000000ffd80000)</span><br><span class="line">  object space 5632K, 61% used [0x00000000ff800000,0x00000000ffb5ddb0,0x00000000ffd80000)</span><br><span class="line"> Metaspace       used 3485K, capacity 4496K, committed 4864K, reserved 1056768K</span><br><span class="line">  class space    used 379K, capacity 388K, committed 512K, reserved 1048576K</span><br><span class="line">Exception in thread &quot;main&quot; java.lang.OutOfMemoryError: Java heap space</span><br><span class="line">	at java.util.Arrays.copyOf(Arrays.java:3332)</span><br><span class="line">	at java.lang.AbstractStringBuilder.ensureCapacityInternal(AbstractStringBuilder.java:124)</span><br><span class="line">	at java.lang.AbstractStringBuilder.append(AbstractStringBuilder.java:674)</span><br><span class="line">	at java.lang.StringBuilder.append(StringBuilder.java:208)</span><br><span class="line">	at Hello.main(Hello.java:8)</span><br><span class="line"></span><br><span class="line">Process finished with exit code 1</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>默认情况下：</p>
-<blockquote>
-<p>分配的总内存是电脑内存的 1/4，而初始化的内存: 1/64</p>
-</blockquote>
-<p>OOM:</p>
-<blockquote>
-<p>1、尝试扩大堆内存看结果<br>2、分析内存，看一下哪个地方出现了问题（专业工具)<br>//-Xms1024m -Xmx1024m -XX :+PrintGCDetails</p>
-</blockquote>
-<p>当新生代、老年代、元空间内存都满了之后才会报OOM</p>
-<p>在一个项目中，突然出现了OOM故障，那么该如何排除，研究为什么出错</p>
-<ul>
-<li>能够看到代码第几行出错：内存快照分析工具，MAT，Jprofiler</li>
-<li>Dubug，一行行分析代码!</li>
-</ul>
-<p>MAT，Jprofiler作用</p>
-<ul>
-<li>分析Dump内存文件，快速定位内存泄露;</li>
-<li>获得堆中的数据</li>
-<li>获得大的对象</li>
-<li>……</li>
-<li>MAT最早集成于Eclipse中，IDEA中可以使用Jprofiles插件，在Settings—&gt;Plugins中搜索Jprofiles，安装改插件即可使用</li>
-</ul>
-<h5 id="使用JPofiler工具分析OOM"><a href="#使用JPofiler工具分析OOM" class="headerlink" title="使用JPofiler工具分析OOM"></a>使用JPofiler工具分析OOM</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">在idea中下载 jprofile 插件</span><br><span class="line">百度搜索官网下载 jprofile 客户端 ，安装路径要求：没有中文没有空格</span><br><span class="line">安装破解完之后，在IDEA的Settings—&gt;Tools下找到 jprofiles，然后绑定安装目录bin下的.exe文件</span><br><span class="line">在idea中VM参数中写参数 -Xms1m -Xmx8m -XX:+HeapDumpOnOutOfMemoryError （假如堆内存heap出现了OOM则dump出这个异常）</span><br><span class="line">运行程序后在jprofile客户端中打开（dump出的文件应该在src目录下）找到错误 告诉哪个位置报错</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">命令参数详解</span><br><span class="line"></span><br><span class="line">-Xms设置初始化内存分配大小，默认1&#x2F;64</span><br><span class="line">-Xmx设置最大分配内存，默以1&#x2F;4</span><br><span class="line">-XX: +PrintGCDetails &#x2F;&#x2F; 打印GC垃圾回收信息</span><br><span class="line">-XX: +HeapDumpOnOutOfMemoryError &#x2F;&#x2F;OOM DUMP</span><br></pre></td></tr></table></figure>
-<p><img src="/0/2021032116565056.png" alt="在这里插入图片描述"></p>
-<h2 id="GC"><a href="#GC" class="headerlink" title="GC"></a>GC</h2><p>GC的作用区只要在方法区和堆</p>
-<p>JVM在进行GC时，大部分时候都是回收新生代</p>
-<p>GC两种类：</p>
-<ul>
-<li>（Minor GC）轻GC</li>
-<li>（Full GC）重GC</li>
-</ul>
-<p>题目：</p>
-<ul>
-<li>JVM的内存模型和分区~详细到每个区放什么</li>
-<li>堆里面的分区有哪些，说出他们的特点<ul>
-<li>新生代<ul>
-<li>eden</li>
-<li>from</li>
-<li>to</li>
-</ul>
-</li>
-<li>老年区</li>
-</ul>
-</li>
-<li>GC的算法有哪些？<ul>
-<li>标记清除法</li>
-<li>标记-整理法</li>
-<li>复制算法</li>
-<li>分代收集算法</li>
-</ul>
-</li>
-<li>判断对象状态的算法<ul>
-<li>引用计数法</li>
-<li>可达性分析算法</li>
-</ul>
-</li>
-<li>Minor GC, Full GC分别在什么时候发生</li>
-</ul>
-<h3 id="常用算法"><a href="#常用算法" class="headerlink" title="常用算法"></a>常用算法</h3><h4 id="复制算法-年轻代的使用"><a href="#复制算法-年轻代的使用" class="headerlink" title="复制算法(年轻代的使用)"></a>复制算法(年轻代的使用)</h4><p>vm将Heap 内存划分为新生代与老年代，又将新生代划分为Eden(伊甸园) 与2块Survivor Space(幸存者区) ,然后在Eden –&gt;Survivor Space 以及From Survivor Space 与To Survivor Space 之间实行Copying 算法。 不过jvm在应用coping算法时，并不是把内存按照1:1来划分的，这样太浪费内存空间了。一般的jvm都是8:1。也即是说,Eden区:From区:To区域的比例是</p>
-<blockquote>
-<p>8:1:1</p>
-</blockquote>
-<p><img src="/0/20160615082256469" alt="这里写图片描述"></p>
-<p>步骤：</p>
-<ol>
-<li><p>当Eden区满的时候,会触发第一次young gc,把还活着的对象拷贝到Survivor From区；当Eden区再次触发young gc的时候,会扫描Eden区和From区域,对两个区域进行垃圾回收,经过这次回收后还存活的对象,则直接复制到To区域,并将Eden和From区域清空。</p>
-</li>
-<li><p>当后续Eden又发生young gc的时候,会对Eden和To区域进行垃圾回收,存活的对象复制到From区域,并将Eden和To区域清空。</p>
-</li>
-<li><p>可见部分对象会在From和To区域中复制来复制去,<strong>如此交换15次(由JVM参数MaxTenuringThreshold决定,这个参数默认是15),最终如果还是存活,就存入到老年代</strong></p>
-</li>
-<li><p>注：万一存活对象数量较多，To的内存可能不够，这时会借助老年区的空间。</p>
-<p>——————————————————————</p>
-</li>
-</ol>
-<p>优点：存活对象数量不多的情况下，性能高，能解决内存碎片和标记清除算法中导致的引用更新问题。没有内部的碎片</p>
-<p>缺点：</p>
-<ul>
-<li>浪费了一部分的内存</li>
-<li>如果存活对象的数量较大，复制的性能会变得很差</li>
-</ul>
-<h4 id="标记清除算法-Mark-Sweep"><a href="#标记清除算法-Mark-Sweep" class="headerlink" title="标记清除算法(Mark-Sweep)"></a>标记清除算法(Mark-Sweep)</h4><p>标记清除算法的执行过程分为两个阶段：标记阶段、清除阶段。</p>
-<ul>
-<li>标记阶段会通过可达性分析将可达的对象标记出来。</li>
-<li>清除阶段会将没有标记阶段标记的垃圾对象清除。</li>
-<li><img src="/0/20190720113620860.png" alt="img"></li>
-</ul>
-<p>优点：不需要额外的空间</p>
-<p>缺点：两次扫描，严重浪费时间，会产生内存碎片</p>
-<h4 id="标记整理-压缩算法-Mar-Compact"><a href="#标记整理-压缩算法-Mar-Compact" class="headerlink" title="标记整理/压缩算法(Mar-Compact)"></a>标记整理/压缩算法(Mar-Compact)</h4><ol>
-<li><p>标记阶段：先通过根节点，标记所有从根节点开始的可达对象，未被标记的为垃圾对象</p>
-</li>
-<li><p>整理阶段：将所有的存活对象压缩到内存的一段，之后清理边界外所有的空间</p>
-<p><img src="/0/20190720113819703.png" alt="img"></p>
-</li>
-</ol>
-<h4 id="复制，标记清除，标记整理-压缩的比较"><a href="#复制，标记清除，标记整理-压缩的比较" class="headerlink" title="复制，标记清除，标记整理/压缩的比较"></a>复制，标记清除，标记整理/压缩的比较</h4><ol>
-<li><p>效率： 复制 &gt; 标记整理 &gt; 标记清除  (对比时间复杂度，实际情况不一定如此)</p>
-</li>
-<li><p>内存利用率： 标记整理 &gt; 标记清除 &gt; 复制</p>
-</li>
-<li><p>内存整齐度： 复制 = 标记整理 &gt; 标记清除</p>
-</li>
-</ol>
-<h4 id="标记清除压缩算法"><a href="#标记清除压缩算法" class="headerlink" title="标记清除压缩算法"></a>标记清除压缩算法</h4><p>多次GC后才压缩（是标记清除和标记压缩的结合。但不算在GC四大算法中）</p>
-<h4 id="分代收集算法"><a href="#分代收集算法" class="headerlink" title="分代收集算法"></a>分代收集算法</h4><p>根据生存周期一般将Java堆分为新生代和老年代，根据各个年代的特点采用适合的算法</p>
-<ul>
-<li><p> 在*<strong>\</strong>*新生代**<em>**</em>中，每次垃圾收集时都发现有大批对象死去，只有少量存活，那就选用“复制算法”，只需要付出少量存活对象的复制成本就可以完成收集。</p>
-</li>
-<li><p>   在*<strong>\</strong>*老年代**<em>**</em>中，因为对象存活率高、没有额外空间对它进行分配担保，就必须使用“标记-清理”或“标记-整理”算法来进行回收。</p>
-</li>
-</ul>
-<h2 id="JMM"><a href="#JMM" class="headerlink" title="JMM"></a>JMM</h2><ol>
-<li>什么是JMM</li>
-<li>JMM定义了什么<ol>
-<li>原子性，可见性，有序性</li>
-</ol>
-</li>
-<li>八种内存交互操作</li>
-<li>volatile关键字<ol>
-<li>可见性</li>
-<li>volatile一定能保证线程安全吗</li>
-<li>禁止指令重排序</li>
-<li>volatile禁止指令重排序的原理是什么</li>
-</ol>
-</li>
-</ol>
-<h3 id="JMM："><a href="#JMM：" class="headerlink" title="JMM："></a>JMM：</h3><ul>
-<li>JMM：Java Memory Model（Java内存模型）</li>
-<li>产生原因：因为在不同的硬件生产商和不同的操作系统下，内存的访问有一定的差异，所以会造成相同的代码运行在不同的系统上会出现各种问题。所以<strong>java内存模型(JMM)屏蔽掉各种硬件和操作系统的内存访问差异，以实现让java程序在各种平台下都能达到一致的并发效果。</strong></li>
-<li>JMM规定所用的变量都存放在主内存中（包括：实例变量，静态变量，但不包括局部变量和方法参数）。<strong>每个线程都有自己的工作内存，线程的工作内存保存了该线程的变量和主内存的副本拷贝，线程对变量的操作都在工作内存中进行。线程不能直接读写内存中的变量。</strong></li>
-<li>不同的线程之间也无法访问对方工作内存中的变量，线程间变量值传递需要通过主内存来完成。</li>
-<li><img src="/0/v2-f36f366c07a6188ea3fdefc794ba021a_1440w.jpg" alt="img"></li>
-</ul>
-<h3 id="JMM定义了什么"><a href="#JMM定义了什么" class="headerlink" title="JMM定义了什么"></a>JMM定义了什么</h3><h4 id="原子性"><a href="#原子性" class="headerlink" title="原子性"></a>原子性</h4><p>原子性指的是一个操作是不可分割，不可中断的，一个线程在执行时不会被其他线程干扰。</p>
-<p>JMM只能保证基本的原子性，如果要保证一个代码块的原子性，提供了monitorenter 和 moniterexit 两个字节码指令，也就是 synchronized 关键字。因此在 synchronized 块之间的操作都是原子性的。</p>
-<h4 id="可见性"><a href="#可见性" class="headerlink" title="可见性"></a>可见性</h4><p>可见性指当一个线程修改共享变量的值，其他线程能够立即知道被修改了。Java是利用volatile关键字来提供可见性的。 当变量被volatile修饰时，这个变量被修改后会立刻刷新到主内存，当其它线程需要读取该变量时，会去主内存中读取新值。而普通变量则不能保证这一点。</p>
-<p>除了volatile关键字之外，final和synchronized也能实现可见性。</p>
-<p>synchronized的原理是，在执行完，进入unlock之前，必须将共享变量同步到主内存中。</p>
-<p>final修饰的字段，一旦初始化完成，如果没有对象逸出（指对象为初始化完成就可以被别的线程使用），那么对于其他线程都是可见的。</p>
-<h4 id="有序性"><a href="#有序性" class="headerlink" title="有序性"></a>有序性</h4><p>在Java中，可以使用synchronized或者volatile保证多线程之间操作的有序性。实现原理有些区别：</p>
-<p>volatile关键字是使用内存屏障达到禁止指令重排序，以保证有序性。</p>
-<p>synchronized的原理是，一个线程lock之后，必须unlock后，其他线程才可以重新lock，使得被synchronized包住的代码块在多线程之间是串行执行的。</p>
-<h3 id="八种内存交互操作"><a href="#八种内存交互操作" class="headerlink" title="八种内存交互操作"></a>八种内存交互操作</h3><p><img src="/0/v2-42d8f894f17ccf13252d8d8d6285f86b_1440w.jpg" alt="img"></p>
-<ul>
-<li>lock(锁定)，作用于<strong>主内存</strong>中的变量，把变量标识为线程独占的状态。</li>
-<li>read(读取)，作用于<strong>主内存</strong>的变量，把变量的值从主内存传输到线程的工作内存中，以便下一步的load操作使用。</li>
-<li>load(加载)，作用于<strong>工作内存</strong>的变量，把read操作主存的变量放入到工作内存的变量副本中。</li>
-<li>use(使用)，作用于<strong>工作内存</strong>的变量，把工作内存中的变量传输到执行引擎，每当虚拟机遇到一个需要使用到变量的值的字节码指令时将会执行这个操作。</li>
-<li>assign(赋值)，作用于<strong>工作内存</strong>的变量，它把一个从执行引擎中接受到的值赋值给工作内存的变量副本中，每当虚拟机遇到一个给变量赋值的字节码指令时将会执行这个操作。</li>
-<li>store(存储)，作用于<strong>工作内存</strong>的变量，它把一个从工作内存中一个变量的值传送到主内存中，以便后续的write使用。</li>
-<li>write(写入)：作用于<strong>主内存</strong>中的变量，它把store操作从工作内存中得到的变量的值放入主内存的变量中。</li>
-<li>unlock(解锁)：作用于<strong>主内存</strong>的变量，它把一个处于锁定状态的变量释放出来，释放后的变量才可以被其他线程锁定。</li>
-</ul>
-<p>JMM对8种内存交互操作指定的规则：</p>
-<ul>
-<li>不允许read、load、store、write操作之一单独出现，也就是read操作后必须load，store操作后必须write。</li>
-<li>不允许线程丢弃他最近的assign操作，即工作内存中的变量数据改变了之后，必须告知主存。</li>
-<li>不允许线程将没有assign的数据从工作内存同步到主内存。</li>
-<li>一个新的变量必须在主内存中诞生，不允许工作内存直接使用一个未被初始化的变量。就是对变量实施use、store操作之前，必须经过load和assign操作。</li>
-<li>一个变量同一时间只能有一个线程对其进行lock操作。多次lock之后，必须执行相同次数unlock才可以解锁。</li>
-<li>如果对一个变量进行lock操作，会清空所有工作内存中此变量的值。在执行引擎使用这个变量前，必须重新load或assign操作初始化变量的值。</li>
-<li>如果一个变量没有被lock，就不能对其进行unlock操作。也不能unlock一个被其他线程锁住的变量。</li>
-<li>一个线程对一个变量进行unlock操作之前，必须先把此变量同步回主内存。</li>
-</ul>
-<h3 id="Volatile关键字"><a href="#Volatile关键字" class="headerlink" title="Volatile关键字"></a>Volatile关键字</h3><p>很多并发编程都使用了volatile关键字，主要的作用包括两点：</p>
-<ol>
-<li><strong>保证线程间变量的可见性。</strong></li>
-<li><strong>禁止CPU进行指令重排序。</strong></li>
-</ol>
-<h5 id="可见性-1"><a href="#可见性-1" class="headerlink" title="可见性"></a>可见性</h5><p>volatile修饰的变量，当一个线程改变了该变量的值，其他线程是立即可见的。普通变量则需要重新读取才能获得最新值。</p>
-<h4 id="volatile一定能保证线程安全吗"><a href="#volatile一定能保证线程安全吗" class="headerlink" title="volatile一定能保证线程安全吗"></a>volatile一定能保证线程安全吗</h4><p>先说结论吧，volatile不能一定能保证线程安全。</p>
-<p>怎么证明呢，我们看下面一段代码的运行结果就知道了：</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * @author Ye Hongzhi 公众号：java技术爱好者</span><br><span class="line"> **/</span><br><span class="line">public class VolatileTest extends Thread &#123;</span><br><span class="line"></span><br><span class="line">    private static volatile int count = 0;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) throws Exception &#123;</span><br><span class="line">        Vector&lt;Thread&gt; threads = new Vector&lt;&gt;();</span><br><span class="line">        for (int i = 0; i &lt; 100; i++) &#123;</span><br><span class="line">            VolatileTest thread = new VolatileTest();</span><br><span class="line">            threads.add(thread);</span><br><span class="line">            thread.start();</span><br><span class="line">        &#125;</span><br><span class="line">        //等待子线程全部完成</span><br><span class="line">        for (Thread thread : threads) &#123;</span><br><span class="line">            thread.join();</span><br><span class="line">        &#125;</span><br><span class="line">        //输出结果，正确结果应该是1000，实际却是984</span><br><span class="line">        System.out.println(count);//984</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void run() &#123;</span><br><span class="line">        for (int i = 0; i &lt; 10; i++) &#123;</span><br><span class="line">            try &#123;</span><br><span class="line">                //休眠500毫秒</span><br><span class="line">                Thread.sleep(500);</span><br><span class="line">            &#125; catch (Exception e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">            count++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>为什么volatile不能保证线程安全？</p>
-<p>很简单呀，可见性不能保证操作的原子性，前面说过了count++不是原子性操作，会当做三步，先读取count的值，然后+1，最后赋值回去count变量。需要保证线程安全的话，需要使用synchronized关键字或者lock锁，给count++这段代码上锁：</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">private static synchronized void add() &#123;</span><br><span class="line">    count++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="禁止指令重排序"><a href="#禁止指令重排序" class="headerlink" title="禁止指令重排序"></a>禁止指令重排序</h4><p>首先要讲一下as-if-serial语义，不管怎么重排序，（单线程）程序的执行结果不能被改变。</p>
-<p>为了使指令更加符合CPU的执行特性，最大限度的发挥机器的性能，提高程序的执行效率，只要程序的最终结果与它顺序化情况的结果相等，那么指令的执行顺序可以与代码逻辑顺序不一致，这个过程就叫做<strong>指令的重排序</strong>。</p>
-<p>重排序的种类分为三种，分别是：编译器重排序，指令级并行的重排序，内存系统重排序。整个过程如下所示：</p>
-<p><img src="/0/v2-f50b6067d0c759b20bc7bea72f0e4690_1440w.jpg" alt="img"></p>
-<p>指令重排序在单线程是没有问题的，不会影响执行结果，而且还提高了性能。但是在多线程的环境下就不能保证一定不会影响执行结果了。</p>
-<p><strong>所以在多线程环境下，就需要禁止指令重排序</strong>。</p>
-<p>volatile关键字禁止指令重排序有两层意思：</p>
-<ul>
-<li>当程序执行到volatile变量的读操作或者写操作时，在其前面的操作的更改肯定全部已经进行，且结果已经对后面的操作可见，在其后面的操作肯定还没有进行。</li>
-<li>在进行指令优化时，不能将在对volatile变量访问的语句放在其后面执行，也不能把volatile变量后面的语句放到其前面执行。</li>
-</ul>
-<p>下面举个例子：</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">private static int a;//非volatile修饰变量</span><br><span class="line">private static int b;//非volatile修饰变量</span><br><span class="line">private static volatile int k;//volatile修饰变量</span><br><span class="line"></span><br><span class="line">private void hello() &#123;</span><br><span class="line">    a = 1;  //语句1</span><br><span class="line">    b = 2;  //语句2</span><br><span class="line">    k = 3;  //语句3</span><br><span class="line">    a = 4;  //语句4</span><br><span class="line">    b = 5;  //语句5</span><br><span class="line">    //以下省略...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>变量a，b是非volatile修饰的变量，k则使用volatile修饰。所以语句3不能放在语句1、2前，也不能放在语句4、5后。但是语句1、2的顺序是不能保证的，同理，语句4、5也不能保证顺序。</p>
-<p>并且，执行到语句3的时候，语句1，2是肯定执行完毕的，而且语句1,2的执行结果对于语句3,4,5是可见的。</p>
-<h3 id="volatile禁止指令重排序的原理是什么"><a href="#volatile禁止指令重排序的原理是什么" class="headerlink" title="volatile禁止指令重排序的原理是什么"></a>volatile禁止指令重排序的原理是什么</h3><p>首先要讲一下内存屏障，内存屏障可以分为以下几类：</p>
-<ul>
-<li>LoadLoad 屏障：对于这样的语句Load1，LoadLoad，Load2。在Load2及后续读取操作要读取的数据被访问前，保证Load1要读取的数据被读取完毕。</li>
-<li>StoreStore屏障：对于这样的语句Store1， StoreStore， Store2，在Store2及后续写入操作执行前，保证Store1的写入操作对其它处理器可见。</li>
-<li>LoadStore 屏障：对于这样的语句Load1， LoadStore，Store2，在Store2及后续写入操作被刷出前，保证Load1要读取的数据被读取完毕。</li>
-<li>StoreLoad 屏障：对于这样的语句Store1， StoreLoad，Load2，在Load2及后续所有读取操作执行前，保证Store1的写入对所有处理器可见。</li>
-</ul>
-<p>在每个volatile读操作后插入LoadLoad屏障，在读操作后插入LoadStore屏障。</p>
-<p><img src="/0/v2-437ebf30028ea4364533da27460a3077_1440w.jpg" alt="img"></p>
-<p>在每个volatile写操作的前面插入一个StoreStore屏障，后面插入一个SotreLoad屏障。</p>
-<p><img src="/0/v2-52d9c8897b541c9e4e5a41be59b482ef_1440w.jpg" alt="img"></p>
-
-                                    
-                                </div>
-                            </div>
-                        </div>
-                        
-                            <footer class="kratos-post-meta-new">
-                                <span class="pull-left">
-                                    <a><i class="fa fa-calendar"></i></a><a>2021-05-12</a>
-                                    <a><i class="fa fa-tags"></i></a>
-                                    
-                                </span>
-                            </footer>
-                        
-                    </article>
-                
-            
-                
                     <article class="kratos-hentry clearfix">
                         <div class="kratos-entry-border-new clearfix">
                             
@@ -460,6 +146,53 @@
                                 </span>
                                 <span class="pull-right">
                                     <a class="read-more" href="/aa55683f/" title="阅读全文">阅读全文<i class="fa fa-chevron-circle-right"></i></a>
+                                </span>
+                            </footer>
+                        </div>
+                    </article>
+                
+            
+                
+                    <article class="kratos-hentry clearfix">
+                        <div class="kratos-entry-border-new clearfix">
+                            
+                            <div class="kratos-entry-thumb-new">
+                                <a href="/eqdt0b16/">
+                                    
+                                        <img class="kratos-entry-thumb-new-img">
+                                    
+                                </a>
+                            </div>
+                            <div class="kratos-post-inner-new">
+                                <header class="kratos-entry-header-new">
+                                        <a class="label-link" href="/categories/java/">java</a>
+                                    <h2 class="kratos-entry-title-new"><a href="/eqdt0b16/">GUI编程</a>
+                                </header>
+                                <div class="kratos-entry-content-new">
+                                    <p>
+                                        
+                                            JVM探究
+谈谈对JVM的理解？java8虚拟机和之前的变化更新
+
+什么是OOM，什么是栈溢出StackOverFlowError？怎么分析
+
+JVM的常调参数有哪些？
+
+内存快照如何抓取，怎么分析Dump文件
+
+谈谈JVM中，类加载...
+                                        
+                                    </p>
+                                </div>
+                            </div>
+                            <footer class="kratos-post-meta-new">
+                                <span class="pull-left">
+                                    <a><i class="fa fa-calendar"></i></a><a>2021-05-09</a>
+                                    <a><i class="fa fa-tags"></i></a>
+                                    <a class="tag-none-link" href="/tags/JVM/" rel="tag">JVM</a>
+                                </span>
+                                <span class="pull-right">
+                                    <a class="read-more" href="/eqdt0b16/" title="阅读全文">阅读全文<i class="fa fa-chevron-circle-right"></i></a>
                                 </span>
                             </footer>
                         </div>
@@ -826,7 +559,7 @@ IP:端口 可以定位到具体
                     
   <aside id="krw-categories" class="widget widget-categories clearfix">
     <h4 class="widget-title"><i class="fa fa-folder"></i>分类目录</h4>
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/JAVA/">JAVA</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MOVEN/">MOVEN</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/MOVEN/%E7%8E%AF%E5%A2%83/">环境</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySql/">MySql</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SSM/">SSM</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Typora/">Typora</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Typora/%E5%BA%94%E7%94%A8/">应用</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Vue/">Vue</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/coding/">coding</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/http/">http</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/http/%E5%8D%8F%E8%AE%AE/">协议</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring-boot/">spring_boot</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/springboot/">springboot</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ssm%E6%A1%86%E6%9E%B6/">ssm框架</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8F%92%E4%BB%B6/">插件</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8F%92%E4%BB%B6/idea/">idea</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%A5%E8%AF%AD/">日语</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A6%BB%E6%95%A3%E7%BB%93%E6%9E%84/">离散结构</a><span class="category-list-count">2</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/JAVA/">JAVA</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MOVEN/">MOVEN</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/MOVEN/%E7%8E%AF%E5%A2%83/">环境</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySql/">MySql</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SSM/">SSM</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Typora/">Typora</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Typora/%E5%BA%94%E7%94%A8/">应用</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Vue/">Vue</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/coding/">coding</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/http/">http</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/http/%E5%8D%8F%E8%AE%AE/">协议</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring-boot/">spring_boot</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/springboot/">springboot</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ssm%E6%A1%86%E6%9E%B6/">ssm框架</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8F%92%E4%BB%B6/">插件</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8F%92%E4%BB%B6/idea/">idea</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%A5%E8%AF%AD/">日语</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A6%BB%E6%95%A3%E7%BB%93%E6%9E%84/">离散结构</a><span class="category-list-count">2</span></li></ul>
   </aside>
 
 
@@ -835,7 +568,7 @@ IP:端口 可以定位到具体
   <aside id="krw-tags" class="widget widget-kratos-tags clearfix">
     <h4 class="widget-title"><i class="fa fa-tags"></i>标签聚合</h4>
       <div class="tag-clouds">
-        <a href="/tags/GUI/" style="font-size: 0.67em;">GUI</a> <a href="/tags/Hashmap/" style="font-size: 0.67em;">Hashmap</a> <a href="/tags/IO/" style="font-size: 0.6em;">IO</a> <a href="/tags/MAVEN%E9%A1%B9%E7%9B%AE/" style="font-size: 0.6em;">MAVEN项目</a> <a href="/tags/Mybatis/" style="font-size: 0.8em;">Mybatis</a> <a href="/tags/SSM/" style="font-size: 0.6em;">SSM</a> <a href="/tags/SpringMVC/" style="font-size: 0.67em;">SpringMVC</a> <a href="/tags/TCP/" style="font-size: 0.67em;">TCP</a> <a href="/tags/Typora/" style="font-size: 0.6em;">Typora</a> <a href="/tags/UDP/" style="font-size: 0.6em;">UDP</a> <a href="/tags/Vue/" style="font-size: 0.6em;">Vue</a> <a href="/tags/http%E5%8D%8F%E8%AE%AE/" style="font-size: 0.6em;">http协议</a> <a href="/tags/idea/" style="font-size: 0.6em;">idea</a> <a href="/tags/include/" style="font-size: 0.6em;">include</a> <a href="/tags/juc/" style="font-size: 0.6em;">juc</a> <a href="/tags/n2/" style="font-size: 0.6em;">n2</a> <a href="/tags/spring/" style="font-size: 0.73em;">spring</a> <a href="/tags/springMVC/" style="font-size: 0.6em;">springMVC</a>
+        <a href="/tags/GUI/" style="font-size: 0.67em;">GUI</a> <a href="/tags/Hashmap/" style="font-size: 0.67em;">Hashmap</a> <a href="/tags/IO/" style="font-size: 0.6em;">IO</a> <a href="/tags/JVM/" style="font-size: 0.6em;">JVM</a> <a href="/tags/MAVEN%E9%A1%B9%E7%9B%AE/" style="font-size: 0.6em;">MAVEN项目</a> <a href="/tags/Mybatis/" style="font-size: 0.8em;">Mybatis</a> <a href="/tags/SSM/" style="font-size: 0.6em;">SSM</a> <a href="/tags/SpringMVC/" style="font-size: 0.67em;">SpringMVC</a> <a href="/tags/TCP/" style="font-size: 0.67em;">TCP</a> <a href="/tags/Typora/" style="font-size: 0.6em;">Typora</a> <a href="/tags/UDP/" style="font-size: 0.6em;">UDP</a> <a href="/tags/Vue/" style="font-size: 0.6em;">Vue</a> <a href="/tags/http%E5%8D%8F%E8%AE%AE/" style="font-size: 0.6em;">http协议</a> <a href="/tags/idea/" style="font-size: 0.6em;">idea</a> <a href="/tags/include/" style="font-size: 0.6em;">include</a> <a href="/tags/juc/" style="font-size: 0.6em;">juc</a> <a href="/tags/n2/" style="font-size: 0.6em;">n2</a> <a href="/tags/spring/" style="font-size: 0.73em;">spring</a>
       </div>
   </aside>
 
@@ -849,10 +582,13 @@ IP:端口 可以定位到具体
         
           
           
+            <a class="list-group-item" href="/aa55683f/"><i class="fa  fa-book"></i> JUC</a>
+            
+          
         
           
           
-            <a class="list-group-item" href="/aa55683f/"><i class="fa  fa-book"></i> JUC</a>
+            <a class="list-group-item" href="/eqdt0b16/"><i class="fa  fa-book"></i> GUI编程</a>
             
           
         
@@ -875,11 +611,7 @@ IP:端口 可以定位到具体
           
         
           
-          
-            <a class="list-group-item" href="/af3ffddc/"><i class="fa  fa-book"></i> java——IO流</a>
             
-          
-        
           
             
           
