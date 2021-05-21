@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/1bff3c65/</loc>
+    
+    <lastmod>2021-05-21</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/categories/index.html</loc>
     
     <lastmod>2021-05-21</lastmod>
@@ -268,14 +275,14 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/4a17b156/</loc>
+    <loc>http://yoursite.com/e336f990/</loc>
     
     <lastmod>2020-04-18</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/e336f990/</loc>
+    <loc>http://yoursite.com/4a17b156/</loc>
     
     <lastmod>2020-04-18</lastmod>
     
@@ -509,6 +516,13 @@
   
   <url>
     <loc>http://yoursite.com/tags/%E7%BA%BF%E7%A8%8B/</loc>
+    <lastmod>2021-05-21</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/tags/mybatis/</loc>
     <lastmod>2021-05-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
