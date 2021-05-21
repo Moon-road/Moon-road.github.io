@@ -1,388 +1,199 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-  <!-- 元数据 -->
-  <meta charset="utf-8">
-  <link rel="icon" href="images/favicon.PNG">
-  <title>Chen' Blog</title>
-  <meta name="author" content="" />
-  <meta http-equiv="Cache-Control" content="no-transform" />
-  <meta http-equiv="Cache-Control" content="no-siteapp" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="robots" content="index,follow" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-  <meta name="format-detection" content="telphone=no, email=no" />
-  
-    <meta name="keywords" content="" />
-  
-  <meta property="og:type" content="website">
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Chen' Blog</title><meta name="author"><meta name="copyright"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta property="og:type" content="website">
 <meta property="og:title" content="Chen&#39; Blog">
 <meta property="og:url" content="http://yoursite.com/page/3/index.html">
 <meta property="og:site_name" content="Chen&#39; Blog">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://yoursite.com/images/favicon.PNG">
+<meta property="og:image" content="http://yoursite.com/img/tou.png">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/images/favicon.PNG">
-<meta name="twitter:site" content="@null">
-  
-  <!-- 站点验证相关 -->
-  
-    
-    
-    
-  
-  <!-- 样式表文件 -->
-  <link rel="stylesheet" id="kratos-css" href="/css/kratosr.min.css" type="text/css" media="all">
-  
-    <link rel="stylesheet" id="highlight-css" href="/css/highlight.min.css" type="text/css" media="all">
-  
-  
-  <link rel="stylesheet" id="fontawe-css" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" type="text/css" media="all">
-  <link rel="stylesheet" id="nprogress-css" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" type="text/css" media="all">
-  
-  
-  
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
-  
-  
-    <link rel="stylesheet" id="darkmode-css" href="/css/kr-dark.min.css" type="text/css" media="all">
-  
-  <!-- 不得不预先加载的一些JS文件 -->
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
-  
-    <script src="https://cdn.jsdelivr.net/npm/qrcode_js@1.0.0/qrcode.min.js"></script>
-  
-<meta name="generator" content="Hexo 5.3.0"></head>
+<meta name="twitter:image" content="http://yoursite.com/img/tou.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://yoursite.com/page/3/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Chen\' Blog',
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2021-05-21 12:31:59'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
 
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
 
-    <body class="custom-background">
-        <div id="kratos-wrapper">
-    <div id="kratos-page">
-        <div id="kratos-header">
-            <div class="nav-toggle"><a class="kratos-nav-toggle js-kratos-nav-toggle"><i></i></a></div>
-            <header id="kratos-header-section">
-                <div class="container">
-                    <div class="nav-header">
-                        <div class="color-logo"><a href="/">Chen&#39; Blog</a></div>
-                        <nav id="kratos-menu-wrap">
-                            <ul id="kratos-primary-menu" class="sf-menu">
-                                
-                                    
-                                        <li><a href="/"><i class="fa fa-home"></i>首页</a></li>
-                                    
-                                
-                                    
-                                        <li><a href="/archives/"><i class="fa fa-file"></i>档案馆</a></li>
-                                    
-                                
-                                    
-                                        <li>
-                                            <a><i class="fa fa-link"></i>链接</a>
-                                            <ul class="sub-menu">
-                                                
-                                                    
-                                                
-                                            </ul>
-                                        </li>
-                                    
-                                
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-            </header>
-        </div>
-        <div class="kratos-start kratos-hero-2">
-            <!-- <div class="kratos-overlay"></div> -->
-            <div class="kratos-cover kratos-cover-2 text-center">
-                <div class="desc desc2 animate-box">
-                    <a href="/">
-                        <h2>Chen&#39; Blog</h2> <br />
-                        <span></span>
-                    </a>
-                </div>
-            </div>
-        </div>
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
 
-        <div id="kratos-blog-post">
-            <div class="container">
-                <div class="row">
-                    
-        <div id="main">
-            
-        <section class="col-md-8">
-            
-                
-                    <article class="kratos-hentry clearfix">
-                        <div class="kratos-entry-border-new clearfix">
-                            
-                            <div class="kratos-entry-thumb-new">
-                                <a href="/2df47c8d/">
-                                    
-                                        <img class="kratos-entry-thumb-new-img">
-                                    
-                                </a>
-                            </div>
-                            <div class="kratos-post-inner-new">
-                                <header class="kratos-entry-header-new">
-                                        <a class="label-link" href="/categories/ssm%E6%A1%86%E6%9E%B6/">ssm框架</a>
-                                    <h2 class="kratos-entry-title-new"><a href="/2df47c8d/">Mybatis 延迟加载(未完成)</a>
-                                </header>
-                                <div class="kratos-entry-content-new">
-                                    <p>
-                                        
-                                            
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Chen' Blog" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/tou.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">41</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">31</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">20</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url('/img/11.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Chen' Blog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">Chen' Blog</h1></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2df47c8d/" title="Mybatis 延迟加载(未完成)">     <img class="post_bg" src="/img/1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Mybatis 延迟加载(未完成)"></a></div><div class="recent-post-info"><a class="article-title" href="/2df47c8d/" title="Mybatis 延迟加载(未完成)">Mybatis 延迟加载(未完成)</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2020-05-14T07:24:34.000Z" title="Created 2020-05-14 15:24:34">2020-05-14</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/ssm%E6%A1%86%E6%9E%B6/">ssm框架</a></span></div><div class="content">
 一对多 多对多 常用延迟加载  
  多对一  一对一 常用立即加载
 
-association标签 &lt;association property=&quot;user&quot; column=&quot;uid&quot; ja...
-                                        
-                                    </p>
-                                </div>
-                            </div>
-                            <footer class="kratos-post-meta-new">
-                                <span class="pull-left">
-                                    <a><i class="fa fa-calendar"></i></a><a>2020-05-14</a>
-                                    <a><i class="fa fa-tags"></i></a>
-                                    <a class="tag-none-link" href="/tags/Mybatis/" rel="tag">Mybatis</a>
-                                </span>
-                                <span class="pull-right">
-                                    <a class="read-more" href="/2df47c8d/" title="阅读全文">阅读全文<i class="fa fa-chevron-circle-right"></i></a>
-                                </span>
-                            </footer>
-                        </div>
-                    </article>
-                
-            
-                
-                    <article class="kratos-hentry clearfix">
-                        <div class="kratos-entry-border-new clearfix">
-                            
-                            <div class="kratos-entry-thumb-new">
-                                <a href="/d5d427d0/">
-                                    
-                                        <img class="kratos-entry-thumb-new-img">
-                                    
-                                </a>
-                            </div>
-                            <div class="kratos-post-inner-new">
-                                <header class="kratos-entry-header-new">
-                                        <a class="label-link" href="/categories/ssm%E6%A1%86%E6%9E%B6/">ssm框架</a>
-                                    <h2 class="kratos-entry-title-new"><a href="/d5d427d0/">Mybatis别名</a>
-                                </header>
-                                <div class="kratos-entry-content-new">
-                                    <p>
-                                        
-                                            一.前言当我们不用注解进行程序编写时，难免会使用到比如java类的全限定类名。当我们给java类取一个别名，这样我们就可以在XML文件中将全限定类名用别名替换。
+association标签 &lt;association property=&quot;user&quot; column=&quot;uid&quot; javaType=&quot;user&quot; select=&quot;com.chen.dao.UserDao.findById&quot;&gt;&lt;/association&gt;
+
+
+
+</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/d5d427d0/" title="Mybatis别名">     <img class="post_bg" src="https://gitee.com/moon-road/image/raw/master/img//5e6ee9b90af44.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Mybatis别名"></a></div><div class="recent-post-info"><a class="article-title" href="/d5d427d0/" title="Mybatis别名">Mybatis别名</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2020-05-03T06:58:27.000Z" title="Created 2020-05-03 14:58:27">2020-05-03</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/ssm%E6%A1%86%E6%9E%B6/">ssm框架</a></span></div><div class="content">一.前言当我们不用注解进行程序编写时，难免会使用到比如java类的全限定类名。当我们给java类取一个别名，这样我们就可以在XML文件中将全限定类名用别名替换。
 例如：
-1234&lt;!--更新用户--&gt;&lt;update ...
-                                        
-                                    </p>
-                                </div>
-                            </div>
-                            <footer class="kratos-post-meta-new">
-                                <span class="pull-left">
-                                    <a><i class="fa fa-calendar"></i></a><a>2020-05-03</a>
-                                    <a><i class="fa fa-tags"></i></a>
-                                    <a class="tag-none-link" href="/tags/Mybatis/" rel="tag">Mybatis</a>
-                                </span>
-                                <span class="pull-right">
-                                    <a class="read-more" href="/d5d427d0/" title="阅读全文">阅读全文<i class="fa fa-chevron-circle-right"></i></a>
-                                </span>
-                            </footer>
-                        </div>
-                    </article>
-                
-            
-                
-                    <article class="kratos-hentry clearfix">
-                        <div class="kratos-entry-border-new clearfix">
-                            
-                            <div class="kratos-entry-thumb-new">
-                                <a href="/d1117203/">
-                                    
-                                        <img class="kratos-entry-thumb-new-img">
-                                    
-                                </a>
-                            </div>
-                            <div class="kratos-post-inner-new">
-                                <header class="kratos-entry-header-new">
-                                        <a class="label-link" href="/categories/Web/">Web</a>
-                                    <h2 class="kratos-entry-title-new"><a href="/d1117203/">Web分页</a>
-                                </header>
-                                <div class="kratos-entry-content-new">
-                                    <p>
-                                        
-                                            之前学习web分页时没有采用MVC的模式进行开发，有时候所有的操作都是写在Servlet中，现在用MVC方式进行编写可以说条理更加清晰。
+1234&lt;!--更新用户--&gt;&lt;update id&#x3D;&quot;updateUser&quot; parameterType&#x3D;&quot;com.chen.domain.User&quot;&gt;    update user set username&#x3D;#&#123;userName&#125;,address&#x3D;#&#123;userAddress&#125;,sex&#x3D;#&#123;userSex&#125;,birthday&#x3D;#&#123;userBirthday,jdbcType&#x3D;DATE&#125; where id&#x3D;#&#123;userId&#125;;&lt;&#x2F;update&gt;
+
+parameterType中就为全限定类名
+现在我们为他取一个别名
+二.案例在住配置文件中添加&lt;typeAli ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/d1117203/" title="Web分页">     <img class="post_bg" src="https://gitee.com/moon-road/image/raw/master/img//5e9416cc6d5d8.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Web分页"></a></div><div class="recent-post-info"><a class="article-title" href="/d1117203/" title="Web分页">Web分页</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2020-04-26T09:08:43.000Z" title="Created 2020-04-26 17:08:43">2020-04-26</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Web/">Web</a></span></div><div class="content">之前学习web分页时没有采用MVC的模式进行开发，有时候所有的操作都是写在Servlet中，现在用MVC方式进行编写可以说条理更加清晰。
 总览
 
 实现逻辑
 Bean文件
 PageBean.java
-123456789101112131...
-                                        
-                                    </p>
-                                </div>
-                            </div>
-                            <footer class="kratos-post-meta-new">
-                                <span class="pull-left">
-                                    <a><i class="fa fa-calendar"></i></a><a>2020-04-26</a>
-                                    <a><i class="fa fa-tags"></i></a>
-                                    <a class="tag-none-link" href="/tags/%E5%88%86%E9%A1%B5/" rel="tag">分页</a>
-                                </span>
-                                <span class="pull-right">
-                                    <a class="read-more" href="/d1117203/" title="阅读全文">阅读全文<i class="fa fa-chevron-circle-right"></i></a>
-                                </span>
-                            </footer>
-                        </div>
-                    </article>
-                
-            
-                
-                    <article class="kratos-hentry clearfix">
-                        <div class="kratos-entry-border-new clearfix">
-                            
-                            <div class="kratos-entry-thumb-new">
-                                <a href="/4b8f3f54/">
-                                    
-                                        <img class="kratos-entry-thumb-new-img">
-                                    
-                                </a>
-                            </div>
-                            <div class="kratos-post-inner-new">
-                                <header class="kratos-entry-header-new">
-                                        <a class="label-link" href="/categories/%E7%A6%BB%E6%95%A3%E7%BB%93%E6%9E%84/">离散结构</a>
-                                    <h2 class="kratos-entry-title-new"><a href="/4b8f3f54/">离散结构 第四章 函数与代数</a>
-                                </header>
-                                <div class="kratos-entry-content-new">
-                                    <p>
-                                        
-                                            函数函数与像定义4.1:     设 A和B是任何两个非空集合,F是从A到B的一个关系, 如果对于每一个x∈A,都存在唯一的y∈B,使得&lt;x,y&gt;∈F, 则称F为从A到B的函数(映射)，记作：F:A→B. 
-若&lt;x,...
-                                        
-                                    </p>
-                                </div>
-                            </div>
-                            <footer class="kratos-post-meta-new">
-                                <span class="pull-left">
-                                    <a><i class="fa fa-calendar"></i></a><a>2020-04-21</a>
-                                    <a><i class="fa fa-tags"></i></a>
-                                    
-                                </span>
-                                <span class="pull-right">
-                                    <a class="read-more" href="/4b8f3f54/" title="阅读全文">阅读全文<i class="fa fa-chevron-circle-right"></i></a>
-                                </span>
-                            </footer>
-                        </div>
-                    </article>
-                
-            
-                
-                    <article class="kratos-hentry clearfix">
-                        <div class="kratos-entry-border-new clearfix">
-                            
-                            <div class="kratos-entry-thumb-new">
-                                <a href="/20bad1d0/">
-                                    
-                                        <img class="kratos-entry-thumb-new-img">
-                                    
-                                </a>
-                            </div>
-                            <div class="kratos-post-inner-new">
-                                <header class="kratos-entry-header-new">
-                                        <a class="label-link" href="/categories/ssm%E6%A1%86%E6%9E%B6/">ssm框架</a>
-                                    <h2 class="kratos-entry-title-new"><a href="/20bad1d0/">Mybatis（二）:动态SQL语句和单、多表查询</a>
-                                </header>
-                                <div class="kratos-entry-content-new">
-                                    <p>
-                                        
-                                            Mybatis中的连接池mybatis连接池提供了3种方式的配置：
+12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091package Bean;import java.util.List;public class PageBean&lt;T&gt; &#123;    &#x2F;&#x2F;需要的数据    private int currentPage;&#x2F;&#x2F;当前页    private int pageSize;&#x2F;&#x2F;每页显示的数据条数    private int totalRecord;&#x2F;&#x2F;总记录条数​ ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/4b8f3f54/" title="离散结构 第四章 函数与代数">     <img class="post_bg" src="https://gitee.com/moon-road/image/raw/master/img//5e9416c8390ec.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="离散结构 第四章 函数与代数"></a></div><div class="recent-post-info"><a class="article-title" href="/4b8f3f54/" title="离散结构 第四章 函数与代数">离散结构 第四章 函数与代数</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2020-04-21T09:23:44.000Z" title="Created 2020-04-21 17:23:44">2020-04-21</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%A6%BB%E6%95%A3%E7%BB%93%E6%9E%84/">离散结构</a></span></div><div class="content">函数函数与像定义4.1:     设 A和B是任何两个非空集合,F是从A到B的一个关系, 如果对于每一个x∈A,都存在唯一的y∈B,使得&lt;x,y&gt;∈F, 则称F为从A到B的函数(映射)，记作：F:A→B. 
+若&lt;x,y&gt;∈F, 称x是函数的自变元，称y为F在x处的值(或为F作用下x的像) 。
+
+
+函数的判断
+
+例：
+1、A={a,b,c},B={1,2,3,4}， R1={&lt;a,1&gt;&lt;b,3&gt;} R2={&lt;a,1&gt;,&lt;b,1&gt;,&lt;a,3&gt;,&lt;c,3&gt;}；
+ 2、实数R 上的关系f1={&lt;a,b&gt;|a2=b}, f2={&lt;a,b&gt;|a=b2} 
+3、f={&lt;x1,x2&gt;|x1,x2∈N,且x1+x2&lt;10} 
+解：
+​    1、R1中没有&lt;c,x&gt;,c没有像，不符合存在性，R2中a有”两个像”， 不符合唯一性，不是函数 。
+​    2、 f1是函数，任意a∈dom(f1)=R，存在唯一的b,使得&lt;a,b&gt;∈f1.    f2 ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/20bad1d0/" title="Mybatis（二）:动态SQL语句和单、多表查询">     <img class="post_bg" src="https://gitee.com/moon-road/image/raw/master/img//5e9416cb71e75.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Mybatis（二）:动态SQL语句和单、多表查询"></a></div><div class="recent-post-info"><a class="article-title" href="/20bad1d0/" title="Mybatis（二）:动态SQL语句和单、多表查询">Mybatis（二）:动态SQL语句和单、多表查询</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2020-04-19T12:26:19.000Z" title="Created 2020-04-19 20:26:19">2020-04-19</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/ssm%E6%A1%86%E6%9E%B6/">ssm框架</a></span></div><div class="content">Mybatis中的连接池mybatis连接池提供了3种方式的配置：
 
 配置的位置：主配置文件SqlMapConfig.xml中的dataSource标签，type属性就是表示采用何种连接池方式。、
 type属性的取值：
-POOLED ...
-                                        
-                                    </p>
-                                </div>
-                            </div>
-                            <footer class="kratos-post-meta-new">
-                                <span class="pull-left">
-                                    <a><i class="fa fa-calendar"></i></a><a>2020-04-19</a>
-                                    <a><i class="fa fa-tags"></i></a>
-                                    <a class="tag-none-link" href="/tags/Mybatis/" rel="tag">Mybatis</a>
-                                </span>
-                                <span class="pull-right">
-                                    <a class="read-more" href="/20bad1d0/" title="阅读全文">阅读全文<i class="fa fa-chevron-circle-right"></i></a>
-                                </span>
-                            </footer>
-                        </div>
-                    </article>
-                
-            
-                
-                    <article class="kratos-hentry clearfix">
-                        <div class="kratos-entry-border-new clearfix">
-                            
-                            <div class="kratos-entry-thumb-new">
-                                <a href="/1ef443d5/">
-                                    
-                                        <img class="kratos-entry-thumb-new-img">
-                                    
-                                </a>
-                            </div>
-                            <div class="kratos-post-inner-new">
-                                <header class="kratos-entry-header-new">
-                                        <a class="label-link" href="/categories/ssm%E6%A1%86%E6%9E%B6/">ssm框架</a>
-                                    <h2 class="kratos-entry-title-new"><a href="/1ef443d5/">Mybatis（一）:配置&CRUD</a>
-                                </header>
-                                <div class="kratos-entry-content-new">
-                                    <p>
-                                        
-                                            Mybatis在IDEA上基本环境配置
+POOLED     采用传统的javax.sql.DataSource规范中的连接池，mybatis中有针对规范的实现。
+UNPOOLED 采用传统的获取连接的方式，虽然也实现Javax.sql.DataSource接口，但是并没有使用池的思想。
+JNDI     采用服务器提供的JNDI技术实现，来获取DataSource对象，不同的服务器所能拿到DataSource是不一样。
+
+
+POOLED与UNPOOLED的区别
+
+
+Mybatis自动提交设置在Mybatis中SqlSessionFactory.openSession()默认设置
+
+因此我们需要手动添加commit
+
+
+要想要自动提交只需要在SqlSessionFactory.openSession()传入true
+Mybatis中的动态SQL语句动态SQL（一）：where &amp; if
+if
+ 我们根 ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/1ef443d5/" title="Mybatis（一）:配置&amp;CRUD">     <img class="post_bg" src="https://gitee.com/moon-road/image/raw/master/img//5e9416ca6112d.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Mybatis（一）:配置&amp;CRUD"></a></div><div class="recent-post-info"><a class="article-title" href="/1ef443d5/" title="Mybatis（一）:配置&amp;CRUD">Mybatis（一）:配置&amp;CRUD</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2020-04-16T11:53:54.000Z" title="Created 2020-04-16 19:53:54">2020-04-16</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/ssm%E6%A1%86%E6%9E%B6/">ssm框架</a></span></div><div class="content">Mybatis在IDEA上基本环境配置
 使用Maven来创建一个简单的Mybatis项目
 
 在pom.xml中添加Mybatis框架所需要依赖的坐标
 
 
-1234567891011121314151617181920212223242...
-                                        
-                                    </p>
-                                </div>
-                            </div>
-                            <footer class="kratos-post-meta-new">
-                                <span class="pull-left">
-                                    <a><i class="fa fa-calendar"></i></a><a>2020-04-16</a>
-                                    <a><i class="fa fa-tags"></i></a>
-                                    <a class="tag-none-link" href="/tags/Mybatis/" rel="tag">Mybatis</a>
-                                </span>
-                                <span class="pull-right">
-                                    <a class="read-more" href="/1ef443d5/" title="阅读全文">阅读全文<i class="fa fa-chevron-circle-right"></i></a>
-                                </span>
-                            </footer>
-                        </div>
-                    </article>
-                
-            
-                
-                    <article class="kratos-hentry clearfix">
-                        <div class="kratos-entry-border-new clearfix">
-                            
-                            <div class="kratos-entry-thumb-new">
-                                <a href="/7c8e451b/">
-                                    
-                                        <img class="kratos-entry-thumb-new-img">
-                                    
-                                </a>
-                            </div>
-                            <div class="kratos-post-inner-new">
-                                <header class="kratos-entry-header-new">
-                                        <a class="label-link" href="/categories/%E6%97%A5%E8%AF%AD/">日语</a>
-                                    <h2 class="kratos-entry-title-new"><a href="/7c8e451b/">日语变形</a>
-                                </header>
-                                <div class="kratos-entry-content-new">
-                                    <p>
-                                        
-                                            动词变形
+12345678910111213141516171819202122232425&lt;dependencies&gt;&lt;!--Mybatis只需要前两个，后两个是日志和测试--&gt;    &lt;dependency&gt;        &lt;groupId&gt;org.mybatis&lt;/groupId&gt;        &lt;artifactId&gt;mybatis&lt;/artifactId&gt;        &lt;version&gt;3.4.5&lt;/version&gt;    &lt;/dependency&gt;    &lt;dependency&gt;        &lt;groupId&gt;mysql&lt;/groupId&gt;        &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;     ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/7c8e451b/" title="日语变形">     <img class="post_bg" src="https://gitee.com/moon-road/image/raw/master/img//5e9416cd94cc1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="日语变形"></a></div><div class="recent-post-info"><a class="article-title" href="/7c8e451b/" title="日语变形">日语变形</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2020-04-16T09:07:42.000Z" title="Created 2020-04-16 17:07:42">2020-04-16</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%97%A5%E8%AF%AD/">日语</a></span></div><div class="content">动词变形
 动词ます形（連用形）
 一类动词：将结尾う段假名变成い段假名后+ます
 二类动词：去る＋ます
@@ -390,85 +201,36 @@ POOLED ...
 
 动词ない形(未然形)
 一类动词：将结尾う段假名变成あ段假名后+ない。
-二类动词：...
-                                        
-                                    </p>
-                                </div>
-                            </div>
-                            <footer class="kratos-post-meta-new">
-                                <span class="pull-left">
-                                    <a><i class="fa fa-calendar"></i></a><a>2020-04-16</a>
-                                    <a><i class="fa fa-tags"></i></a>
-                                    <a class="tag-none-link" href="/tags/%E5%8F%98%E5%BD%A2/" rel="tag">变形</a>
-                                </span>
-                                <span class="pull-right">
-                                    <a class="read-more" href="/7c8e451b/" title="阅读全文">阅读全文<i class="fa fa-chevron-circle-right"></i></a>
-                                </span>
-                            </footer>
-                        </div>
-                    </article>
-                
-            
-                
-                    <article class="kratos-hentry clearfix">
-                        <div class="kratos-entry-border-new clearfix">
-                            
-                            <div class="kratos-entry-thumb-new">
-                                <a href="/b0fcb336/">
-                                    
-                                        <img class="kratos-entry-thumb-new-img">
-                                    
-                                </a>
-                            </div>
-                            <div class="kratos-post-inner-new">
-                                <header class="kratos-entry-header-new">
-                                        <a class="label-link" href="/categories/%E7%A6%BB%E6%95%A3%E7%BB%93%E6%9E%84/">离散结构</a>
-                                    <h2 class="kratos-entry-title-new"><a href="/b0fcb336/">离散结构 第三章集合与关系</a>
-                                </header>
-                                <div class="kratos-entry-content-new">
-                                    <p>
-                                        
-                                            1. 集合的基本概念3.1.1  集合与元素集合可以描述为：把一些具有共同性质的事物汇集到一起组成的一个 整体。
+二类动词：去る+ない。
+三类动词：来（く）る→来(こ)ない する→しない。 
+
+动词て形（連用形）
+一类动词：  い音变：く→いて　ぐ→いで  促音变：う、つ、る为结尾的,去掉う、つ、る＋って  拨音变：む、ぬ、ぶ为结尾的去掉+む、ぬ、ぶ＋んで  以す为结尾的：す→して
+（2）二类动词：去る+て
+（3）三类动词：来る→来（き）て  する→して 
+
+动词た形（連用形）
+一类动词：  い音变：く→いた　ぐ→いだ  促音变：う、つ、る为结尾的,去掉う、つ、る＋った  拨音变：む、ぬ、ぶ为结尾的去掉+む、ぬ、ぶ＋んだ  以す为结尾的：す→した
+二类动词：去る+た
+三类动词：来る→来（き）た  する→した 
+
+动词命令形
+一类动词：将结尾う段假名变成え段假名即可.
+二类动词：去る+ろ
+三类动词：来る→来（こ）い   する→しろ  
+
+动词可能形
+一类动词：将结尾う段假名变成え ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/b0fcb336/" title="离散结构 第三章集合与关系">     <img class="post_bg" src="https://gitee.com/moon-road/image/raw/master/img//5e9416cd94cc1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="离散结构 第三章集合与关系"></a></div><div class="recent-post-info"><a class="article-title" href="/b0fcb336/" title="离散结构 第三章集合与关系">离散结构 第三章集合与关系</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2020-04-14T08:29:56.000Z" title="Created 2020-04-14 16:29:56">2020-04-14</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%A6%BB%E6%95%A3%E7%BB%93%E6%9E%84/">离散结构</a></span></div><div class="content">1. 集合的基本概念3.1.1  集合与元素集合可以描述为：把一些具有共同性质的事物汇集到一起组成的一个 整体。
 集合的元素一旦给定，这一集合便完全确立。这一事实被形式地叙述为外延公理。 
-外延公理：两集合 A 和 B 相等，当且仅当...
-                                        
-                                    </p>
-                                </div>
-                            </div>
-                            <footer class="kratos-post-meta-new">
-                                <span class="pull-left">
-                                    <a><i class="fa fa-calendar"></i></a><a>2020-04-14</a>
-                                    <a><i class="fa fa-tags"></i></a>
-                                    
-                                </span>
-                                <span class="pull-right">
-                                    <a class="read-more" href="/b0fcb336/" title="阅读全文">阅读全文<i class="fa fa-chevron-circle-right"></i></a>
-                                </span>
-                            </footer>
-                        </div>
-                    </article>
-                
-            
-                
-                    <article class="kratos-hentry clearfix">
-                        <div class="kratos-entry-border-new clearfix">
-                            
-                            <div class="kratos-entry-thumb-new">
-                                <a href="/ceef6754/">
-                                    
-                                        <img class="kratos-entry-thumb-new-img">
-                                    
-                                </a>
-                            </div>
-                            <div class="kratos-post-inner-new">
-                                <header class="kratos-entry-header-new">
-                                        <a class="label-link" href="/categories/JAVA/">JAVA</a>
-                                    <h2 class="kratos-entry-title-new"><a href="/ceef6754/">JAVA 反射</a>
-                                </header>
-                                <div class="kratos-entry-content-new">
-                                    <p>
-                                        
-                                            有关于反射的知识框架：半成品软件，可以在框架的基础上进行软件开发，简化编码。
+外延公理：两集合 A 和 B 相等，当且仅当它们有相同的元素。 
+关于集合，我们需要清楚地认识以下几点： 
+（1） 集合中元素之间的次序是无关紧要的 如：{a，i，o，e，u}= { i， a， e，o，u } 
+（2） 集合的元素若重复出现或重新排列，集合并不改变 如：{香蕉，梨，菠萝，芒果}= {香蕉，芒果，菠萝，芒果，梨} 
+（3） 集合的元素可以是具体事物、抽象概念，还可以是集合等 如：一本书，一支笔，集合{1，2，3}可以组成集合 B={一本书，一支笔，{1，2，3}} 
+（4） 集合中元素之间可以有某种关联，也可以彼此毫无关系。 如：A={a，1 ，苹果， 张三， o，®}
+3.1.2  集合的表示常用的集合表示法主要有：列举法（或枚举法）和描述法（或谓词法）。 
+列举法：列出集合的所有元素，元素之间用逗号分开，再用花括号括起。当集合中的元素比 较少时，列举法比较合适。
+描述法：描述集合 ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/ceef6754/" title="JAVA 反射">     <img class="post_bg" src="https://gitee.com/moon-road/image/raw/master/img//5e8303209d9e6.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="JAVA 反射"></a></div><div class="recent-post-info"><a class="article-title" href="/ceef6754/" title="JAVA 反射">JAVA 反射</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2020-04-14T05:13:33.000Z" title="Created 2020-04-14 13:13:33">2020-04-14</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/JAVA/">JAVA</a></span></div><div class="content">有关于反射的知识框架：半成品软件，可以在框架的基础上进行软件开发，简化编码。
 反射：将类的各个组成部分封装为其他对象，这就是反射机制。
 
 好处：
@@ -479,307 +241,49 @@ POOLED ...
 
 
 
-JAVA...
-                                        
-                                    </p>
-                                </div>
-                            </div>
-                            <footer class="kratos-post-meta-new">
-                                <span class="pull-left">
-                                    <a><i class="fa fa-calendar"></i></a><a>2020-04-14</a>
-                                    <a><i class="fa fa-tags"></i></a>
-                                    <a class="tag-none-link" href="/tags/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/" rel="tag">反射机制</a>
-                                </span>
-                                <span class="pull-right">
-                                    <a class="read-more" href="/ceef6754/" title="阅读全文">阅读全文<i class="fa fa-chevron-circle-right"></i></a>
-                                </span>
-                            </footer>
-                        </div>
-                    </article>
-                
-            
-                
-                    <article class="kratos-hentry clearfix">
-                        <div class="kratos-entry-border-new clearfix">
-                            
-                            <div class="kratos-entry-thumb-new">
-                                <a href="/9da5e46/">
-                                    
-                                        <img class="kratos-entry-thumb-new-img">
-                                    
-                                </a>
-                            </div>
-                            <div class="kratos-post-inner-new">
-                                <header class="kratos-entry-header-new">
-                                        <a class="label-link" href="/categories/JAVA/">JAVA</a>
-                                    <h2 class="kratos-entry-title-new"><a href="/9da5e46/">JAVA-HashMap</a>
-                                </header>
-                                <div class="kratos-entry-content-new">
-                                    <p>
-                                        
-                                            HashMap相关内容简介首先介绍一下什么是Map。在数组中我们是通过数组下标来对其内容索引的，而在Map中我们通过对象来对对象进行索引，用来索引的对象叫做key，其对应的对象叫做value。
-HashMap是基于哈希表实现的,每一个...
-                                        
-                                    </p>
-                                </div>
-                            </div>
-                            <footer class="kratos-post-meta-new">
-                                <span class="pull-left">
-                                    <a><i class="fa fa-calendar"></i></a><a>2020-04-04</a>
-                                    <a><i class="fa fa-tags"></i></a>
-                                    <a class="tag-none-link" href="/tags/Hashmap/" rel="tag">Hashmap</a>
-                                </span>
-                                <span class="pull-right">
-                                    <a class="read-more" href="/9da5e46/" title="阅读全文">阅读全文<i class="fa fa-chevron-circle-right"></i></a>
-                                </span>
-                            </footer>
-                        </div>
-                    </article>
-                
-            
-            
-            
-                <div class='text-center pagination'>
-                <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
-                </div>
-            
-        </section>
+JAVA代码在计算机中经历的阶段：
 
-        </div>
-                
-            <section id="kratos-widget-area" class="col-md-4 hidden-xs hidden-sm">
-                
-                    <aside id="krw-about" class="widget widget-kratos-about clearfix">
-    
-    <div class="photo-background"></div>
-    <div class="photo-wrapper clearfix">
-        <div class="photo-wrapper-tip text-center">
-            <img class="about-photo" src="/images/avatar.jpg" />
-        </div>
-    </div>
-    <div class="textwidget">
-        
-            <p class="text-center"></p>
-        
-    </div>
-</aside>
-                
-                    <!-- Moved to about.ejs -->
-                
-                    
-  <aside id="krw-categories" class="widget widget-categories clearfix">
-    <h4 class="widget-title"><i class="fa fa-folder"></i>分类目录</h4>
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/JAVA/">JAVA</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MOVEN/">MOVEN</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/MOVEN/%E7%8E%AF%E5%A2%83/">环境</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySql/">MySql</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SSM/">SSM</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Typora/">Typora</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Typora/%E5%BA%94%E7%94%A8/">应用</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Vue/">Vue</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/coding/">coding</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/http/">http</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/http/%E5%8D%8F%E8%AE%AE/">协议</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring-boot/">spring_boot</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/springboot/">springboot</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ssm%E6%A1%86%E6%9E%B6/">ssm框架</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8F%92%E4%BB%B6/">插件</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8F%92%E4%BB%B6/idea/">idea</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%A5%E8%AF%AD/">日语</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A6%BB%E6%95%A3%E7%BB%93%E6%9E%84/">离散结构</a><span class="category-list-count">2</span></li></ul>
-  </aside>
+获取Class对象的方法
+
+Class.forName(“全类名”)：将字节码文件加载进内存，返回Class对象
+多用于配置文件，将类名定义在配置文件中。读取文件，加载类
+
+类名.class：通过类名的属性class获取
+多用于参数的传递 
+
+对象.getClass()：getClass()方法在Object类中定义着。
+多用于对象的获取字节码的方式
+
+结论:同一个字节码文件(*.class)在一次程序运行过程中，只会被加载一次，不论通过哪一种方式获取的Class对象都是同一个。
 
 
-                
-                    
-  <aside id="krw-tags" class="widget widget-kratos-tags clearfix">
-    <h4 class="widget-title"><i class="fa fa-tags"></i>标签聚合</h4>
-      <div class="tag-clouds">
-        <a href="/tags/GUI/" style="font-size: 0.7em;">GUI</a> <a href="/tags/Hashmap/" style="font-size: 0.7em;">Hashmap</a> <a href="/tags/IO/" style="font-size: 0.6em;">IO</a> <a href="/tags/JVM/" style="font-size: 0.6em;">JVM</a> <a href="/tags/MAVEN%E9%A1%B9%E7%9B%AE/" style="font-size: 0.6em;">MAVEN项目</a> <a href="/tags/Mybatis/" style="font-size: 0.8em;">Mybatis</a> <a href="/tags/SSM/" style="font-size: 0.6em;">SSM</a> <a href="/tags/SpringMVC/" style="font-size: 0.7em;">SpringMVC</a> <a href="/tags/TCP/" style="font-size: 0.7em;">TCP</a> <a href="/tags/Typora/" style="font-size: 0.6em;">Typora</a> <a href="/tags/UDP/" style="font-size: 0.6em;">UDP</a> <a href="/tags/Vue/" style="font-size: 0.6em;">Vue</a> <a href="/tags/http%E5%8D%8F%E8%AE%AE/" style="font-size: 0.6em;">http协议</a> <a href="/tags/idea/" style="font-size: 0.6em;">idea</a> <a href="/tags/include/" style="font-size: 0.6em;">include</a> <a href="/tags/juc/" style="font-size: 0.6em;">juc</a> <a href="/tags/mysql/" style="font-size: 0.6em;">mysql</a> <a href="/tags/n2/" style="font-size: 0.6em;">n2</a>
-      </div>
-  </aside>
 
-                
-                    
-  <aside id="krw-posts" class="widget widget-kratos-poststab">
-  <h4 class="widget-title"><i class="fa fa-file"></i>最新文章</h4>
-  <div class="tab-content">
-      <ul class="list-group">
-        
-        
-          
-          
-            <a class="list-group-item" href="/c24675b4/"><i class="fa  fa-book"></i> MySQL</a>
-            
-          
-        
-          
-          
-            <a class="list-group-item" href="/aa55683f/"><i class="fa  fa-book"></i> JUC</a>
-            
-          
-        
-          
-          
-            <a class="list-group-item" href="/eqdt0b16/"><i class="fa  fa-book"></i> JVM</a>
-            
-          
-        
-          
-          
-            <a class="list-group-item" href="/fe634c16/"><i class="fa  fa-book"></i> 多线程</a>
-            
-          
-        
-          
-          
-            <a class="list-group-item" href="/e1643b16/"><i class="fa  fa-book"></i> 网络编程(TCP/UDP)</a>
-            
-          
-        
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-      </ul>
-  </div>
-  </aside>
+Class对象功能：
 
-                
-            </section>
-        
-        </div>
-    </div>
-</div>
-<footer>
-    <div id="footer">
-        <div class="kr-tool text-center">
-            <div class="tool">
-                
-                    <div class="box search-box">
-                        <a href="/search/">
-                            <span class="fa fa-search"></span>
-                        </a>
-                    </div>
-                
-                
-                    <div class="box theme-box" id="darkmode-switch">
-                        <span class="fa fa-adjust"></span>
-                    </div>
-                
-                
+获取功能：
+
+
+
+获取成员变量们
+ Field[] getFields() ：获取所有public修饰的成员变量
+ Field getField(String name)   获取指定名称的 public修饰的成员变量
+ ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/9da5e46/" title="JAVA-HashMap">     <img class="post_bg" src="https://gitee.com/moon-road/image/raw/master/img//5e8303209d9e6.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="JAVA-HashMap"></a></div><div class="recent-post-info"><a class="article-title" href="/9da5e46/" title="JAVA-HashMap">JAVA-HashMap</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2020-04-04T13:02:41.000Z" title="Created 2020-04-04 21:02:41">2020-04-04</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/JAVA/">JAVA</a></span></div><div class="content">HashMap相关内容简介首先介绍一下什么是Map。在数组中我们是通过数组下标来对其内容索引的，而在Map中我们通过对象来对对象进行索引，用来索引的对象叫做key，其对应的对象叫做value。
+HashMap是基于哈希表实现的,每一个元素是一个key-value对,其内部通过单链表解决冲突问题,容量不足(超过了阀值)时,同样会自动增长.
+HashMap是一个用于存储Key-Value键值对的集合，每一个键值对也叫做Entry。这些个键值对（Entry）分散存储在一个数组当中，这个数组就是HashMap的主干。
+1.HashMap 的数据结构在 Java 编程语言中，最基本的结构就是两种，一个是数组，另外一个是指针（引用），HashMap 就是通过这两个数据结构进行实现。HashMap实际上是一个“链表散列”的数据结构，即数组+链表。
+
+HashMap数组每一个元素的初始值都是Null。
+
+对于HashMap，我们最常使用的是两个方法：Get 和 Put。
+1.Put方法的原理
+调用Put方法的时候发生了什么呢？
+比如调用 hashMap.put(“apple”, 0) ，插入一个Key ...</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/page/2/#content-inner"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/#content-inner">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/#content-inner">4</a><a class="page-number" href="/page/5/#content-inner">5</a><a class="extend next" rel="next" href="/page/4/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="/img/tou.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name"></div><div class="author-info__description"></div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">41</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">31</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">20</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/c24675b4/" title="MySQL"><img src="/img/8.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="MySQL"/></a><div class="content"><a class="title" href="/c24675b4/" title="MySQL">MySQL</a><time datetime="2021-05-16T04:20:43.000Z" title="Created 2021-05-16 12:20:43">2021-05-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/aa55683f/" title="JUC"><img src="/img/1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="JUC"/></a><div class="content"><a class="title" href="/aa55683f/" title="JUC">JUC</a><time datetime="2021-05-11T05:31:44.000Z" title="Created 2021-05-11 13:31:44">2021-05-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/eqdt0b16/" title="JVM"><img src="/img/4.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="JVM"/></a><div class="content"><a class="title" href="/eqdt0b16/" title="JVM">JVM</a><time datetime="2021-05-09T03:34:22.000Z" title="Created 2021-05-09 11:34:22">2021-05-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/fe634c16/" title="多线程"><img src="/img/10.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="多线程"/></a><div class="content"><a class="title" href="/fe634c16/" title="多线程">多线程</a><time datetime="2021-05-02T03:34:22.000Z" title="Created 2021-05-02 11:34:22">2021-05-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/e1643b16/" title="网络编程(TCP/UDP)"><img src="/img/1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="网络编程(TCP/UDP)"/></a><div class="content"><a class="title" href="/e1643b16/" title="网络编程(TCP/UDP)">网络编程(TCP/UDP)</a><time datetime="2021-05-01T10:34:22.000Z" title="Created 2021-05-01 18:34:22">2021-05-01</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>Categories</span>
+            <a class="card-more-btn" href="/categories/" title="More">
+    <i class="fas fa-angle-right"></i></a>
             </div>
-            <div class="box gotop-box">
-                <span class="fa fa-chevron-up"></span>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 col-md-offset-3 footer-list text-center">
-                    <ul class="kratos-social-icons">
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                    </ul>
-                    <ul class="kratos-copyright">
-                        <div>
-                            <li>&copy; 2021 Chen' Blog 版权所有.</li>
-                            <li>本站已运行<span id="span_dt">Loading...</span></li>
-                        </div>
-                        <div>
-                            <li>Theme <a href="https://github.com/Candinya/Kratos-Rebirth" target="_blank">Kratos:Rebirth</a></li>
-                            <li>Made with&nbsp;<i class="fa fa-heart throb" style="color:#d43f57"></i>&nbsp;by <a href="https://candinya.com" target="_blank" rel="nofollow">Candinya</a>.</li>
-                        </div>
-                        <div>
-                            <li>Powered by <a href="https://hexo.io" target="_blank" rel="nofollow">Hexo</a></li>
-                            <li>Hosted on <a href="https://github.io" target="_blank">Github Pages</a></li>
-                        </div>
-                        <div>
-                            
-                            
-                        </div>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</footer>
-</div>
-</div>
-
-        <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.4/dist/js/bootstrap.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js"></script>
-<script>const notMobile = (!(navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)));</script>
-
-<script async src="/js/candy.min.js"></script>
-
-
-    <script defer src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
-
-<script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script>
-<script defer src="/js/kratosr.min.js"></script>
-<script defer src="/js/pjax.min.js"></script>
-
-
-    <script defer src="/js/kr-dark.min.js"></script>
-
-
-    </body>
-</html>
+            <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/JAVA/"><span class="card-category-list-name">JAVA</span><span class="card-category-list-count">3</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/MOVEN/"><span class="card-category-list-name">MOVEN</span><span class="card-category-list-count">1</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/MOVEN/%E7%8E%AF%E5%A2%83/"><span class="card-category-list-name">环境</span><span class="card-category-list-count">1</span></a></li></ul></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/MySql/"><span class="card-category-list-name">MySql</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/SSM/"><span class="card-category-list-name">SSM</span><span class="card-category-list-count">4</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Typora/"><span class="card-category-list-name">Typora</span><span class="card-category-list-count">1</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Typora/%E5%BA%94%E7%94%A8/"><span class="card-category-list-name">应用</span><span class="card-category-list-count">1</span></a></li></ul></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Vue/"><span class="card-category-list-name">Vue</span><span class="card-category-list-count">1</span></a></li>
+            </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>Tags</span></div><div class="card-tag-cloud"><a href="/tags/GUI/" style="font-size: 1.23em; color: #999ea6">GUI</a> <a href="/tags/Hashmap/" style="font-size: 1.23em; color: #999ea6">Hashmap</a> <a href="/tags/IO/" style="font-size: 1.1em; color: #999">IO</a> <a href="/tags/JVM/" style="font-size: 1.1em; color: #999">JVM</a> <a href="/tags/MAVEN%E9%A1%B9%E7%9B%AE/" style="font-size: 1.1em; color: #999">MAVEN项目</a> <a href="/tags/Mybatis/" style="font-size: 1.5em; color: #99a9bf">Mybatis</a> <a href="/tags/SSM/" style="font-size: 1.1em; color: #999">SSM</a> <a href="/tags/SpringMVC/" style="font-size: 1.23em; color: #999ea6">SpringMVC</a> <a href="/tags/TCP/" style="font-size: 1.23em; color: #999ea6">TCP</a> <a href="/tags/Typora/" style="font-size: 1.1em; color: #999">Typora</a> <a href="/tags/UDP/" style="font-size: 1.1em; color: #999">UDP</a> <a href="/tags/Vue/" style="font-size: 1.1em; color: #999">Vue</a> <a href="/tags/http%E5%8D%8F%E8%AE%AE/" style="font-size: 1.1em; color: #999">http协议</a> <a href="/tags/idea/" style="font-size: 1.1em; color: #999">idea</a> <a href="/tags/include/" style="font-size: 1.1em; color: #999">include</a> <a href="/tags/juc/" style="font-size: 1.1em; color: #999">juc</a> <a href="/tags/mysql/" style="font-size: 1.1em; color: #999">mysql</a> <a href="/tags/n2/" style="font-size: 1.1em; color: #999">n2</a> <a href="/tags/spring/" style="font-size: 1.37em; color: #99a4b2">spring</a> <a href="/tags/springMVC/" style="font-size: 1.1em; color: #999">springMVC</a> <a href="/tags/spring-boot/" style="font-size: 1.1em; color: #999">spring_boot</a> <a href="/tags/springboot/" style="font-size: 1.1em; color: #999">springboot</a> <a href="/tags/%E5%88%86%E9%A1%B5/" style="font-size: 1.23em; color: #999ea6">分页</a> <a href="/tags/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/" style="font-size: 1.1em; color: #999">反射机制</a> <a href="/tags/%E5%8F%98%E5%BD%A2/" style="font-size: 1.1em; color: #999">变形</a> <a href="/tags/%E5%AE%9E%E7%94%A8/" style="font-size: 1.1em; color: #999">实用</a> <a href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" style="font-size: 1.1em; color: #999">快捷键</a> <a href="/tags/%E6%97%A5%E8%AF%AD%E4%B8%AD%E7%BA%A7/" style="font-size: 1.1em; color: #999">日语中级</a> <a href="/tags/%E7%BA%BF%E7%A8%8B/" style="font-size: 1.1em; color: #999">线程</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 1.1em; color: #999">网络协议</a> <a href="/tags/%E9%85%8D%E7%BD%AE/" style="font-size: 1.1em; color: #999">配置</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>Archives</span><a class="card-more-btn" href="/archives/" title="More">
+    <i class="fas fa-angle-right"></i></a></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/05/"><span class="card-archive-list-date">May 2021</span><span class="card-archive-list-count">5</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/04/"><span class="card-archive-list-date">April 2021</span><span class="card-archive-list-count">4</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/08/"><span class="card-archive-list-date">August 2020</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/07/"><span class="card-archive-list-date">July 2020</span><span class="card-archive-list-count">6</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/06/"><span class="card-archive-list-date">June 2020</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/05/"><span class="card-archive-list-date">May 2020</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/04/"><span class="card-archive-list-date">April 2020</span><span class="card-archive-list-count">9</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/03/"><span class="card-archive-list-date">March 2020</span><span class="card-archive-list-count">8</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>Info</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">Article :</div><div class="item-count">41</div></div><div class="webinfo-item"><div class="item-name">UV :</div><div class="item-count" id="busuanzi_value_site_uv"></div></div><div class="webinfo-item"><div class="item-name">PV :</div><div class="item-count" id="busuanzi_value_site_pv"></div></div><div class="webinfo-item"><div class="item-name">Last Push :</div><div class="item-count" id="last-push-date" data-lastPushDate="2021-05-21T04:31:59.022Z"></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By null</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

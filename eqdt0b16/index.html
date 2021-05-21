@@ -1,147 +1,146 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-  <!-- 元数据 -->
-  <meta charset="utf-8">
-  <link rel="icon" href="images/favicon.PNG">
-  <title>JVM | Chen' Blog</title>
-  <meta name="author" content="" />
-  <meta http-equiv="Cache-Control" content="no-transform" />
-  <meta http-equiv="Cache-Control" content="no-siteapp" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="robots" content="index,follow" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-  <meta name="format-detection" content="telphone=no, email=no" />
-  
-    <meta name="keywords" content="JVM" />
-  
-  <meta name="description" content="JVM探究 谈谈对JVM的理解？java8虚拟机和之前的变化更新  什么是OOM，什么是栈溢出StackOverFlowError？怎么分析  JVM的常调参数有哪些？  内存快照如何抓取，怎么分析Dump文件  谈谈JVM中，类加载器   JVM的位置 JVM的体系结构 栈和程序计数器不会有垃圾回收，JVM调优调到是方法去和堆 JVM架构图（完整版）   类加载器 作用：加载Class文件  n">
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>JVM | Chen' Blog</title><meta name="keywords" content="JVM"><meta name="author"><meta name="copyright"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="JVM探究 谈谈对JVM的理解？java8虚拟机和之前的变化更新  什么是OOM，什么是栈溢出StackOverFlowError？怎么分析  JVM的常调参数有哪些？  内存快照如何抓取，怎么分析Dump文件  谈谈JVM中，类加载器   JVM的位置 JVM的体系结构 栈和程序计数器不会有垃圾回收，JVM调优调到是方法去和堆 JVM架构图（完整版）   类加载器 作用：加载Class文件  n">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JVM">
 <meta property="og:url" content="http://yoursite.com/eqdt0b16/index.html">
 <meta property="og:site_name" content="Chen&#39; Blog">
 <meta property="og:description" content="JVM探究 谈谈对JVM的理解？java8虚拟机和之前的变化更新  什么是OOM，什么是栈溢出StackOverFlowError？怎么分析  JVM的常调参数有哪些？  内存快照如何抓取，怎么分析Dump文件  谈谈JVM中，类加载器   JVM的位置 JVM的体系结构 栈和程序计数器不会有垃圾回收，JVM调优调到是方法去和堆 JVM架构图（完整版）   类加载器 作用：加载Class文件  n">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://yoursite.com/images/favicon.PNG">
+<meta property="og:image" content="http://yoursite.com/img/4.jpg">
 <meta property="article:published_time" content="2021-05-09T03:34:22.000Z">
 <meta property="article:modified_time" content="2021-05-12T05:39:27.699Z">
 <meta property="article:tag" content="JVM">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/images/favicon.PNG">
-<meta name="twitter:site" content="@null">
-  
-  <!-- 站点验证相关 -->
-  
-    
-    
-    
-  
-  <!-- 样式表文件 -->
-  <link rel="stylesheet" id="kratos-css" href="/css/kratosr.min.css" type="text/css" media="all">
-  
-    <link rel="stylesheet" id="highlight-css" href="/css/highlight.min.css" type="text/css" media="all">
-  
-  
-  <link rel="stylesheet" id="fontawe-css" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" type="text/css" media="all">
-  <link rel="stylesheet" id="nprogress-css" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" type="text/css" media="all">
-  
-  
-  
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
-  
-  
-    <link rel="stylesheet" id="darkmode-css" href="/css/kr-dark.min.css" type="text/css" media="all">
-  
-  <!-- 不得不预先加载的一些JS文件 -->
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
-  
-    <script src="https://cdn.jsdelivr.net/npm/qrcode_js@1.0.0/qrcode.min.js"></script>
-  
-<meta name="generator" content="Hexo 5.3.0"></head>
+<meta name="twitter:image" content="http://yoursite.com/img/4.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://yoursite.com/eqdt0b16/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'JVM',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-05-12 13:39:27'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
 
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
 
-    <body class="custom-background">
-        <div id="kratos-wrapper">
-    <div id="kratos-page">
-        <div id="kratos-header">
-            <div class="nav-toggle"><a class="kratos-nav-toggle js-kratos-nav-toggle"><i></i></a></div>
-            <header id="kratos-header-section">
-                <div class="container">
-                    <div class="nav-header">
-                        <div class="color-logo"><a href="/">Chen&#39; Blog</a></div>
-                        <nav id="kratos-menu-wrap">
-                            <ul id="kratos-primary-menu" class="sf-menu">
-                                
-                                    
-                                        <li><a href="/"><i class="fa fa-home"></i>首页</a></li>
-                                    
-                                
-                                    
-                                        <li><a href="/archives/"><i class="fa fa-file"></i>档案馆</a></li>
-                                    
-                                
-                                    
-                                        <li>
-                                            <a><i class="fa fa-link"></i>链接</a>
-                                            <ul class="sub-menu">
-                                                
-                                                    
-                                                
-                                            </ul>
-                                        </li>
-                                    
-                                
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-            </header>
-        </div>
-        <div class="kratos-start kratos-hero-2">
-            <!-- <div class="kratos-overlay"></div> -->
-            <div class="kratos-cover kratos-cover-2 text-center">
-                <div class="desc desc2 animate-box">
-                    <a href="/">
-                        <h2>Chen&#39; Blog</h2> <br />
-                        <span></span>
-                    </a>
-                </div>
-            </div>
-        </div>
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
 
-        <div id="kratos-blog-post">
-            <div class="container">
-                <div class="row">
-                    
-        <div id="main">
-            <section class="col-md-8">
-    <article>
-        <div class="kratos-hentry kratos-post-inner clearfix">
-            <header class="kratos-entry-header">
-                <h1 class="kratos-entry-title text-center">JVM</h1>
-                
-                <div class="kratos-post-meta text-center">
-                    <span>
-                        <i class="fa fa-calendar"></i> 2021-05-09
-                        <i class="fa fa-folder"></i> 分类 <a class="label-link" href="/categories/java/">java</a>
-                        <i class="fa fa-user"></i> 作者 
-                        <i class="fa fa-edit"></i> 
-                        
-                        
-                            ~14.79K
-                        
-                        字
-                        
-                    </span>
-                </div>
-            </header>
-            <div class="kratos-post-content">
-                <div id="expire-alert" class="alert alert-warning hidden" role="alert">
-                    本文最后编辑于 <time datetime="1620797967699"></time> 前，其中的内容可能需要更新。
-                </div>
-                
-                <hr />
-                <h1 id="JVM探究"><a href="#JVM探究" class="headerlink" title="JVM探究"></a>JVM探究</h1><ul>
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Chen' Blog" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/tou.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">41</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">31</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">20</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/4.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Chen' Blog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">JVM</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2021-05-09T03:34:22.000Z" title="Created 2021-05-09 11:34:22">2021-05-09</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2021-05-12T05:39:27.699Z" title="Updated 2021-05-12 13:39:27">2021-05-12</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/java/">java</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="JVM"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="JVM探究"><a href="#JVM探究" class="headerlink" title="JVM探究"></a>JVM探究</h1><ul>
 <li><p>谈谈对JVM的理解？java8虚拟机和之前的变化更新</p>
 </li>
 <li><p>什么是OOM，什么是栈溢出StackOverFlowError？怎么分析</p>
@@ -222,9 +221,11 @@
 <h2 id="新生区"><a href="#新生区" class="headerlink" title="新生区"></a>新生区</h2><h2 id="老年区"><a href="#老年区" class="headerlink" title="老年区"></a>老年区</h2><h2 id="永久区"><a href="#永久区" class="headerlink" title="永久区"></a>永久区</h2><p>这个区域常驻内存的。用来存放JDK自身携带的Class对象。Interface元数据，存储的是Java运行时的一些环境或类信息~<br>这个区域不存在垃圾回收！关闭VM虚拟就会释放这个区域的内存~<br>一个启动类，加载了大量的第三方jar包。Tomcat部署了太多的应用，大量动态生成的反射类。不断的被加载。直到内存满，就会出现OOM;</p>
 <p>jdk1.6之前︰永久代，常量池是在方法区;<br>jdk1.7：永久代，但是慢慢的退化了，去永久代，常量池在堆中<br>jdk1.8之后∶无永久代，常量池在元空间</p>
 <h2 id="堆内存调优"><a href="#堆内存调优" class="headerlink" title="堆内存调优"></a>堆内存调优</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//-Xms8m -Xmx8m -XX:+PrintGCDetails</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Hello</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">( String[ ] args)</span> i</span></span><br><span class="line"><span class="function">	string str </span>= <span class="string">&quot;stardust.java&quot;</span>;</span><br><span class="line">	<span class="keyword">while</span> (<span class="keyword">true</span>)&#123;</span><br><span class="line">	str += str + <span class="keyword">new</span> Random( ) .nextInt( bound: <span class="number">888888888</span>)+<span class="keyword">new</span> Random( ) .nextInt( bound: <span class="number">99999999</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
 <p><img src="/eqdt0b16/20210321163227898.png" alt="在这里插入图片描述"></p>
 <p>可以通过调整这个参数（Edit Configuration—&gt;VM options）控制Java虚拟机初始内存和分配的总内存的大小。</p>
 <figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&quot;C:\Program Files\Java\jdk1.8.0_171\bin\java.exe&quot; -Xms8m -Xmx8m -XX:+PrintGCDetails &quot;-javaagent:G:\IntelliJ IDEA 2020.3.2\lib\idea_rt.jar=1506:G:\IntelliJ IDEA 2020.3.2\bin&quot; -Dfile.encoding=UTF-8 -classpath &quot;C:\Program Files\Java\jdk1.8.0_171\jre\lib\charsets.jar;C:\Program Files\Java\jdk1.8.0_171\jre\lib\deploy.jar;C:\Program Files\Java\jdk1.8.0_171\jre\lib\ext\access-bridge-64.jar;C:\Program Files\Java\jdk1.8.0_171\jre\lib\ext\cldrdata.jar;C:\Program Files\Java\jdk1.8.0_171\jre\lib\ext\dnsns.jar;C:\Program Files\Java\jdk1.8.0_171\jre\lib\ext\jaccess.jar;C:\Program Files\Java\jdk1.8.0_171\jre\lib\ext\jfxrt.jar;C:\Program Files\Java\jdk1.8.0_171\jre\lib\ext\localedata.jar;C:\Program Files\Java\jdk1.8.0_171\jre\lib\ext\nashorn.jar;C:\Program Files\Java\jdk1.8.0_171\jre\lib\ext\sunec.jar;C:\Program Files\Java\jdk1.8.0_171\jre\lib\ext\sunjce_provider.jar;C:\Program Files\Java\jdk1.8.0_171\jre\lib\ext\sunmscapi.jar;C:\Program Files\Java\jdk1.8.0_171\jre\lib\ext\sunpkcs11.jar;C:\Program Files\Java\jdk1.8.0_171\jre\lib\ext\zipfs.jar;C:\Program Files\Java\jdk1.8.0_171\jre\lib\javaws.jar;C:\Program Files\Java\jdk1.8.0_171\jre\lib\jce.jar;C:\Program Files\Java\jdk1.8.0_171\jre\lib\jfr.jar;C:\Program Files\Java\jdk1.8.0_171\jre\lib\jfxswt.jar;C:\Program Files\Java\jdk1.8.0_171\jre\lib\jsse.jar;C:\Program Files\Java\jdk1.8.0_171\jre\lib\management-agent.jar;C:\Program Files\Java\jdk1.8.0_171\jre\lib\plugin.jar;C:\Program Files\Java\jdk1.8.0_171\jre\lib\resources.jar;C:\Program Files\Java\jdk1.8.0_171\jre\lib\rt.jar;F:\学习相关\java\JVM\Jvm_test\out\production\Jvm_test&quot; Hello</span><br><span class="line">[GC (Allocation Failure) [PSYoungGen: 1536K-&gt;504K(2048K)] 1536K-&gt;632K(7680K), 0.0048128 secs] [Times: user=0.03 sys=0.00, real=0.01 secs] </span><br><span class="line">[GC (Allocation Failure) [PSYoungGen: 1995K-&gt;509K(2048K)] 2123K-&gt;829K(7680K), 0.0031731 secs] [Times: user=0.00 sys=0.00, real=0.00 secs] </span><br><span class="line">[GC (Allocation Failure) [PSYoungGen: 1828K-&gt;408K(2048K)] 2148K-&gt;1432K(7680K), 0.0051865 secs] [Times: user=0.02 sys=0.00, real=0.00 secs] </span><br><span class="line">[GC (Allocation Failure) [PSYoungGen: 1845K-&gt;408K(2048K)] 2870K-&gt;2371K(7680K), 0.0015670 secs] [Times: user=0.00 sys=0.00, real=0.00 secs] </span><br><span class="line">[Full GC (Ergonomics) [PSYoungGen: 1369K-&gt;0K(2048K)] [ParOldGen: 4781K-&gt;2998K(5632K)] 6150K-&gt;2998K(7680K), [Metaspace: 3453K-&gt;3453K(1056768K)], 0.0147302 secs] [Times: user=0.00 sys=0.00, real=0.01 secs] </span><br><span class="line">[GC (Allocation Failure) [PSYoungGen: 995K-&gt;32K(2048K)] 4932K-&gt;4908K(7680K), 0.0018357 secs] [Times: user=0.00 sys=0.00, real=0.00 secs] </span><br><span class="line">[Full GC (Ergonomics) [PSYoungGen: 32K-&gt;0K(2048K)] [ParOldGen: 4876K-&gt;2528K(5632K)] 4908K-&gt;2528K(7680K), [Metaspace: 3453K-&gt;3453K(1056768K)], 0.0067840 secs] [Times: user=0.00 sys=0.00, real=0.01 secs] </span><br><span class="line">[GC (Allocation Failure) [PSYoungGen: 0K-&gt;0K(2048K)] 4406K-&gt;4406K(7680K), 0.0060533 secs] [Times: user=0.00 sys=0.00, real=0.01 secs] </span><br><span class="line">[Full GC (Ergonomics) [PSYoungGen: 0K-&gt;0K(2048K)] [ParOldGen: 4406K-&gt;3467K(5632K)] 4406K-&gt;3467K(7680K), [Metaspace: 3453K-&gt;3453K(1056768K)], 0.0078271 secs] [Times: user=0.00 sys=0.00, real=0.01 secs] </span><br><span class="line">[GC (Allocation Failure) [PSYoungGen: 0K-&gt;0K(2048K)] 3467K-&gt;3467K(7680K), 0.0004437 secs] [Times: user=0.00 sys=0.00, real=0.00 secs] </span><br><span class="line">[Full GC (Allocation Failure) [PSYoungGen: 0K-&gt;0K(2048K)] [ParOldGen: 3467K-&gt;3447K(5632K)] 3467K-&gt;3447K(7680K), [Metaspace: 3453K-&gt;3453K(1056768K)], 0.0068733 secs] [Times: user=0.02 sys=0.00, real=0.01 secs] </span><br><span class="line">Heap</span><br><span class="line"> PSYoungGen      total 2048K, used 42K [0x00000000ffd80000, 0x0000000100000000, 0x0000000100000000)</span><br><span class="line">  eden space 1536K, 2% used [0x00000000ffd80000,0x00000000ffd8ab98,0x00000000fff00000)</span><br><span class="line">  from space 512K, 0% used [0x00000000fff00000,0x00000000fff00000,0x00000000fff80000)</span><br><span class="line">  to   space 512K, 0% used [0x00000000fff80000,0x00000000fff80000,0x0000000100000000)</span><br><span class="line"> ParOldGen       total 5632K, used 3447K [0x00000000ff800000, 0x00000000ffd80000, 0x00000000ffd80000)</span><br><span class="line">  object space 5632K, 61% used [0x00000000ff800000,0x00000000ffb5ddb0,0x00000000ffd80000)</span><br><span class="line"> Metaspace       used 3485K, capacity 4496K, committed 4864K, reserved 1056768K</span><br><span class="line">  class space    used 379K, capacity 388K, committed 512K, reserved 1048576K</span><br><span class="line">Exception in thread &quot;main&quot; java.lang.OutOfMemoryError: Java heap space</span><br><span class="line">	at java.util.Arrays.copyOf(Arrays.java:3332)</span><br><span class="line">	at java.lang.AbstractStringBuilder.ensureCapacityInternal(AbstractStringBuilder.java:124)</span><br><span class="line">	at java.lang.AbstractStringBuilder.append(AbstractStringBuilder.java:674)</span><br><span class="line">	at java.lang.StringBuilder.append(StringBuilder.java:208)</span><br><span class="line">	at Hello.main(Hello.java:8)</span><br><span class="line"></span><br><span class="line">Process finished with exit code 1</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
 <p>默认情况下：</p>
 <blockquote>
 <p>分配的总内存是电脑内存的 1/4，而初始化的内存: 1/64</p>
@@ -248,7 +249,9 @@
 <li>MAT最早集成于Eclipse中，IDEA中可以使用Jprofiles插件，在Settings—&gt;Plugins中搜索Jprofiles，安装改插件即可使用</li>
 </ul>
 <h5 id="使用JPofiler工具分析OOM"><a href="#使用JPofiler工具分析OOM" class="headerlink" title="使用JPofiler工具分析OOM"></a>使用JPofiler工具分析OOM</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">在idea中下载 jprofile 插件</span><br><span class="line">百度搜索官网下载 jprofile 客户端 ，安装路径要求：没有中文没有空格</span><br><span class="line">安装破解完之后，在IDEA的Settings—&gt;Tools下找到 jprofiles，然后绑定安装目录bin下的.exe文件</span><br><span class="line">在idea中VM参数中写参数 -Xms1m -Xmx8m -XX:+HeapDumpOnOutOfMemoryError （假如堆内存heap出现了OOM则dump出这个异常）</span><br><span class="line">运行程序后在jprofile客户端中打开（dump出的文件应该在src目录下）找到错误 告诉哪个位置报错</span><br></pre></td></tr></table></figure>
+
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">命令参数详解</span><br><span class="line"></span><br><span class="line">-Xms设置初始化内存分配大小，默认1&#x2F;64</span><br><span class="line">-Xmx设置最大分配内存，默以1&#x2F;4</span><br><span class="line">-XX: +PrintGCDetails &#x2F;&#x2F; 打印GC垃圾回收信息</span><br><span class="line">-XX: +HeapDumpOnOutOfMemoryError &#x2F;&#x2F;OOM DUMP</span><br></pre></td></tr></table></figure>
+
 <p><img src="/eqdt0b16/2021032116565056.png" alt="在这里插入图片描述"></p>
 <h2 id="GC"><a href="#GC" class="headerlink" title="GC"></a>GC</h2><p>GC的作用区只要在方法区和堆</p>
 <p>JVM在进行GC时，大部分时候都是回收新生代</p>
@@ -400,9 +403,11 @@
 <h4 id="volatile一定能保证线程安全吗"><a href="#volatile一定能保证线程安全吗" class="headerlink" title="volatile一定能保证线程安全吗"></a>volatile一定能保证线程安全吗</h4><p>先说结论吧，volatile不能一定能保证线程安全。</p>
 <p>怎么证明呢，我们看下面一段代码的运行结果就知道了：</p>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * @author Ye Hongzhi 公众号：java技术爱好者</span><br><span class="line"> **/</span><br><span class="line">public class VolatileTest extends Thread &#123;</span><br><span class="line"></span><br><span class="line">    private static volatile int count = 0;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) throws Exception &#123;</span><br><span class="line">        Vector&lt;Thread&gt; threads = new Vector&lt;&gt;();</span><br><span class="line">        for (int i = 0; i &lt; 100; i++) &#123;</span><br><span class="line">            VolatileTest thread = new VolatileTest();</span><br><span class="line">            threads.add(thread);</span><br><span class="line">            thread.start();</span><br><span class="line">        &#125;</span><br><span class="line">        //等待子线程全部完成</span><br><span class="line">        for (Thread thread : threads) &#123;</span><br><span class="line">            thread.join();</span><br><span class="line">        &#125;</span><br><span class="line">        //输出结果，正确结果应该是1000，实际却是984</span><br><span class="line">        System.out.println(count);//984</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void run() &#123;</span><br><span class="line">        for (int i = 0; i &lt; 10; i++) &#123;</span><br><span class="line">            try &#123;</span><br><span class="line">                //休眠500毫秒</span><br><span class="line">                Thread.sleep(500);</span><br><span class="line">            &#125; catch (Exception e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">            count++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>为什么volatile不能保证线程安全？</p>
 <p>很简单呀，可见性不能保证操作的原子性，前面说过了count++不是原子性操作，会当做三步，先读取count的值，然后+1，最后赋值回去count变量。需要保证线程安全的话，需要使用synchronized关键字或者lock锁，给count++这段代码上锁：</p>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">private static synchronized void add() &#123;</span><br><span class="line">    count++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h4 id="禁止指令重排序"><a href="#禁止指令重排序" class="headerlink" title="禁止指令重排序"></a>禁止指令重排序</h4><p>首先要讲一下as-if-serial语义，不管怎么重排序，（单线程）程序的执行结果不能被改变。</p>
 <p>为了使指令更加符合CPU的执行特性，最大限度的发挥机器的性能，提高程序的执行效率，只要程序的最终结果与它顺序化情况的结果相等，那么指令的执行顺序可以与代码逻辑顺序不一致，这个过程就叫做<strong>指令的重排序</strong>。</p>
 <p>重排序的种类分为三种，分别是：编译器重排序，指令级并行的重排序，内存系统重排序。整个过程如下所示：</p>
@@ -416,6 +421,7 @@
 </ul>
 <p>下面举个例子：</p>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">private static int a;//非volatile修饰变量</span><br><span class="line">private static int b;//非volatile修饰变量</span><br><span class="line">private static volatile int k;//volatile修饰变量</span><br><span class="line"></span><br><span class="line">private void hello() &#123;</span><br><span class="line">    a = 1;  //语句1</span><br><span class="line">    b = 2;  //语句2</span><br><span class="line">    k = 3;  //语句3</span><br><span class="line">    a = 4;  //语句4</span><br><span class="line">    b = 5;  //语句5</span><br><span class="line">    //以下省略...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>变量a，b是非volatile修饰的变量，k则使用volatile修饰。所以语句3不能放在语句1、2前，也不能放在语句4、5后。但是语句1、2的顺序是不能保证的，同理，语句4、5也不能保证顺序。</p>
 <p>并且，执行到语句3的时候，语句1，2是肯定执行完毕的，而且语句1,2的执行结果对于语句3,4,5是可见的。</p>
 <h3 id="volatile禁止指令重排序的原理是什么"><a href="#volatile禁止指令重排序的原理是什么" class="headerlink" title="volatile禁止指令重排序的原理是什么"></a>volatile禁止指令重排序的原理是什么</h3><p>首先要讲一下内存屏障，内存屏障可以分为以下几类：</p>
@@ -429,361 +435,4 @@
 <p><img src="/eqdt0b16/v2-437ebf30028ea4364533da27460a3077_1440w.jpg" alt="img"></p>
 <p>在每个volatile写操作的前面插入一个StoreStore屏障，后面插入一个SotreLoad屏障。</p>
 <p><img src="/eqdt0b16/v2-52d9c8897b541c9e4e5a41be59b482ef_1440w.jpg" alt="img"></p>
-
-            </div>
-            
-                <div class="kratos-copyright text-center clearfix">
-                    <h5>本作品采用 <a rel="license nofollow" target="_blank" href="http://creativecommons.org/licenses/by-sa/4.0/">知识共享署名-相同方式共享 4.0 国际许可协议</a> 进行许可</h5>
-                </div>
-            
-            <footer class="kratos-entry-footer clearfix">
-                
-                    <div class="post-like-donate text-center clearfix" id="post-like-donate">
-                    
-                    
-                        <a class="share" href="javascript:;"><i class="fa fa-share-alt"></i> 分享</a>
-                        <div class="share-wrap" style="display: none;">
-    <div class="share-group">
-        <a href="javascript:;" class="share-plain qq" onclick="share('qq');" rel="nofollow">
-            <div class="icon-wrap">
-                <i class="fa fa-qq"></i>
-            </div>
-        </a>
-        <a href="javascript:;" class="share-plain qzone" onclick="share('qzone');" rel="nofollow">
-            <div class="icon-wrap">
-                <i class="fa fa-star"></i>
-            </div>
-        </a>
-        <a href="javascript:;" class="share-plain weixin pop style-plain" rel="nofollow">
-            <div class="icon-wrap">
-                <i class="fa fa-weixin"></i>
-            </div>
-            <div class="share-int">
-                <div class="qrcode" id="wechat-qr"></div>
-                <p>打开微信“扫一扫”，打开网页后点击屏幕右上角分享按钮</p>
-            </div>
-        </a>
-        <a href="javascript:;" class="share-plain weibo" onclick="share('weibo');" rel="nofollow">
-            <div class="icon-wrap">
-                <i class="fa fa-weibo"></i>
-            </div>
-        </a>
-        <a href="javascript:;" class="share-plain facebook style-plain" onclick="share('facebook');" rel="nofollow">
-            <div class="icon-wrap">
-                <i class="fa fa-facebook"></i>
-            </div>
-        </a>
-        <a href="javascript:;" class="share-plain twitter style-plain" onclick="share('twitter');" rel="nofollow">
-            <div class="icon-wrap">
-                <i class="fa fa-twitter"></i>
-            </div>
-        </a>
-    </div>
-    <script type="text/javascript">
-        $(()=>{
-            new QRCode("wechat-qr", {
-                text: "http://yoursite.com/eqdt0b16/",
-                width: 150,
-                height: 150,
-                correctLevel : QRCode.CorrectLevel.H
-            });
-        });
-        function share(dest) {
-            const qqBase        = "https://connect.qq.com/widget/shareqq/index.html?";
-            const weiboBase     = "https://service.weibo.com/share/share.php?";
-            const qzoneBase     = "https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?";
-            const facebookBase  = "https://www.facebook.com/sharer/sharer.php?";
-            const twitterBase   = "https://twitter.com/intent/tweet?";
-            const hostUrl       = "http://yoursite.com/eqdt0b16/";
-            const title         = "「JVM」";
-            const excerpt       = `JVM探究
-谈谈对JVM的理解？java8虚拟机和之前的变化更新
-
-什么是OOM，什么是栈溢出StackOverFlowError？怎么分析
-
-JVM的常调参数有哪些？
-
-内存快照如何抓取，怎么分析Dump文件
-
-谈谈JVM中，类加载...`;
-            let _URL;
-            switch (dest) {
-                case "qq"       : _URL = qqBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";     break;
-                case "weibo"    : _URL = weiboBase+"url="+hostUrl+"&title="+title+excerpt;                                 break;
-                case "qzone"    : _URL = qzoneBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";  break;
-                case "facebook" : _URL = facebookBase+"u="+hostUrl;                                                        break;
-                case "twitter"  : _URL = twitterBase+"text="+title+excerpt+"&url="+hostUrl;                                break;
-            }
-            window.open(_URL);
-        };
-    </script>
-</div>
-                    
-                    </div>
-                
-                <div class="footer-tag clearfix">
-                    <div class="pull-left">
-                    <i class="fa fa-tags"></i>
-                        <a class="tag-none-link" href="/tags/JVM/" rel="tag">JVM</a>
-                    </div>
-                    <div class="pull-date">
-                    <span>最后编辑：2021-05-12</span>
-                    </div>
-                </div>
-            </footer>
-        </div>
-        
-            <nav class="navigation post-navigation clearfix" role="navigation">
-                
-                <div class="nav-previous clearfix">
-                    <a title=" 多线程" href="/fe634c16/">&lt; 上一篇</a>
-                </div>
-                
-                
-                <div class="nav-next clearfix">
-                    <a title=" JUC" href="/aa55683f/">下一篇 &gt;</a>
-                </div>
-                
-            </nav>
-        
-        
-    </article>
-</section>
-        </div>
-                
-            <section id="kratos-widget-area" class="col-md-4 hidden-xs hidden-sm">
-                
-                    <aside id="krw-about" class="widget widget-kratos-about clearfix">
-    
-    <div class="photo-background"></div>
-    <div class="photo-wrapper clearfix">
-        <div class="photo-wrapper-tip text-center">
-            <img class="about-photo" src="/images/avatar.jpg" />
-        </div>
-    </div>
-    <div class="textwidget">
-        
-            <p class="text-center"></p>
-        
-    </div>
-</aside>
-                
-                    <!-- Moved to about.ejs -->
-                
-                    
-  <aside id="krw-categories" class="widget widget-categories clearfix">
-    <h4 class="widget-title"><i class="fa fa-folder"></i>分类目录</h4>
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/JAVA/">JAVA</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MOVEN/">MOVEN</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/MOVEN/%E7%8E%AF%E5%A2%83/">环境</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySql/">MySql</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SSM/">SSM</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Typora/">Typora</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Typora/%E5%BA%94%E7%94%A8/">应用</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Vue/">Vue</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/coding/">coding</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/http/">http</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/http/%E5%8D%8F%E8%AE%AE/">协议</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring-boot/">spring_boot</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/springboot/">springboot</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ssm%E6%A1%86%E6%9E%B6/">ssm框架</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8F%92%E4%BB%B6/">插件</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8F%92%E4%BB%B6/idea/">idea</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%A5%E8%AF%AD/">日语</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A6%BB%E6%95%A3%E7%BB%93%E6%9E%84/">离散结构</a><span class="category-list-count">2</span></li></ul>
-  </aside>
-
-
-                
-                    
-  <aside id="krw-tags" class="widget widget-kratos-tags clearfix">
-    <h4 class="widget-title"><i class="fa fa-tags"></i>标签聚合</h4>
-      <div class="tag-clouds">
-        <a href="/tags/GUI/" style="font-size: 0.7em;">GUI</a> <a href="/tags/Hashmap/" style="font-size: 0.7em;">Hashmap</a> <a href="/tags/IO/" style="font-size: 0.6em;">IO</a> <a href="/tags/JVM/" style="font-size: 0.6em;">JVM</a> <a href="/tags/MAVEN%E9%A1%B9%E7%9B%AE/" style="font-size: 0.6em;">MAVEN项目</a> <a href="/tags/Mybatis/" style="font-size: 0.8em;">Mybatis</a> <a href="/tags/SSM/" style="font-size: 0.6em;">SSM</a> <a href="/tags/SpringMVC/" style="font-size: 0.7em;">SpringMVC</a> <a href="/tags/TCP/" style="font-size: 0.7em;">TCP</a> <a href="/tags/Typora/" style="font-size: 0.6em;">Typora</a> <a href="/tags/UDP/" style="font-size: 0.6em;">UDP</a> <a href="/tags/Vue/" style="font-size: 0.6em;">Vue</a> <a href="/tags/http%E5%8D%8F%E8%AE%AE/" style="font-size: 0.6em;">http协议</a> <a href="/tags/idea/" style="font-size: 0.6em;">idea</a> <a href="/tags/include/" style="font-size: 0.6em;">include</a> <a href="/tags/juc/" style="font-size: 0.6em;">juc</a> <a href="/tags/mysql/" style="font-size: 0.6em;">mysql</a> <a href="/tags/n2/" style="font-size: 0.6em;">n2</a>
-      </div>
-  </aside>
-
-                
-                    
-  <aside id="krw-posts" class="widget widget-kratos-poststab">
-  <h4 class="widget-title"><i class="fa fa-file"></i>最新文章</h4>
-  <div class="tab-content">
-      <ul class="list-group">
-        
-        
-          
-          
-            <a class="list-group-item" href="/c24675b4/"><i class="fa  fa-book"></i> MySQL</a>
-            
-          
-        
-          
-          
-            <a class="list-group-item" href="/aa55683f/"><i class="fa  fa-book"></i> JUC</a>
-            
-          
-        
-          
-          
-            <a class="list-group-item" href="/eqdt0b16/"><i class="fa  fa-book"></i> JVM</a>
-            
-          
-        
-          
-          
-            <a class="list-group-item" href="/fe634c16/"><i class="fa  fa-book"></i> 多线程</a>
-            
-          
-        
-          
-          
-            <a class="list-group-item" href="/e1643b16/"><i class="fa  fa-book"></i> 网络编程(TCP/UDP)</a>
-            
-          
-        
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-      </ul>
-  </div>
-  </aside>
-
-                
-            </section>
-        
-        </div>
-    </div>
-</div>
-<footer>
-    <div id="footer">
-        <div class="kr-tool text-center">
-            <div class="tool">
-                
-                    <div class="box search-box">
-                        <a href="/search/">
-                            <span class="fa fa-search"></span>
-                        </a>
-                    </div>
-                
-                
-                    <div class="box theme-box" id="darkmode-switch">
-                        <span class="fa fa-adjust"></span>
-                    </div>
-                
-                
-            </div>
-            <div class="box gotop-box">
-                <span class="fa fa-chevron-up"></span>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 col-md-offset-3 footer-list text-center">
-                    <ul class="kratos-social-icons">
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                    </ul>
-                    <ul class="kratos-copyright">
-                        <div>
-                            <li>&copy; 2021 Chen' Blog 版权所有.</li>
-                            <li>本站已运行<span id="span_dt">Loading...</span></li>
-                        </div>
-                        <div>
-                            <li>Theme <a href="https://github.com/Candinya/Kratos-Rebirth" target="_blank">Kratos:Rebirth</a></li>
-                            <li>Made with&nbsp;<i class="fa fa-heart throb" style="color:#d43f57"></i>&nbsp;by <a href="https://candinya.com" target="_blank" rel="nofollow">Candinya</a>.</li>
-                        </div>
-                        <div>
-                            <li>Powered by <a href="https://hexo.io" target="_blank" rel="nofollow">Hexo</a></li>
-                            <li>Hosted on <a href="https://github.io" target="_blank">Github Pages</a></li>
-                        </div>
-                        <div>
-                            
-                            
-                        </div>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</footer>
-</div>
-</div>
-
-        <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.4/dist/js/bootstrap.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js"></script>
-<script>const notMobile = (!(navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)));</script>
-
-<script async src="/js/candy.min.js"></script>
-
-
-    <script defer src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
-
-<script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script>
-<script defer src="/js/kratosr.min.js"></script>
-<script defer src="/js/pjax.min.js"></script>
-
-
-    <script defer src="/js/kr-dark.min.js"></script>
-
-
-    </body>
-</html>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined"></a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://yoursite.com/eqdt0b16/">http://yoursite.com/eqdt0b16/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/JVM/">JVM</a></div><div class="post_share"><div class="social-share" data-image="/img/4.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/aa55683f/"><img class="prev-cover" src="/img/1.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">JUC</div></div></a></div><div class="next-post pull-right"><a href="/fe634c16/"><img class="next-cover" src="/img/10.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">多线程</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="/img/tou.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name"></div><div class="author-info__description"></div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">41</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">31</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">20</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#JVM%E6%8E%A2%E7%A9%B6"><span class="toc-number">1.</span> <span class="toc-text">JVM探究</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#JVM%E7%9A%84%E4%BD%8D%E7%BD%AE"><span class="toc-number">1.1.</span> <span class="toc-text">JVM的位置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JVM%E7%9A%84%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84"><span class="toc-number">1.2.</span> <span class="toc-text">JVM的体系结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8"><span class="toc-number">1.3.</span> <span class="toc-text">类加载器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%8C%E4%BA%B2%E5%A7%94%E6%B4%BE%E6%9C%BA%E5%88%B6"><span class="toc-number">1.4.</span> <span class="toc-text">双亲委派机制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B2%99%E7%9B%92%E5%AE%89%E5%85%A8%E6%9C%BA%E5%88%B6"><span class="toc-number">1.5.</span> <span class="toc-text">沙盒安全机制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%84%E6%88%90%E6%B2%99%E7%AE%B1%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%BB%84%E4%BB%B6"><span class="toc-number">1.5.1.</span> <span class="toc-text">组成沙箱的基本组件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Native"><span class="toc-number">1.6.</span> <span class="toc-text">Native</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PC%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-number">1.7.</span> <span class="toc-text">PC寄存器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E5%8C%BA"><span class="toc-number">1.8.</span> <span class="toc-text">方法区</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%88"><span class="toc-number">1.9.</span> <span class="toc-text">栈</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E7%A7%8DJVM"><span class="toc-number">1.10.</span> <span class="toc-text">三种JVM</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A0%86"><span class="toc-number">1.11.</span> <span class="toc-text">堆</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B0%E7%94%9F%E5%8C%BA"><span class="toc-number">1.12.</span> <span class="toc-text">新生区</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%80%81%E5%B9%B4%E5%8C%BA"><span class="toc-number">1.13.</span> <span class="toc-text">老年区</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B0%B8%E4%B9%85%E5%8C%BA"><span class="toc-number">1.14.</span> <span class="toc-text">永久区</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A0%86%E5%86%85%E5%AD%98%E8%B0%83%E4%BC%98"><span class="toc-number">1.15.</span> <span class="toc-text">堆内存调优</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8JPofiler%E5%B7%A5%E5%85%B7%E5%88%86%E6%9E%90OOM"><span class="toc-number">1.15.0.0.1.</span> <span class="toc-text">使用JPofiler工具分析OOM</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GC"><span class="toc-number">1.16.</span> <span class="toc-text">GC</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95"><span class="toc-number">1.16.1.</span> <span class="toc-text">常用算法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%8D%E5%88%B6%E7%AE%97%E6%B3%95-%E5%B9%B4%E8%BD%BB%E4%BB%A3%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">1.16.1.1.</span> <span class="toc-text">复制算法(年轻代的使用)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%87%E8%AE%B0%E6%B8%85%E9%99%A4%E7%AE%97%E6%B3%95-Mark-Sweep"><span class="toc-number">1.16.1.2.</span> <span class="toc-text">标记清除算法(Mark-Sweep)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%87%E8%AE%B0%E6%95%B4%E7%90%86-%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95-Mar-Compact"><span class="toc-number">1.16.1.3.</span> <span class="toc-text">标记整理&#x2F;压缩算法(Mar-Compact)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%8D%E5%88%B6%EF%BC%8C%E6%A0%87%E8%AE%B0%E6%B8%85%E9%99%A4%EF%BC%8C%E6%A0%87%E8%AE%B0%E6%95%B4%E7%90%86-%E5%8E%8B%E7%BC%A9%E7%9A%84%E6%AF%94%E8%BE%83"><span class="toc-number">1.16.1.4.</span> <span class="toc-text">复制，标记清除，标记整理&#x2F;压缩的比较</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%87%E8%AE%B0%E6%B8%85%E9%99%A4%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95"><span class="toc-number">1.16.1.5.</span> <span class="toc-text">标记清除压缩算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E4%BB%A3%E6%94%B6%E9%9B%86%E7%AE%97%E6%B3%95"><span class="toc-number">1.16.1.6.</span> <span class="toc-text">分代收集算法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JMM"><span class="toc-number">1.17.</span> <span class="toc-text">JMM</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#JMM%EF%BC%9A"><span class="toc-number">1.17.1.</span> <span class="toc-text">JMM：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JMM%E5%AE%9A%E4%B9%89%E4%BA%86%E4%BB%80%E4%B9%88"><span class="toc-number">1.17.2.</span> <span class="toc-text">JMM定义了什么</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8E%9F%E5%AD%90%E6%80%A7"><span class="toc-number">1.17.2.1.</span> <span class="toc-text">原子性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%AF%E8%A7%81%E6%80%A7"><span class="toc-number">1.17.2.2.</span> <span class="toc-text">可见性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%89%E5%BA%8F%E6%80%A7"><span class="toc-number">1.17.2.3.</span> <span class="toc-text">有序性</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%AB%E7%A7%8D%E5%86%85%E5%AD%98%E4%BA%A4%E4%BA%92%E6%93%8D%E4%BD%9C"><span class="toc-number">1.17.3.</span> <span class="toc-text">八种内存交互操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Volatile%E5%85%B3%E9%94%AE%E5%AD%97"><span class="toc-number">1.17.4.</span> <span class="toc-text">Volatile关键字</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8F%AF%E8%A7%81%E6%80%A7-1"><span class="toc-number">1.17.4.0.1.</span> <span class="toc-text">可见性</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#volatile%E4%B8%80%E5%AE%9A%E8%83%BD%E4%BF%9D%E8%AF%81%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E5%90%97"><span class="toc-number">1.17.4.1.</span> <span class="toc-text">volatile一定能保证线程安全吗</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A6%81%E6%AD%A2%E6%8C%87%E4%BB%A4%E9%87%8D%E6%8E%92%E5%BA%8F"><span class="toc-number">1.17.4.2.</span> <span class="toc-text">禁止指令重排序</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#volatile%E7%A6%81%E6%AD%A2%E6%8C%87%E4%BB%A4%E9%87%8D%E6%8E%92%E5%BA%8F%E7%9A%84%E5%8E%9F%E7%90%86%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">1.17.5.</span> <span class="toc-text">volatile禁止指令重排序的原理是什么</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/c24675b4/" title="MySQL"><img src="/img/8.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="MySQL"/></a><div class="content"><a class="title" href="/c24675b4/" title="MySQL">MySQL</a><time datetime="2021-05-16T04:20:43.000Z" title="Created 2021-05-16 12:20:43">2021-05-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/aa55683f/" title="JUC"><img src="/img/1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="JUC"/></a><div class="content"><a class="title" href="/aa55683f/" title="JUC">JUC</a><time datetime="2021-05-11T05:31:44.000Z" title="Created 2021-05-11 13:31:44">2021-05-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/eqdt0b16/" title="JVM"><img src="/img/4.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="JVM"/></a><div class="content"><a class="title" href="/eqdt0b16/" title="JVM">JVM</a><time datetime="2021-05-09T03:34:22.000Z" title="Created 2021-05-09 11:34:22">2021-05-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/fe634c16/" title="多线程"><img src="/img/10.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="多线程"/></a><div class="content"><a class="title" href="/fe634c16/" title="多线程">多线程</a><time datetime="2021-05-02T03:34:22.000Z" title="Created 2021-05-02 11:34:22">2021-05-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/e1643b16/" title="网络编程(TCP/UDP)"><img src="/img/1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="网络编程(TCP/UDP)"/></a><div class="content"><a class="title" href="/e1643b16/" title="网络编程(TCP/UDP)">网络编程(TCP/UDP)</a><time datetime="2021-05-01T10:34:22.000Z" title="Created 2021-05-01 18:34:22">2021-05-01</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By null</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

@@ -1,344 +1,195 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-  <!-- 元数据 -->
-  <meta charset="utf-8">
-  <link rel="icon" href="images/favicon.PNG">
-  <title>Chen' Blog</title>
-  <meta name="author" content="" />
-  <meta http-equiv="Cache-Control" content="no-transform" />
-  <meta http-equiv="Cache-Control" content="no-siteapp" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="robots" content="index,follow" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-  <meta name="format-detection" content="telphone=no, email=no" />
-  
-    <meta name="keywords" content="" />
-  
-  <meta property="og:type" content="website">
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Chen' Blog</title><meta name="author"><meta name="copyright"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta property="og:type" content="website">
 <meta property="og:title" content="Chen&#39; Blog">
 <meta property="og:url" content="http://yoursite.com/page/2/index.html">
 <meta property="og:site_name" content="Chen&#39; Blog">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://yoursite.com/images/favicon.PNG">
+<meta property="og:image" content="http://yoursite.com/img/tou.png">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/images/favicon.PNG">
-<meta name="twitter:site" content="@null">
-  
-  <!-- 站点验证相关 -->
-  
-    
-    
-    
-  
-  <!-- 样式表文件 -->
-  <link rel="stylesheet" id="kratos-css" href="/css/kratosr.min.css" type="text/css" media="all">
-  
-    <link rel="stylesheet" id="highlight-css" href="/css/highlight.min.css" type="text/css" media="all">
-  
-  
-  <link rel="stylesheet" id="fontawe-css" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" type="text/css" media="all">
-  <link rel="stylesheet" id="nprogress-css" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" type="text/css" media="all">
-  
-  
-  
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
-  
-  
-    <link rel="stylesheet" id="darkmode-css" href="/css/kr-dark.min.css" type="text/css" media="all">
-  
-  <!-- 不得不预先加载的一些JS文件 -->
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
-  
-    <script src="https://cdn.jsdelivr.net/npm/qrcode_js@1.0.0/qrcode.min.js"></script>
-  
-<meta name="generator" content="Hexo 5.3.0"></head>
+<meta name="twitter:image" content="http://yoursite.com/img/tou.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://yoursite.com/page/2/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Chen\' Blog',
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2021-05-21 12:31:59'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
 
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
 
-    <body class="custom-background">
-        <div id="kratos-wrapper">
-    <div id="kratos-page">
-        <div id="kratos-header">
-            <div class="nav-toggle"><a class="kratos-nav-toggle js-kratos-nav-toggle"><i></i></a></div>
-            <header id="kratos-header-section">
-                <div class="container">
-                    <div class="nav-header">
-                        <div class="color-logo"><a href="/">Chen&#39; Blog</a></div>
-                        <nav id="kratos-menu-wrap">
-                            <ul id="kratos-primary-menu" class="sf-menu">
-                                
-                                    
-                                        <li><a href="/"><i class="fa fa-home"></i>首页</a></li>
-                                    
-                                
-                                    
-                                        <li><a href="/archives/"><i class="fa fa-file"></i>档案馆</a></li>
-                                    
-                                
-                                    
-                                        <li>
-                                            <a><i class="fa fa-link"></i>链接</a>
-                                            <ul class="sub-menu">
-                                                
-                                                    
-                                                
-                                            </ul>
-                                        </li>
-                                    
-                                
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-            </header>
-        </div>
-        <div class="kratos-start kratos-hero-2">
-            <!-- <div class="kratos-overlay"></div> -->
-            <div class="kratos-cover kratos-cover-2 text-center">
-                <div class="desc desc2 animate-box">
-                    <a href="/">
-                        <h2>Chen&#39; Blog</h2> <br />
-                        <span></span>
-                    </a>
-                </div>
-            </div>
-        </div>
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
 
-        <div id="kratos-blog-post">
-            <div class="container">
-                <div class="row">
-                    
-        <div id="main">
-            
-        <section class="col-md-8">
-            
-                
-                    <article class="kratos-hentry clearfix">
-                        <div class="kratos-entry-border-new clearfix">
-                            
-                            <div class="kratos-entry-thumb-new">
-                                <a href="/c0add594/">
-                                    
-                                        <img class="kratos-entry-thumb-new-img">
-                                    
-                                </a>
-                            </div>
-                            <div class="kratos-post-inner-new">
-                                <header class="kratos-entry-header-new">
-                                        <a class="label-link" href="/categories/Vue/">Vue</a>
-                                    <h2 class="kratos-entry-title-new"><a href="/c0add594/">vue</a>
-                                </header>
-                                <div class="kratos-entry-content-new">
-                                    <p>
-                                        
-                                            Vue简介Vue (读音 /vjuː/，类似于 view) 是一套用于构建用户界面的渐进式框架。与其它大型框架不同的是，Vue 被设计为可以自底向上逐层应用。Vue 的核心库只关注视图层，不仅易于上手，还便于与第三方库或既有项目整合。...
-                                        
-                                    </p>
-                                </div>
-                            </div>
-                            <footer class="kratos-post-meta-new">
-                                <span class="pull-left">
-                                    <a><i class="fa fa-calendar"></i></a><a>2020-08-05</a>
-                                    <a><i class="fa fa-tags"></i></a>
-                                    <a class="tag-none-link" href="/tags/Vue/" rel="tag">Vue</a>
-                                </span>
-                                <span class="pull-right">
-                                    <a class="read-more" href="/c0add594/" title="阅读全文">阅读全文<i class="fa fa-chevron-circle-right"></i></a>
-                                </span>
-                            </footer>
-                        </div>
-                    </article>
-                
-            
-                
-                    <article class="kratos-hentry clearfix">
-                        <div class="kratos-entry-border-new clearfix">
-                            
-                            <div class="kratos-entry-thumb-new">
-                                <a href="/f462425/">
-                                    
-                                        <img class="kratos-entry-thumb-new-img">
-                                    
-                                </a>
-                            </div>
-                            <div class="kratos-post-inner-new">
-                                <header class="kratos-entry-header-new">
-                                        <a class="label-link" href="/categories/springboot/">springboot</a>
-                                    <h2 class="kratos-entry-title-new"><a href="/f462425/">spring boot整合相关资源</a>
-                                </header>
-                                <div class="kratos-entry-content-new">
-                                    <p>
-                                        
-                                            Spring Boot整合-SpringMVC端口和静态资源目标：可以修改tomcat的端口和访问项目中的静态资源
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Chen' Blog" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/tou.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">41</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">31</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">20</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url('/img/11.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Chen' Blog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">Chen' Blog</h1></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="post_cover left_radius"><a href="/c0add594/" title="vue">     <img class="post_bg" src="https://gitee.com/moon-road/image/raw/master/img/5f1fe99b8242b.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="vue"></a></div><div class="recent-post-info"><a class="article-title" href="/c0add594/" title="vue">vue</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2020-08-05T12:58:54.000Z" title="Created 2020-08-05 20:58:54">2020-08-05</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Vue/">Vue</a></span></div><div class="content">Vue简介Vue (读音 /vjuː/，类似于 view) 是一套用于构建用户界面的渐进式框架。与其它大型框架不同的是，Vue 被设计为可以自底向上逐层应用。Vue 的核心库只关注视图层，不仅易于上手，还便于与第三方库或既有项目整合。另一方面，当与现代化的工具链以及各种支持类库结合使用时，Vue 也完全能够为复杂的单页应用提供驱动。
+官网：https://cn.vuejs.org/
+参考：https://cn.vuejs.org/v2/guide/
+Git地址：https://github.com/vuejs
+快速入门创建工程创建一个新的工程；选择静态Static Web类型工程：
+安装vue下载安装下载地址：https://github.com/vuejs/vue
+可以下载2.6.10版本https://github.com/vuejs/vue/archive/v2.6.10.zip 
+下载解压，在 dist 可得到vue.js文件。
+使用CDN12345&lt;!-- 开发环境版本，包含了用帮助的命令行警告 --&gt;&lt;script src=&quot;https://cd ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/f462425/" title="spring boot整合相关资源">     <img class="post_bg" src="https://gitee.com/moon-road/image/raw/master/img/20150603140744_jGNAk.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="spring boot整合相关资源"></a></div><div class="recent-post-info"><a class="article-title" href="/f462425/" title="spring boot整合相关资源">spring boot整合相关资源</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2020-07-25T14:48:41.000Z" title="Created 2020-07-25 22:48:41">2020-07-25</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/springboot/">springboot</a></span></div><div class="content">Spring Boot整合-SpringMVC端口和静态资源目标：可以修改tomcat的端口和访问项目中的静态资源
 
 修改端口
  123#tomcat端口server:  port: 80
+
 静态资源存放目录
  
- 在这些目录下的静态资...
-                                        
-                                    </p>
-                                </div>
-                            </div>
-                            <footer class="kratos-post-meta-new">
-                                <span class="pull-left">
-                                    <a><i class="fa fa-calendar"></i></a><a>2020-07-25</a>
-                                    <a><i class="fa fa-tags"></i></a>
-                                    <a class="tag-none-link" href="/tags/springboot/" rel="tag">springboot</a>
-                                </span>
-                                <span class="pull-right">
-                                    <a class="read-more" href="/f462425/" title="阅读全文">阅读全文<i class="fa fa-chevron-circle-right"></i></a>
-                                </span>
-                            </footer>
-                        </div>
-                    </article>
-                
-            
-                
-                    <article class="kratos-hentry clearfix">
-                        <div class="kratos-entry-border-new clearfix">
-                            
-                            <div class="kratos-entry-thumb-new">
-                                <a href="/bb66162f/">
-                                    
-                                        <img class="kratos-entry-thumb-new-img">
-                                    
-                                </a>
-                            </div>
-                            <div class="kratos-post-inner-new">
-                                <header class="kratos-entry-header-new">
-                                        <a class="label-link" href="/categories/spring-boot/">spring_boot</a>
-                                    <h2 class="kratos-entry-title-new"><a href="/bb66162f/">springboot创建</a>
-                                </header>
-                                <div class="kratos-entry-content-new">
-                                    <p>
-                                        
-                                            spring boot入门创建maven项目并添加spring boot依赖pom.xml
-123456789101112&lt;parent&gt;  &lt;groupId&gt;org.springframework.boot&...
-                                        
-                                    </p>
-                                </div>
-                            </div>
-                            <footer class="kratos-post-meta-new">
-                                <span class="pull-left">
-                                    <a><i class="fa fa-calendar"></i></a><a>2020-07-25</a>
-                                    <a><i class="fa fa-tags"></i></a>
-                                    <a class="tag-none-link" href="/tags/spring-boot/" rel="tag">spring_boot</a>
-                                </span>
-                                <span class="pull-right">
-                                    <a class="read-more" href="/bb66162f/" title="阅读全文">阅读全文<i class="fa fa-chevron-circle-right"></i></a>
-                                </span>
-                            </footer>
-                        </div>
-                    </article>
-                
-            
-                
-                    <article class="kratos-hentry clearfix">
-                        <div class="kratos-entry-border-new clearfix">
-                            
-                            <div class="kratos-entry-thumb-new">
-                                <a href="/5640449e/">
-                                    
-                                        <img class="kratos-entry-thumb-new-img">
-                                    
-                                </a>
-                            </div>
-                            <div class="kratos-post-inner-new">
-                                <header class="kratos-entry-header-new">
-                                        <a class="label-link" href="/categories/SSM/">SSM</a>
-                                    <h2 class="kratos-entry-title-new"><a href="/5640449e/">基于maven构建SSM工程案例</a>
-                                </header>
-                                <div class="kratos-entry-content-new">
-                                    <p>
-                                        
-                                            需求描述本案例基于maven构建 SSM（Spring+SpringMVC+Mybatis）工程，通过maven坐标进行依赖管理。最终实现根据 id 查询商品信息的功能。
+ 在这些目录下的静态资源可以直接访问
+
+
+Spring Boot整合-SpringMVC拦截器目标：在Spring Boot项目中配置自定义SpringMVC拦截器
+步骤：
+
+编写拦截器（实现HandlerInterceptor）；
+ 12345678910111213141516171819@Slf4jpublic class MyInterceptor implements HandlerInterceptor &#123;    @Override    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception &#123;        log.debug(&quot;这是MyIntercepto ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/bb66162f/" title="springboot创建">     <img class="post_bg" src="https://gitee.com/moon-road/image/raw/master/img/01003.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="springboot创建"></a></div><div class="recent-post-info"><a class="article-title" href="/bb66162f/" title="springboot创建">springboot创建</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2020-07-25T12:46:06.000Z" title="Created 2020-07-25 20:46:06">2020-07-25</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/spring-boot/">spring_boot</a></span></div><div class="content">spring boot入门创建maven项目并添加spring boot依赖pom.xml
+123456789101112&lt;parent&gt;  &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;  &lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;  &lt;version&gt;2.1.7.RELEASE&lt;/version&gt;&lt;/parent&gt;    &lt;dependencies&gt;    &lt;dependency&gt;    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;    &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;  &lt;/dependency&gt;&lt;dependencies&gt;
+
+创建启动类 Application.java1234567@ ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/5640449e/" title="基于maven构建SSM工程案例">     <img class="post_bg" src="https://gitee.com/moon-road/image/raw/master/img/20180920225024_oawft.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="基于maven构建SSM工程案例"></a></div><div class="recent-post-info"><a class="article-title" href="/5640449e/" title="基于maven构建SSM工程案例">基于maven构建SSM工程案例</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2020-07-15T10:02:10.000Z" title="Created 2020-07-15 18:02:10">2020-07-15</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/SSM/">SSM</a></span></div><div class="content">需求描述本案例基于maven构建 SSM（Spring+SpringMVC+Mybatis）工程，通过maven坐标进行依赖管理。最终实现根据 id 查询商品信息的功能。
 步骤：
 
 创建数据库ssmtest
 
 创建商品表item
 
-创...
-                                        
-                                    </p>
-                                </div>
-                            </div>
-                            <footer class="kratos-post-meta-new">
-                                <span class="pull-left">
-                                    <a><i class="fa fa-calendar"></i></a><a>2020-07-15</a>
-                                    <a><i class="fa fa-tags"></i></a>
-                                    <a class="tag-none-link" href="/tags/SSM/" rel="tag">SSM</a>
-                                </span>
-                                <span class="pull-right">
-                                    <a class="read-more" href="/5640449e/" title="阅读全文">阅读全文<i class="fa fa-chevron-circle-right"></i></a>
-                                </span>
-                            </footer>
-                        </div>
-                    </article>
-                
-            
-                
-                    <article class="kratos-hentry clearfix">
-                        <div class="kratos-entry-border-new clearfix">
-                            
-                            <div class="kratos-entry-thumb-new">
-                                <a href="/cd5c54ba/">
-                                    
-                                        <img class="kratos-entry-thumb-new-img">
-                                    
-                                </a>
-                            </div>
-                            <div class="kratos-post-inner-new">
-                                <header class="kratos-entry-header-new">
-                                        <a class="label-link" href="/categories/SSM/">SSM</a>
-                                    <h2 class="kratos-entry-title-new"><a href="/cd5c54ba/">SpringMVC_03</a>
-                                </header>
-                                <div class="kratos-entry-content-new">
-                                    <p>
-                                        
-                                            SpringMVC 文件上传文件上传-客户端表单实现文件上传客户端表单需要满足：
+创建maven web项目
+
+配置pom.xml文件
+
+编写Mybatis相关
+
+编写Spring相关
+
+整合Spring和Mybatis
+
+添加SpringMVC
+
+添加JSP页面
+
+
+数据库环境搭建
+12345678CREATE TABLE `item` (  `id` int(11) NOT NULL auto_increment,  `name` varchar(255) default NULL,  `price` float default NULL,  `createtime` datetime default NULL,  `detail` varchar(255) default NULL,  PRIMARY KEY  (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8
+
+maven项目构建创建POJO类1 ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/cd5c54ba/" title="SpringMVC_03">     <img class="post_bg" src="https://gitee.com/moon-road/image/raw/master/img/abed76094b36acafd47fb32f71d98d1000e99c4c.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="SpringMVC_03"></a></div><div class="recent-post-info"><a class="article-title" href="/cd5c54ba/" title="SpringMVC_03">SpringMVC_03</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2020-07-08T09:06:01.000Z" title="Created 2020-07-08 17:06:01">2020-07-08</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/SSM/">SSM</a></span></div><div class="content">SpringMVC 文件上传文件上传-客户端表单实现文件上传客户端表单需要满足：
 表单项type=“file”
 表单的提交方式是post  
-表单的enctype属性是多部分表单形式，及enctype=“multipart/form-...
-                                        
-                                    </p>
-                                </div>
-                            </div>
-                            <footer class="kratos-post-meta-new">
-                                <span class="pull-left">
-                                    <a><i class="fa fa-calendar"></i></a><a>2020-07-08</a>
-                                    <a><i class="fa fa-tags"></i></a>
-                                    <a class="tag-none-link" href="/tags/SpringMVC/" rel="tag">SpringMVC</a>
-                                </span>
-                                <span class="pull-right">
-                                    <a class="read-more" href="/cd5c54ba/" title="阅读全文">阅读全文<i class="fa fa-chevron-circle-right"></i></a>
-                                </span>
-                            </footer>
-                        </div>
-                    </article>
-                
-            
-                
-                    <article class="kratos-hentry clearfix">
-                        <div class="kratos-entry-border-new clearfix">
-                            
-                            <div class="kratos-entry-thumb-new">
-                                <a href="/b5a86d78/">
-                                    
-                                        <img class="kratos-entry-thumb-new-img">
-                                    
-                                </a>
-                            </div>
-                            <div class="kratos-post-inner-new">
-                                <header class="kratos-entry-header-new">
-                                        <a class="label-link" href="/categories/SSM/">SSM</a>
-                                    <h2 class="kratos-entry-title-new"><a href="/b5a86d78/">SpringMVC_02（请求和响应）</a>
-                                </header>
-                                <div class="kratos-entry-content-new">
-                                    <p>
-                                        
-                                            SpringMVC的数据响应数据响应方式
+表单的enctype属性是多部分表单形式，及enctype=“multipart/form-data”
+12345&lt;form action=&quot;$&#123;pageContext.request.contextPath&#125;/user/quick22&quot; method=&quot;post&quot; enctype=&quot;multipart/form-data&quot;&gt;        名称&lt;input type=&quot;text&quot; name=&quot;username&quot;&gt;&lt;br/&gt;        文件1&lt;input type=&quot;file&quot; name=&quot;uploadFile&quot;&gt;&lt;br/&gt;        &lt;input type=&quot;submit&quot; value=&quo ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/b5a86d78/" title="SpringMVC_02（请求和响应）">     <img class="post_bg" src="https://gitee.com/moon-road/image/raw/master/img/5ed5eccc8928c.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="SpringMVC_02（请求和响应）"></a></div><div class="recent-post-info"><a class="article-title" href="/b5a86d78/" title="SpringMVC_02（请求和响应）">SpringMVC_02（请求和响应）</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2020-07-06T12:19:02.000Z" title="Created 2020-07-06 20:19:02">2020-07-06</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/SSM/">SSM</a></span></div><div class="content">SpringMVC的数据响应数据响应方式
 页面跳转
  ①直接返回字符串
  ②通过ModelAndView对象返回
@@ -349,423 +200,31 @@
 
 
 页面跳转-返回字符串形式
-###返回ModelAndV...
-                                        
-                                    </p>
-                                </div>
-                            </div>
-                            <footer class="kratos-post-meta-new">
-                                <span class="pull-left">
-                                    <a><i class="fa fa-calendar"></i></a><a>2020-07-06</a>
-                                    <a><i class="fa fa-tags"></i></a>
-                                    <a class="tag-none-link" href="/tags/SpringMVC/" rel="tag">SpringMVC</a>
-                                </span>
-                                <span class="pull-right">
-                                    <a class="read-more" href="/b5a86d78/" title="阅读全文">阅读全文<i class="fa fa-chevron-circle-right"></i></a>
-                                </span>
-                            </footer>
-                        </div>
-                    </article>
-                
-            
-                
-                    <article class="kratos-hentry clearfix">
-                        <div class="kratos-entry-border-new clearfix">
-                            
-                            <div class="kratos-entry-thumb-new">
-                                <a href="/7c6c1a22/">
-                                    
-                                        <img class="kratos-entry-thumb-new-img">
-                                    
-                                </a>
-                            </div>
-                            <div class="kratos-post-inner-new">
-                                <header class="kratos-entry-header-new">
-                                        <a class="label-link" href="/categories/ssm%E6%A1%86%E6%9E%B6/">ssm框架</a>
-                                    <h2 class="kratos-entry-title-new"><a href="/7c6c1a22/">SpringMVC_01(环境)</a>
-                                </header>
-                                <div class="kratos-entry-content-new">
-                                    <p>
-                                        
-                                            Spring集成WebApplicationContext应用上下文获取方式应用上下文对象是通过new ClasspathXmlApplicationContext(spring配置文件) 方式获取的，但是每次从容器中获得Bean时都...
-                                        
-                                    </p>
-                                </div>
-                            </div>
-                            <footer class="kratos-post-meta-new">
-                                <span class="pull-left">
-                                    <a><i class="fa fa-calendar"></i></a><a>2020-07-04</a>
-                                    <a><i class="fa fa-tags"></i></a>
-                                    <a class="tag-none-link" href="/tags/springMVC/" rel="tag">springMVC</a>
-                                </span>
-                                <span class="pull-right">
-                                    <a class="read-more" href="/7c6c1a22/" title="阅读全文">阅读全文<i class="fa fa-chevron-circle-right"></i></a>
-                                </span>
-                            </footer>
-                        </div>
-                    </article>
-                
-            
-                
-                    <article class="kratos-hentry clearfix">
-                        <div class="kratos-entry-border-new clearfix">
-                            
-                            <div class="kratos-entry-thumb-new">
-                                <a href="/de8sdgf1/">
-                                    
-                                        <img class="kratos-entry-thumb-new-img">
-                                    
-                                </a>
-                            </div>
-                            <div class="kratos-post-inner-new">
-                                <header class="kratos-entry-header-new">
-                                        <a class="label-link" href="/categories/SSM/">SSM</a>
-                                    <h2 class="kratos-entry-title-new"><a href="/de8sdgf1/">spring AOP</a>
-                                </header>
-                                <div class="kratos-entry-content-new">
-                                    <p>
-                                        
-                                            Spring AOP简介什么是 AOPAOP 为 Aspect Oriented Programming 的缩写，意思为面向切面编程，是通过预编译方式和运行期动态代理实现程序功能的统一维护的一种技术。
-AOP 是 OOP 的延续，是软...
-                                        
-                                    </p>
-                                </div>
-                            </div>
-                            <footer class="kratos-post-meta-new">
-                                <span class="pull-left">
-                                    <a><i class="fa fa-calendar"></i></a><a>2020-06-15</a>
-                                    <a><i class="fa fa-tags"></i></a>
-                                    <a class="tag-none-link" href="/tags/spring/" rel="tag">spring</a>
-                                </span>
-                                <span class="pull-right">
-                                    <a class="read-more" href="/de8sdgf1/" title="阅读全文">阅读全文<i class="fa fa-chevron-circle-right"></i></a>
-                                </span>
-                            </footer>
-                        </div>
-                    </article>
-                
-            
-                
-                    <article class="kratos-hentry clearfix">
-                        <div class="kratos-entry-border-new clearfix">
-                            
-                            <div class="kratos-entry-thumb-new">
-                                <a href="/fea568e8/">
-                                    
-                                        <img class="kratos-entry-thumb-new-img">
-                                    
-                                </a>
-                            </div>
-                            <div class="kratos-post-inner-new">
-                                <header class="kratos-entry-header-new">
-                                        <a class="label-link" href="/categories/ssm%E6%A1%86%E6%9E%B6/">ssm框架</a>
-                                    <h2 class="kratos-entry-title-new"><a href="/fea568e8/">spring_day02（注解）</a>
-                                </header>
-                                <div class="kratos-entry-content-new">
-                                    <p>
-                                        
-                                            关于注解的相关操作用于创建对象的相当于：&lt;bean id=&quot;&quot; class=&quot;&quot;&gt;
-12345678910111213141.  @Component:（用于创建对象）		作用：用把...
-                                        
-                                    </p>
-                                </div>
-                            </div>
-                            <footer class="kratos-post-meta-new">
-                                <span class="pull-left">
-                                    <a><i class="fa fa-calendar"></i></a><a>2020-06-12</a>
-                                    <a><i class="fa fa-tags"></i></a>
-                                    <a class="tag-none-link" href="/tags/spring/" rel="tag">spring</a>
-                                </span>
-                                <span class="pull-right">
-                                    <a class="read-more" href="/fea568e8/" title="阅读全文">阅读全文<i class="fa fa-chevron-circle-right"></i></a>
-                                </span>
-                            </footer>
-                        </div>
-                    </article>
-                
-            
-                
-                    <article class="kratos-hentry clearfix">
-                        <div class="kratos-entry-border-new clearfix">
-                            
-                            <div class="kratos-entry-thumb-new">
-                                <a href="/de8d5735/">
-                                    
-                                        <img class="kratos-entry-thumb-new-img">
-                                    
-                                </a>
-                            </div>
-                            <div class="kratos-post-inner-new">
-                                <header class="kratos-entry-header-new">
-                                        <a class="label-link" href="/categories/ssm%E6%A1%86%E6%9E%B6/">ssm框架</a>
-                                    <h2 class="kratos-entry-title-new"><a href="/de8d5735/">spring-day01</a>
-                                </header>
-                                <div class="kratos-entry-content-new">
-                                    <p>
-                                        
-                                            Spring 基于 XML 的 IOC 环境搭建注：IOC: 控制反转，用于降低代码间的耦合度（不能消除）
-通过反射获取对象的xml文件12345678910111213141516bean 标签:        作用：       ...
-                                        
-                                    </p>
-                                </div>
-                            </div>
-                            <footer class="kratos-post-meta-new">
-                                <span class="pull-left">
-                                    <a><i class="fa fa-calendar"></i></a><a>2020-05-28</a>
-                                    <a><i class="fa fa-tags"></i></a>
-                                    <a class="tag-none-link" href="/tags/spring/" rel="tag">spring</a>
-                                </span>
-                                <span class="pull-right">
-                                    <a class="read-more" href="/de8d5735/" title="阅读全文">阅读全文<i class="fa fa-chevron-circle-right"></i></a>
-                                </span>
-                            </footer>
-                        </div>
-                    </article>
-                
-            
-            
-            
-                <div class='text-center pagination'>
-                <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
-                </div>
-            
-        </section>
+###返回ModelAndView形式1(应用)
+在Controller中方法返回ModelAndView对象，并且设置视图名称
+1234567891011121314@RequestMapping(value=&quot;/quick2&quot;)    public ModelAndView save2()&#123;        /*            Model:模型 作用封装数据            View：视图 作用展示数据         */        ModelAndView modelAndView = new ModelAndView();        //设置模型数据        modelAndView.addObject(&quot;username&quot;,&quot;itcast&quot;);        //设置视图名称  ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/7c6c1a22/" title="SpringMVC_01(环境)">     <img class="post_bg" src="https://gitee.com/moon-road/image/raw/master/img//5e9416c8390ec.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="SpringMVC_01(环境)"></a></div><div class="recent-post-info"><a class="article-title" href="/7c6c1a22/" title="SpringMVC_01(环境)">SpringMVC_01(环境)</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2020-07-04T11:00:59.000Z" title="Created 2020-07-04 19:00:59">2020-07-04</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/ssm%E6%A1%86%E6%9E%B6/">ssm框架</a></span></div><div class="content">Spring集成WebApplicationContext应用上下文获取方式应用上下文对象是通过new ClasspathXmlApplicationContext(spring配置文件) 方式获取的，但是每次从容器中获得Bean时都要编写new ClasspathXmlApplicationContext(spring配置文件) ，这样的弊端是配置文件加载多次，应用上下文对象创建多次。
+在Web项目中，可以使用ServletContextListener监听Web应用的启动，我们可以在Web应用启动时，就加载Spring的配置文件，创建应用上下文对象ApplicationContext，在将其存储到最大的域servletContext域中，这样就可以在任意位置从域中获得应用上下文ApplicationContext对象了。
+Spring提供获取应用上下文的工具上面的分析不用手动实现，Spring提供了一个监听器ContextLoaderListener就是对上述功能的封装，该监听器内部加载Spring配置文件，创建应用上下文对象，并存储到ServletContext域中，提供了一个客 ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/de8sdgf1/" title="spring AOP">     <img class="post_bg" src="https://gitee.com/moon-road/image/raw/master/img/到达的地方 单程票的梦异世界篇 4k插画壁纸_彼岸图网.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="spring AOP"></a></div><div class="recent-post-info"><a class="article-title" href="/de8sdgf1/" title="spring AOP">spring AOP</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2020-06-15T12:36:12.000Z" title="Created 2020-06-15 20:36:12">2020-06-15</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/SSM/">SSM</a></span></div><div class="content">Spring AOP简介什么是 AOPAOP 为 Aspect Oriented Programming 的缩写，意思为面向切面编程，是通过预编译方式和运行期动态代理实现程序功能的统一维护的一种技术。
+AOP 是 OOP 的延续，是软件开发中的一个热点，也是Spring框架中的一个重要内容，是函数式编程的一种衍生范型。利用AOP可以对业务逻辑的各个部分进行隔离，从而使得业务逻辑各部分之间的耦合度降低，提高程序的可重用性，同时提高了开发的效率。
+AOP 的作用及其优势作用：在程序运行期间，在不修改源码的情况下对方法进行功能增强
+优势：减少重复代码，提高开发效率，并且便于维护
+AOP 的底层实现实际上，AOP 的底层是通过 Spring 提供的的动态代理技术实现的。在运行期间，Spring通过动态代理技术动态的生成代理对象，代理对象方法执行时进行增强功能的介入，在去调用目标对象的方法，从而完成功能的增强。
+AOP 的动态代理技术常用的动态代理技术
+JDK 代理 : 基于接口的动态代理技术
+cglib 代理：基于父类的动态代理技术
 
-        </div>
-                
-            <section id="kratos-widget-area" class="col-md-4 hidden-xs hidden-sm">
-                
-                    <aside id="krw-about" class="widget widget-kratos-about clearfix">
-    
-    <div class="photo-background"></div>
-    <div class="photo-wrapper clearfix">
-        <div class="photo-wrapper-tip text-center">
-            <img class="about-photo" src="/images/avatar.jpg" />
-        </div>
-    </div>
-    <div class="textwidget">
-        
-            <p class="text-center"></p>
-        
-    </div>
-</aside>
-                
-                    <!-- Moved to about.ejs -->
-                
-                    
-  <aside id="krw-categories" class="widget widget-categories clearfix">
-    <h4 class="widget-title"><i class="fa fa-folder"></i>分类目录</h4>
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/JAVA/">JAVA</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MOVEN/">MOVEN</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/MOVEN/%E7%8E%AF%E5%A2%83/">环境</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySql/">MySql</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SSM/">SSM</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Typora/">Typora</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Typora/%E5%BA%94%E7%94%A8/">应用</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Vue/">Vue</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/coding/">coding</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/http/">http</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/http/%E5%8D%8F%E8%AE%AE/">协议</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring-boot/">spring_boot</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/springboot/">springboot</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ssm%E6%A1%86%E6%9E%B6/">ssm框架</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8F%92%E4%BB%B6/">插件</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8F%92%E4%BB%B6/idea/">idea</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%A5%E8%AF%AD/">日语</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A6%BB%E6%95%A3%E7%BB%93%E6%9E%84/">离散结构</a><span class="category-list-count">2</span></li></ul>
-  </aside>
+JDK 的动态代理①目标类接口
+ 123public in ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/fea568e8/" title="spring_day02（注解）">     <img class="post_bg" src="https://gitee.com/moon-road/image/raw/master/img//5e8407cd209cd.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="spring_day02（注解）"></a></div><div class="recent-post-info"><a class="article-title" href="/fea568e8/" title="spring_day02（注解）">spring_day02（注解）</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2020-06-12T01:38:09.000Z" title="Created 2020-06-12 09:38:09">2020-06-12</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/ssm%E6%A1%86%E6%9E%B6/">ssm框架</a></span></div><div class="content">关于注解的相关操作用于创建对象的相当于：&lt;bean id=&quot;&quot; class=&quot;&quot;&gt;
+12345678910111213141.  @Component:（用于创建对象）		作用：用把当前类对象存入spring中		属性：value（用于指定bean的id。当不写时，默认值为当前类名，首字母改小写）2.  @Controller（一般用于表现层）， @Service（一般用于业务层），@Repository（一般用于持久层）		作用：@Component的衍生注解，作用与@Component一样		详解：            ①. @Controller：用在表现层的注解            ②. @Service：用在业务层的注解            ③. @Repository：用在持久层的注解
 
-
-                
-                    
-  <aside id="krw-tags" class="widget widget-kratos-tags clearfix">
-    <h4 class="widget-title"><i class="fa fa-tags"></i>标签聚合</h4>
-      <div class="tag-clouds">
-        <a href="/tags/GUI/" style="font-size: 0.7em;">GUI</a> <a href="/tags/Hashmap/" style="font-size: 0.7em;">Hashmap</a> <a href="/tags/IO/" style="font-size: 0.6em;">IO</a> <a href="/tags/JVM/" style="font-size: 0.6em;">JVM</a> <a href="/tags/MAVEN%E9%A1%B9%E7%9B%AE/" style="font-size: 0.6em;">MAVEN项目</a> <a href="/tags/Mybatis/" style="font-size: 0.8em;">Mybatis</a> <a href="/tags/SSM/" style="font-size: 0.6em;">SSM</a> <a href="/tags/SpringMVC/" style="font-size: 0.7em;">SpringMVC</a> <a href="/tags/TCP/" style="font-size: 0.7em;">TCP</a> <a href="/tags/Typora/" style="font-size: 0.6em;">Typora</a> <a href="/tags/UDP/" style="font-size: 0.6em;">UDP</a> <a href="/tags/Vue/" style="font-size: 0.6em;">Vue</a> <a href="/tags/http%E5%8D%8F%E8%AE%AE/" style="font-size: 0.6em;">http协议</a> <a href="/tags/idea/" style="font-size: 0.6em;">idea</a> <a href="/tags/include/" style="font-size: 0.6em;">include</a> <a href="/tags/juc/" style="font-size: 0.6em;">juc</a> <a href="/tags/mysql/" style="font-size: 0.6em;">mysql</a> <a href="/tags/n2/" style="font-size: 0.6em;">n2</a>
-      </div>
-  </aside>
-
-                
-                    
-  <aside id="krw-posts" class="widget widget-kratos-poststab">
-  <h4 class="widget-title"><i class="fa fa-file"></i>最新文章</h4>
-  <div class="tab-content">
-      <ul class="list-group">
-        
-        
-          
-          
-            <a class="list-group-item" href="/c24675b4/"><i class="fa  fa-book"></i> MySQL</a>
-            
-          
-        
-          
-          
-            <a class="list-group-item" href="/aa55683f/"><i class="fa  fa-book"></i> JUC</a>
-            
-          
-        
-          
-          
-            <a class="list-group-item" href="/eqdt0b16/"><i class="fa  fa-book"></i> JVM</a>
-            
-          
-        
-          
-          
-            <a class="list-group-item" href="/fe634c16/"><i class="fa  fa-book"></i> 多线程</a>
-            
-          
-        
-          
-          
-            <a class="list-group-item" href="/e1643b16/"><i class="fa  fa-book"></i> 网络编程(TCP/UDP)</a>
-            
-          
-        
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-      </ul>
-  </div>
-  </aside>
-
-                
-            </section>
-        
-        </div>
-    </div>
-</div>
-<footer>
-    <div id="footer">
-        <div class="kr-tool text-center">
-            <div class="tool">
-                
-                    <div class="box search-box">
-                        <a href="/search/">
-                            <span class="fa fa-search"></span>
-                        </a>
-                    </div>
-                
-                
-                    <div class="box theme-box" id="darkmode-switch">
-                        <span class="fa fa-adjust"></span>
-                    </div>
-                
-                
+用于注入数据的相当于：&lt;property name=&quot;&quot; ref=&quot;&quot;&gt;        &lt;property name=&quot;&quot; value=&quot;&qu ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/de8d5735/" title="spring-day01">     <img class="post_bg" src="https://gitee.com/moon-road/image/raw/master/img//5e83031c79ca2.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="spring-day01"></a></div><div class="recent-post-info"><a class="article-title" href="/de8d5735/" title="spring-day01">spring-day01</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2020-05-28T13:10:51.000Z" title="Created 2020-05-28 21:10:51">2020-05-28</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/ssm%E6%A1%86%E6%9E%B6/">ssm框架</a></span></div><div class="content">Spring 基于 XML 的 IOC 环境搭建注：IOC: 控制反转，用于降低代码间的耦合度（不能消除）
+通过反射获取对象的xml文件12345678910111213141516bean 标签:        作用：         用于配置对象让 spring 来创建的。         默认情况下它调用的是类中的无参构造函数。如果没有无参构造函数则不能创建成功。        属性：          id：给对象在容器中提供一个唯一标识。用于获取对象。          class：指定类的全限定类名。用于反射创建对象。默认情况下调用无参构造函数。                    实例化实例化 Bean 的三种方式:        第一种方式：使用默认无参构造函数:&lt;bean id=&quot;accountService&quot;	class=&quot;com.chen.service.Impl.AccountServiceImpl&quot;&gt;&lt;/bean&gt;        第二种方法：spring 管理静态工厂-使用静态工厂的方法创建对象 ...</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/#content-inner">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/#content-inner">5</a><a class="extend next" rel="next" href="/page/3/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="/img/tou.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name"></div><div class="author-info__description"></div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">41</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">31</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">20</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/c24675b4/" title="MySQL"><img src="/img/8.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="MySQL"/></a><div class="content"><a class="title" href="/c24675b4/" title="MySQL">MySQL</a><time datetime="2021-05-16T04:20:43.000Z" title="Created 2021-05-16 12:20:43">2021-05-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/aa55683f/" title="JUC"><img src="/img/1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="JUC"/></a><div class="content"><a class="title" href="/aa55683f/" title="JUC">JUC</a><time datetime="2021-05-11T05:31:44.000Z" title="Created 2021-05-11 13:31:44">2021-05-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/eqdt0b16/" title="JVM"><img src="/img/4.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="JVM"/></a><div class="content"><a class="title" href="/eqdt0b16/" title="JVM">JVM</a><time datetime="2021-05-09T03:34:22.000Z" title="Created 2021-05-09 11:34:22">2021-05-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/fe634c16/" title="多线程"><img src="/img/10.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="多线程"/></a><div class="content"><a class="title" href="/fe634c16/" title="多线程">多线程</a><time datetime="2021-05-02T03:34:22.000Z" title="Created 2021-05-02 11:34:22">2021-05-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/e1643b16/" title="网络编程(TCP/UDP)"><img src="/img/1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="网络编程(TCP/UDP)"/></a><div class="content"><a class="title" href="/e1643b16/" title="网络编程(TCP/UDP)">网络编程(TCP/UDP)</a><time datetime="2021-05-01T10:34:22.000Z" title="Created 2021-05-01 18:34:22">2021-05-01</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>Categories</span>
+            <a class="card-more-btn" href="/categories/" title="More">
+    <i class="fas fa-angle-right"></i></a>
             </div>
-            <div class="box gotop-box">
-                <span class="fa fa-chevron-up"></span>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 col-md-offset-3 footer-list text-center">
-                    <ul class="kratos-social-icons">
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                    </ul>
-                    <ul class="kratos-copyright">
-                        <div>
-                            <li>&copy; 2021 Chen' Blog 版权所有.</li>
-                            <li>本站已运行<span id="span_dt">Loading...</span></li>
-                        </div>
-                        <div>
-                            <li>Theme <a href="https://github.com/Candinya/Kratos-Rebirth" target="_blank">Kratos:Rebirth</a></li>
-                            <li>Made with&nbsp;<i class="fa fa-heart throb" style="color:#d43f57"></i>&nbsp;by <a href="https://candinya.com" target="_blank" rel="nofollow">Candinya</a>.</li>
-                        </div>
-                        <div>
-                            <li>Powered by <a href="https://hexo.io" target="_blank" rel="nofollow">Hexo</a></li>
-                            <li>Hosted on <a href="https://github.io" target="_blank">Github Pages</a></li>
-                        </div>
-                        <div>
-                            
-                            
-                        </div>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</footer>
-</div>
-</div>
-
-        <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.4/dist/js/bootstrap.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js"></script>
-<script>const notMobile = (!(navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)));</script>
-
-<script async src="/js/candy.min.js"></script>
-
-
-    <script defer src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
-
-<script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script>
-<script defer src="/js/kratosr.min.js"></script>
-<script defer src="/js/pjax.min.js"></script>
-
-
-    <script defer src="/js/kr-dark.min.js"></script>
-
-
-    </body>
-</html>
+            <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/JAVA/"><span class="card-category-list-name">JAVA</span><span class="card-category-list-count">3</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/MOVEN/"><span class="card-category-list-name">MOVEN</span><span class="card-category-list-count">1</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/MOVEN/%E7%8E%AF%E5%A2%83/"><span class="card-category-list-name">环境</span><span class="card-category-list-count">1</span></a></li></ul></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/MySql/"><span class="card-category-list-name">MySql</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/SSM/"><span class="card-category-list-name">SSM</span><span class="card-category-list-count">4</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Typora/"><span class="card-category-list-name">Typora</span><span class="card-category-list-count">1</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Typora/%E5%BA%94%E7%94%A8/"><span class="card-category-list-name">应用</span><span class="card-category-list-count">1</span></a></li></ul></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Vue/"><span class="card-category-list-name">Vue</span><span class="card-category-list-count">1</span></a></li>
+            </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>Tags</span></div><div class="card-tag-cloud"><a href="/tags/GUI/" style="font-size: 1.23em; color: #999ea6">GUI</a> <a href="/tags/Hashmap/" style="font-size: 1.23em; color: #999ea6">Hashmap</a> <a href="/tags/IO/" style="font-size: 1.1em; color: #999">IO</a> <a href="/tags/JVM/" style="font-size: 1.1em; color: #999">JVM</a> <a href="/tags/MAVEN%E9%A1%B9%E7%9B%AE/" style="font-size: 1.1em; color: #999">MAVEN项目</a> <a href="/tags/Mybatis/" style="font-size: 1.5em; color: #99a9bf">Mybatis</a> <a href="/tags/SSM/" style="font-size: 1.1em; color: #999">SSM</a> <a href="/tags/SpringMVC/" style="font-size: 1.23em; color: #999ea6">SpringMVC</a> <a href="/tags/TCP/" style="font-size: 1.23em; color: #999ea6">TCP</a> <a href="/tags/Typora/" style="font-size: 1.1em; color: #999">Typora</a> <a href="/tags/UDP/" style="font-size: 1.1em; color: #999">UDP</a> <a href="/tags/Vue/" style="font-size: 1.1em; color: #999">Vue</a> <a href="/tags/http%E5%8D%8F%E8%AE%AE/" style="font-size: 1.1em; color: #999">http协议</a> <a href="/tags/idea/" style="font-size: 1.1em; color: #999">idea</a> <a href="/tags/include/" style="font-size: 1.1em; color: #999">include</a> <a href="/tags/juc/" style="font-size: 1.1em; color: #999">juc</a> <a href="/tags/mysql/" style="font-size: 1.1em; color: #999">mysql</a> <a href="/tags/n2/" style="font-size: 1.1em; color: #999">n2</a> <a href="/tags/spring/" style="font-size: 1.37em; color: #99a4b2">spring</a> <a href="/tags/springMVC/" style="font-size: 1.1em; color: #999">springMVC</a> <a href="/tags/spring-boot/" style="font-size: 1.1em; color: #999">spring_boot</a> <a href="/tags/springboot/" style="font-size: 1.1em; color: #999">springboot</a> <a href="/tags/%E5%88%86%E9%A1%B5/" style="font-size: 1.23em; color: #999ea6">分页</a> <a href="/tags/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/" style="font-size: 1.1em; color: #999">反射机制</a> <a href="/tags/%E5%8F%98%E5%BD%A2/" style="font-size: 1.1em; color: #999">变形</a> <a href="/tags/%E5%AE%9E%E7%94%A8/" style="font-size: 1.1em; color: #999">实用</a> <a href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" style="font-size: 1.1em; color: #999">快捷键</a> <a href="/tags/%E6%97%A5%E8%AF%AD%E4%B8%AD%E7%BA%A7/" style="font-size: 1.1em; color: #999">日语中级</a> <a href="/tags/%E7%BA%BF%E7%A8%8B/" style="font-size: 1.1em; color: #999">线程</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 1.1em; color: #999">网络协议</a> <a href="/tags/%E9%85%8D%E7%BD%AE/" style="font-size: 1.1em; color: #999">配置</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>Archives</span><a class="card-more-btn" href="/archives/" title="More">
+    <i class="fas fa-angle-right"></i></a></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/05/"><span class="card-archive-list-date">May 2021</span><span class="card-archive-list-count">5</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/04/"><span class="card-archive-list-date">April 2021</span><span class="card-archive-list-count">4</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/08/"><span class="card-archive-list-date">August 2020</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/07/"><span class="card-archive-list-date">July 2020</span><span class="card-archive-list-count">6</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/06/"><span class="card-archive-list-date">June 2020</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/05/"><span class="card-archive-list-date">May 2020</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/04/"><span class="card-archive-list-date">April 2020</span><span class="card-archive-list-count">9</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/03/"><span class="card-archive-list-date">March 2020</span><span class="card-archive-list-count">8</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>Info</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">Article :</div><div class="item-count">41</div></div><div class="webinfo-item"><div class="item-name">UV :</div><div class="item-count" id="busuanzi_value_site_uv"></div></div><div class="webinfo-item"><div class="item-name">PV :</div><div class="item-count" id="busuanzi_value_site_pv"></div></div><div class="webinfo-item"><div class="item-name">Last Push :</div><div class="item-count" id="last-push-date" data-lastPushDate="2021-05-21T04:31:59.022Z"></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By null</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
